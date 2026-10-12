@@ -5,11 +5,12 @@ import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators } 
 import { TextileDataService } from '../../services/textile-data.service';
 import { EnquiryService } from '../../services/enquiry.service';
 import { IconComponent } from '../../components/icon/icon.component';
+import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule, IconComponent],
+  imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule, IconComponent, ScrollRevealDirective],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })

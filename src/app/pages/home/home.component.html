@@ -69,7 +69,7 @@
 <section id="journey" class="editorial-section journey-section" aria-label="Textile Manufacturing Journey">
   <div class="ls-container">
     <!-- Section Header -->
-    <div class="journey-header">
+    <div class="journey-header" appScrollReveal>
       <div class="header-left">
         <span class="editorial-kicker">SIGNATURE PROCESS / 05 STAGES</span>
         <h2 class="journey-main-title">THE ARCHITECTURE OF A TEXTILE</h2>
@@ -170,7 +170,7 @@
   <div class="ls-container">
     <div class="ls-grid-12 spread-grid">
       <!-- Left Editorial Column: Oversized Typographic Statement -->
-      <div class="spread-left-col">
+      <div class="spread-left-col" appScrollReveal>
         <span class="editorial-kicker">OUR STORY / 01</span>
         <h2 class="spread-headline">
           BUILT ON<br />
@@ -187,7 +187,7 @@
       </div>
 
       <!-- Right Editorial Column: Narrative, Factory Imagery, Links -->
-      <div class="spread-right-col">
+      <div class="spread-right-col" appScrollReveal [revealDelay]="150">
         <div class="spread-image-wrapper">
           <img
             src="https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&w=1000&q=80"
@@ -227,7 +227,7 @@
 <section id="capabilities" class="editorial-section capabilities-section bg-soft-stone" aria-label="Manufacturing Capabilities">
   <div class="ls-container">
     <!-- Capabilities Title Header -->
-    <div class="capabilities-head">
+    <div class="capabilities-head" appScrollReveal>
       <div>
         <span class="editorial-kicker">INDUSTRIAL INFRASTRUCTURE</span>
         <h2 class="section-title">MANUFACTURING CAPABILITIES</h2>
@@ -238,7 +238,7 @@
     </div>
 
     <!-- Expandable Horizontal Panels Container -->
-    <div class="capability-accordion" role="tablist">
+    <div class="capability-accordion" role="tablist" appScrollReveal [revealDelay]="150">
       <div
         *ngFor="let cap of capabilities"
         class="capability-panel"
@@ -310,7 +310,7 @@
   </div>
 
   <div class="ls-container statement-content-container">
-    <div class="statement-inner">
+    <div class="statement-inner" appScrollReveal>
       <span class="editorial-kicker">THE PHILOSOPHY OF DETAIL</span>
 
       <h2 class="statement-huge-title">
@@ -346,7 +346,7 @@
      ========================================================================== -->
 <section class="editorial-section quality-section" aria-label="Quality and Responsibility">
   <div class="ls-container">
-    <div class="ls-grid-12 quality-grid">
+    <div class="ls-grid-12 quality-grid" appScrollReveal>
       <!-- Media Frame (5 Cols) -->
       <div class="quality-media-col">
         <div class="quality-image-card">
@@ -414,7 +414,7 @@
      ========================================================================== -->
 <section class="editorial-section careers-spotlight bg-soft-stone" aria-label="Careers at LS Mills">
   <div class="ls-container">
-    <div class="careers-editorial-box">
+    <div class="careers-editorial-box" appScrollReveal>
       <div class="careers-content-wrap">
         <span class="editorial-kicker">TALENT & CULTURE</span>
         <h2 class="careers-headline">
@@ -459,7 +459,7 @@
   <div class="ls-container">
     <div class="ls-grid-12 contact-cta-grid">
       <!-- Left Column: Oversized Typographic Statement & Company Location (5 Cols) -->
-      <div class="contact-cta-left">
+      <div class="contact-cta-left" appScrollReveal>
         <span class="editorial-kicker">COLLABORATE WITH US</span>
 
         <h2 class="contact-huge-headline">
@@ -511,7 +511,7 @@
       </div>
 
       <!-- Right Column: Interactive Business Enquiry Form (7 Cols) -->
-      <div class="contact-cta-right">
+      <div class="contact-cta-right" appScrollReveal [revealDelay]="150">
         <div class="enquiry-card-dark">
           <h3 class="form-title">INITIATE A COMMERCIAL ENQUIRY</h3>
           <p class="form-subtitle">Complete the fields below to request sample yardage or count specifications.</p>
