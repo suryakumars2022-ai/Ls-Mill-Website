@@ -1,0 +1,176 @@
+<!-- ==========================================================================
+     PRODUCTS CATALOGUE — "INDUSTRIAL EDITORIAL" PAGE
+     ========================================================================== -->
+
+<!-- Page Header -->
+<header class="page-editorial-header bg-charcoal" aria-label="Product Catalogue Overview">
+  <div class="header-texture-overlay"></div>
+  <div class="ls-container header-inner">
+    <div class="header-kicker-row">
+      <span class="editorial-kicker">COMMERCIAL SPECIFICATION CATALOGUE</span>
+      <span class="editorial-label-vertical">DISPATCH GRADE &bull; THENI</span>
+    </div>
+
+    <h1 class="page-main-title">
+      ENGINEERED YARNS,<br />
+      <span class="serif-italic">WOVEN FABRICS &</span><br />
+      HOME TEXTILES.
+    </h1>
+
+    <p class="header-lead">
+      Review our primary textile production portfolio. Every entry represents actual manufacturing capacities tested according to international textile criteria.
+    </p>
+  </div>
+</header>
+
+
+<!-- Catalogue Controls & Filtering -->
+<section class="editorial-section-sm catalogue-filter-bar bg-soft-stone" aria-label="Catalogue Filters">
+  <div class="ls-container">
+    <div class="filter-controls-wrapper">
+      <!-- Category Tabs -->
+      <div class="category-pills" role="tablist">
+        <button
+          class="pill-btn"
+          [ngClass]="{ 'active': selectedCategory === 'all' }"
+          (click)="setCategory('all')"
+          role="tab"
+          [attr.aria-selected]="selectedCategory === 'all'"
+        >
+          ALL CATEGORIES ({{ allProducts.length }})
+        </button>
+        <button
+          class="pill-btn"
+          [ngClass]="{ 'active': selectedCategory === 'yarn' }"
+          (click)="setCategory('yarn')"
+          role="tab"
+          [attr.aria-selected]="selectedCategory === 'yarn'"
+        >
+          YARN & SPINNING
+        </button>
+        <button
+          class="pill-btn"
+          [ngClass]="{ 'active': selectedCategory === 'fabric' }"
+          (click)="setCategory('fabric')"
+          role="tab"
+          [attr.aria-selected]="selectedCategory === 'fabric'"
+        >
+          WOVEN FABRICS
+        </button>
+        <button
+          class="pill-btn"
+          [ngClass]="{ 'active': selectedCategory === 'home-textile' }"
+          (click)="setCategory('home-textile')"
+          role="tab"
+          [attr.aria-selected]="selectedCategory === 'home-textile'"
+        >
+          HOME TEXTILES
+        </button>
+      </div>
+
+      <!-- Live Search Box -->
+      <div class="search-box">
+        <app-icon name="search" [size]="16" class="search-icon"></app-icon>
+        <input
+          type="text"
+          [(ngModel)]="searchQuery"
+          (input)="onSearchChange()"
+          placeholder="Filter by count, weave, composition..."
+          aria-label="Filter products"
+        />
+        <button *ngIf="searchQuery" class="clear-search" (click)="searchQuery = ''; onSearchChange()">
+          <app-icon name="x" [size]="14"></app-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Catalogue Grid Exhibition -->
+<section class="editorial-section products-grid-section" aria-label="Products List">
+  <div class="ls-container">
+    <!-- Active Result Count -->
+    <div class="results-meta">
+      <span class="meta-count">SHOWING {{ filteredProducts.length }} OF {{ allProducts.length }} SPECIFICATIONS</span>
+      <span class="meta-note">Click any item for detailed technical specification tables and commercial inquiry.</span>
+    </div>
+
+    <!-- Product Items Grid -->
+    <div class="ls-grid-12 products-grid" *ngIf="filteredProducts.length > 0; else noProducts">
+      <article
+        class="product-item-card"
+        *ngFor="let item of filteredProducts"
+        (click)="openProductModal(item)"
+        tabindex="0"
+        (keydown.enter)="openProductModal(item)"
+      >
+        <!-- Media Visual -->
+        <div class="product-media-frame">
+          <img [src]="item.image" [alt]="item.name" loading="lazy" />
+          <div class="product-badge-corner">
+            <span class="editorial-tag">{{ item.categoryLabel }}</span>
+          </div>
+          <div class="quickview-overlay">
+            <span class="quickview-text">INSPECT TECHNICAL PROFILE</span>
+            <app-icon name="arrow-up-right" [size]="16"></app-icon>
+          </div>
+        </div>
+
+        <!-- Product Card Body -->
+        <div class="product-body">
+          <div class="product-header-row">
+            <span class="product-const">{{ item.countOrWeave }}</span>
+            <span class="product-comp">{{ item.composition }}</span>
+          </div>
+
+          <h3 class="product-title">{{ item.name }}</h3>
+
+          <p class="product-app-brief">
+            <span class="app-lbl">APPLICATIONS:</span> {{ item.applications }}
+          </p>
+
+          <p class="product-desc-snippet">{{ item.description }}</p>
+
+          <div class="card-action-bar">
+            <span class="spec-link">
+              <span>VIEW FULL PROFILE</span>
+              <app-icon name="arrow-right" [size]="14"></app-icon>
+            </span>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- Fallback when search has 0 results -->
+    <ng-template #noProducts>
+      <div class="no-results-box">
+        <app-icon name="search" [size]="36" class="no-icon"></app-icon>
+        <h3>No specifications found</h3>
+        <p>We could not find items matching "{{ searchQuery }}". Please reset the search or contact our technical desk for custom counts.</p>
+        <button class="btn-editorial-copper" (click)="searchQuery = ''; selectedCategory = 'all'; onSearchChange()">
+          <span>RESET ALL FILTERS</span>
+        </button>
+      </div>
+    </ng-template>
+
+    <!-- Bottom Sourcing CTA Banner -->
+    <div class="custom-sourcing-banner bg-charcoal">
+      <div class="banner-content">
+        <span class="editorial-kicker">CUSTOM DEVELOPMENT</span>
+        <h2>Need Custom Yarn Counts or Unique Weave Density?</h2>
+        <p>Our pilot spinning frames and dobby loom setups support custom yarn engineering, bespoke reed & pick ratios, and blend evaluations.</p>
+      </div>
+      <a routerLink="/contact" class="btn-editorial-copper">
+        <span>CONSULT TECHNICAL DESK</span>
+        <app-icon name="arrow-right" [size]="16"></app-icon>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Product Detail Modal -->
+<app-product-modal
+  [product]="activeModalProduct"
+  (close)="closeProductModal()"
+></app-product-modal>

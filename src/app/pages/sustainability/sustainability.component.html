@@ -1,0 +1,155 @@
+<!-- ==========================================================================
+     SUSTAINABILITY & RESPONSIBILITY — "INDUSTRIAL EDITORIAL" PAGE
+     ========================================================================== -->
+
+<!-- Page Header -->
+<header class="page-editorial-header bg-charcoal" aria-label="Sustainability Introduction">
+  <div class="header-texture-overlay"></div>
+  <div class="ls-container header-inner">
+    <div class="header-kicker-row">
+      <span class="editorial-kicker">RESPONSIBLE INDUSTRIAL STEWARDSHIP</span>
+      <span class="editorial-label-vertical">RESOURCE CARE / DISCIPLINE</span>
+    </div>
+
+    <h1 class="page-main-title">
+      RESPONSIBLE PRODUCTION.<br />
+      <span class="serif-italic">CONSCIOUS</span><br />
+      PROGRESS.
+    </h1>
+
+    <p class="header-lead">
+      We view environmental stewardship as an extension of manufacturing discipline. Rather than relying on vague marketing slogans, we establish measurable operational controls to reduce waste, protect employees, and conserve resources.
+    </p>
+  </div>
+</header>
+
+
+<!-- Section: Transparency Statement -->
+<section class="editorial-section-sm transparency-banner-section bg-soft-stone" aria-label="Integrity Statement">
+  <div class="ls-container">
+    <div class="transparency-box">
+      <div class="transparency-badge">
+        <app-icon name="shield" [size]="20"></app-icon>
+        <span>OUR COMMITMENT TO TRANSPARENCY</span>
+      </div>
+      <p class="transparency-text">
+        LS Mills distinguishes between <strong>achieved, concrete operational practices</strong> currently active on our shop floor and <strong>strategic future targets</strong> under active engineering review. We do not publish unverified metrics or fabricated certifications.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- Section: Concrete Operational Practices -->
+<section class="editorial-section active-practices-section" aria-label="Concrete Practices">
+  <div class="ls-container">
+    <div class="section-title-wrap">
+      <span class="editorial-kicker">ACTIVE ON OUR PRODUCTION FLOOR</span>
+      <h2 class="section-title">ONGOING OPERATIONAL PRACTICES</h2>
+      <p class="section-lead">Verified disciplines practiced daily throughout our spinning and weaving facilities.</p>
+    </div>
+
+    <div class="ls-grid-12 practices-grid">
+      <div class="practice-card" *ngFor="let item of activePractices">
+        <div class="card-top">
+          <span class="practice-num">{{ item.num }}</span>
+          <span class="editorial-tag">{{ item.category }}</span>
+        </div>
+        <h3 class="practice-title">{{ item.title }}</h3>
+        <p class="practice-desc">{{ item.description }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Section: People & Occupational Safety -->
+<section class="editorial-section people-section bg-charcoal" aria-label="Worker Safety">
+  <div class="ls-container">
+    <div class="ls-grid-12 people-grid">
+      <div class="people-narrative-col">
+        <span class="editorial-kicker">HUMAN RESPONSIBILITY</span>
+        <h2 class="people-title">SAFETY, SKILL & WORKER DIGNITY</h2>
+        <p class="people-lead">
+          Industrial textiles thrive on the dedication of floor technicians, machine operators, and quality supervisors. Our Theni facilities uphold strict occupational health and safety standards.
+        </p>
+
+        <div class="safety-points">
+          <div class="safety-item">
+            <app-icon name="check" [size]="16" class="check-icon"></app-icon>
+            <div>
+              <h4>Atmospheric Conditioning & Ergonomics</h4>
+              <p>Continuous climate control keeps humidity at ergonomic operating comfort while preventing static buildup on yarns.</p>
+            </div>
+          </div>
+
+          <div class="safety-item">
+            <app-icon name="check" [size]="16" class="check-icon"></app-icon>
+            <div>
+              <h4>Regular Protective Equipment & Machine Guards</h4>
+              <p>Audited interlock switches and emergency shutoffs on every carding cylinder and high-speed airjet loom.</p>
+            </div>
+          </div>
+
+          <div class="safety-item">
+            <app-icon name="check" [size]="16" class="check-icon"></app-icon>
+            <div>
+              <h4>Technical Apprenticeship & Skill Development</h4>
+              <p>On-the-job mechanical training programs cultivating long-term technical careers in Theni district.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="people-media-col">
+        <div class="people-image-frame">
+          <img
+            src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1000&q=80"
+            alt="Textile plant technician inspecting fabric"
+            loading="lazy"
+          />
+          <div class="media-caption">
+            <span>OPERATIONAL REVIEW &bull; THENI PRODUCTION FLOOR</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Section: Forward Strategic Goals -->
+<section class="editorial-section goals-section bg-soft-stone" aria-label="Strategic Goals">
+  <div class="ls-container">
+    <div class="section-title-wrap">
+      <span class="editorial-kicker">FUTURE HORIZONS</span>
+      <h2 class="section-title">FORWARD STRATEGIC OBJECTIVES</h2>
+      <p class="section-lead">The following initiatives represent roadmap goals currently undergoing feasibility and capital evaluation.</p>
+    </div>
+
+    <div class="goals-timeline">
+      <div class="goal-row" *ngFor="let g of strategicGoals">
+        <div class="goal-horizon">
+          <span class="horizon-badge">{{ g.horizon }}</span>
+          <span class="status-pill">{{ g.status }}</span>
+        </div>
+        <div class="goal-details">
+          <h3 class="goal-name">{{ g.goal }}</h3>
+          <p class="goal-notes">{{ g.notes }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact & ESG Inquiries -->
+    <div class="esg-cta-box bg-white">
+      <div class="cta-inner">
+        <h3>Have Customer Environmental Compliance Inquiries?</h3>
+        <p>Our operational management provides honest documentation of energy usage and raw cotton supply chains upon request.</p>
+      </div>
+      <a routerLink="/contact" class="btn-editorial-copper">
+        <span>SUBMIT COMPLIANCE ENQUIRY</span>
+        <app-icon name="arrow-right" [size]="16"></app-icon>
+      </a>
+    </div>
+  </div>
+</section>

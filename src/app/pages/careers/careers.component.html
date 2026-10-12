@@ -1,0 +1,241 @@
+<!-- ==========================================================================
+     CAREERS — "INDUSTRIAL EDITORIAL" PAGE
+     ========================================================================== -->
+
+<!-- Page Header -->
+<header class="page-editorial-header bg-charcoal" aria-label="Careers Introduction">
+  <div class="header-texture-overlay"></div>
+  <div class="ls-container header-inner">
+    <div class="header-kicker-row">
+      <span class="editorial-kicker">TALENT & CULTURE &bull; THENI FACILITIES</span>
+      <span class="editorial-label-vertical">CAREERS / LS MILLS</span>
+    </div>
+
+    <h1 class="page-main-title">
+      MAKE SOMETHING<br />
+      <span class="serif-italic">THAT LASTS.</span>
+    </h1>
+
+    <p class="header-lead">
+      We build long-term careers rooted in textile craftsmanship, mechanical precision, and operational discipline. Join our engineering, manufacturing, and commercial teams in Theni, Tamil Nadu.
+    </p>
+  </div>
+</header>
+
+
+<!-- Notice: Honest Talent Acquisition Policy -->
+<section class="editorial-section-sm bg-soft-stone" aria-label="Hiring Policy">
+  <div class="ls-container">
+    <div class="hiring-policy-box">
+      <div class="policy-marker">
+        <app-icon name="award" [size]="20"></app-icon>
+        <span>DIRECT TALENT INTAKE</span>
+      </div>
+      <p class="policy-text">
+        In accordance with our brand transparency, LS Mills does not publish fabricated vacancy quotas. We welcome rolling expressions of interest from qualified textile engineers, production supervisors, and fresh technical diploma holders.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- Departments Overview -->
+<section class="editorial-section departments-section" aria-label="Core Operational Departments">
+  <div class="ls-container">
+    <div class="departments-head">
+      <span class="editorial-kicker">OPERATIONAL DIVISIONS</span>
+      <h2 class="section-title">CORE PROFESSIONAL PATHWAYS</h2>
+      <p class="section-lead">Explore where your mechanical or industrial expertise fits into our manufacturing ecosystem.</p>
+    </div>
+
+    <div class="ls-grid-12 depts-grid">
+      <div class="dept-card" *ngFor="let dept of departments">
+        <span class="dept-code">{{ dept.code }}</span>
+        <h3 class="dept-title">{{ dept.title }}</h3>
+        <p class="dept-roles"><strong>Typical Profiles:</strong> {{ dept.roles }}</p>
+        <p class="dept-focus">{{ dept.focus }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Career Application / General Expression of Interest Form -->
+<section class="editorial-section career-form-section bg-charcoal" aria-label="Talent Application Form">
+  <div class="ls-container">
+    <div class="ls-grid-12 form-grid">
+      <!-- Left Narrative (5 Cols) -->
+      <div class="form-narrative-col">
+        <span class="editorial-kicker">EXPRESSION OF INTEREST</span>
+        <h2 class="narrative-headline">
+          BUILD YOUR<br />
+          FUTURE IN<br />
+          <span class="copper-accent">MODERN TEXTILES.</span>
+        </h2>
+        <p class="narrative-desc">
+          Whether you have decades of experience tuning high-speed ring frames or are a recent textile graduate eager to master industrial weaving, submit your credentials directly to our HR administration.
+        </p>
+
+        <div class="career-perks">
+          <div class="perk-item">
+            <app-icon name="check" [size]="16" class="check-icon"></app-icon>
+            <span>Generational manufacturing heritage in South India</span>
+          </div>
+          <div class="perk-item">
+            <app-icon name="check" [size]="16" class="check-icon"></app-icon>
+            <span>Exposure to modern airjet looms and USTER testing labs</span>
+          </div>
+          <div class="perk-item">
+            <app-icon name="check" [size]="16" class="check-icon"></app-icon>
+            <span>Clean, safety-first shop floor culture in Theni</span>
+          </div>
+        </div>
+
+        <div class="demo-disclaimer-box">
+          <span class="disclaimer-title">DEMONSTRATION PORTAL</span>
+          <p>This talent portal demonstrates full client-side validation and simulated intake handling without external recruiter dependencies.</p>
+        </div>
+      </div>
+
+      <!-- Right Form Box (7 Cols) -->
+      <div class="form-card-col">
+        <div class="career-card-dark">
+          <h3 class="card-form-title">SUBMIT TALENT PROFILE</h3>
+          <p class="card-form-sub">All fields are reviewed by human plant operations coordinators.</p>
+
+          <!-- Success Alert -->
+          <div *ngIf="submitSuccess" class="form-alert-success" role="alert">
+            <div class="alert-icon">
+              <app-icon name="check" [size]="20"></app-icon>
+            </div>
+            <div class="alert-body">
+              <h4>TALENT PROFILE SUBMISSION RECORDED</h4>
+              <p>Your profile expression has been validated and simulated successfully. Thank you for your interest in LS Mills.</p>
+              <button class="btn-editorial-link" (click)="resetApplication()">Submit Another Profile</button>
+            </div>
+          </div>
+
+          <!-- Application Form -->
+          <form *ngIf="!submitSuccess" [formGroup]="careerForm" (ngSubmit)="onSubmitApplication()" novalidate>
+            <div class="form-row-2">
+              <div class="editorial-input-group">
+                <label for="candidateName">FULL NAME *</label>
+                <input
+                  id="candidateName"
+                  type="text"
+                  formControlName="candidateName"
+                  placeholder="e.g. M. Rajesh"
+                />
+                <span class="field-error" *ngIf="careerForm.get('candidateName')?.invalid && careerForm.get('candidateName')?.touched">
+                  Candidate name is required.
+                </span>
+              </div>
+
+              <div class="editorial-input-group">
+                <label for="email">EMAIL ADDRESS *</label>
+                <input
+                  id="email"
+                  type="email"
+                  formControlName="email"
+                  placeholder="name@email.com"
+                />
+                <span class="field-error" *ngIf="careerForm.get('email')?.invalid && careerForm.get('email')?.touched">
+                  Valid email address is required.
+                </span>
+              </div>
+            </div>
+
+            <div class="form-row-2">
+              <div class="editorial-input-group">
+                <label for="phone">CONTACT PHONE *</label>
+                <input
+                  id="phone"
+                  type="tel"
+                  formControlName="phone"
+                  placeholder="+91 98400 00000"
+                />
+                <span class="field-error" *ngIf="careerForm.get('phone')?.invalid && careerForm.get('phone')?.touched">
+                  Valid telephone number required.
+                </span>
+              </div>
+
+              <div class="editorial-input-group">
+                <label for="highestQualification">HIGHEST QUALIFICATION *</label>
+                <input
+                  id="highestQualification"
+                  type="text"
+                  formControlName="highestQualification"
+                  placeholder="e.g. B.Tech Textile Tech / Diploma in Handlooms"
+                />
+                <span class="field-error" *ngIf="careerForm.get('highestQualification')?.invalid && careerForm.get('highestQualification')?.touched">
+                  Qualification details required.
+                </span>
+              </div>
+            </div>
+
+            <div class="form-row-2">
+              <div class="editorial-input-group">
+                <label for="departmentInterest">DEPARTMENT PREFERENCE *</label>
+                <select id="departmentInterest" formControlName="departmentInterest">
+                  <option value="Spinning & Ring Frame Operations">Spinning & Ring Frame Operations</option>
+                  <option value="Weaving Shed Engineering">Weaving Shed Engineering</option>
+                  <option value="Physical Testing & Quality Assurance">Physical Testing & Quality Assurance</option>
+                  <option value="Commercial Supply & Logistics">Commercial Supply & Logistics</option>
+                  <option value="Plant Maintenance & Electrical">Plant Maintenance & Electrical</option>
+                </select>
+              </div>
+
+              <div class="editorial-input-group">
+                <label for="experienceYears">YEARS OF RELEVANT EXPERIENCE *</label>
+                <select id="experienceYears" formControlName="experienceYears">
+                  <option value="0-1">Fresher / Graduate Trainee (&lt; 1 Year)</option>
+                  <option value="1-3">1 to 3 Years</option>
+                  <option value="4-7">4 to 7 Years</option>
+                  <option value="8+">8+ Years Senior Professional</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="editorial-input-group">
+              <label for="statement">PROFILE SUMMARY & KEY TECHNICAL EXPERTISE *</label>
+              <textarea
+                id="statement"
+                formControlName="statement"
+                rows="4"
+                placeholder="Highlight specific loom models, count ranges managed, laboratory certifications, or leadership responsibilities..."
+              ></textarea>
+              <span class="field-error" *ngIf="careerForm.get('statement')?.invalid && careerForm.get('statement')?.touched">
+                Please provide profile summary (minimum 15 characters).
+              </span>
+            </div>
+
+            <div class="editorial-input-checkbox">
+              <label class="checkbox-container">
+                <input type="checkbox" formControlName="acknowledgeDemo" id="acknowledgeDemo" />
+                <span class="checkmark"></span>
+                <span class="checkbox-label">
+                  I confirm the accuracy of this submission and consent to LS Mills HR review.
+                </span>
+              </label>
+              <span class="field-error" *ngIf="careerForm.get('acknowledgeDemo')?.invalid && careerForm.get('acknowledgeDemo')?.touched">
+                Please acknowledge terms before submitting.
+              </span>
+            </div>
+
+            <div class="form-submit-row">
+              <button
+                type="submit"
+                class="btn-editorial-copper w-full"
+                [disabled]="isSubmitting"
+              >
+                <span *ngIf="!isSubmitting">REGISTER TALENT EXPRESSION</span>
+                <span *ngIf="isSubmitting">PROCESSING PROFILE...</span>
+                <app-icon *ngIf="!isSubmitting" name="arrow-right" [size]="16"></app-icon>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

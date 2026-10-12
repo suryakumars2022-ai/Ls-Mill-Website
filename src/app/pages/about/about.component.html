@@ -1,0 +1,169 @@
+<!-- ==========================================================================
+     ABOUT US — "INDUSTRIAL EDITORIAL" PAGE
+     ========================================================================== -->
+
+<!-- Editorial Page Header -->
+<header class="page-editorial-header bg-charcoal" aria-label="About Page Introduction">
+  <div class="header-texture-overlay"></div>
+  <div class="ls-container header-inner">
+    <div class="header-kicker-row">
+      <span class="editorial-kicker">COMPANY HERITAGE & VISION</span>
+      <span class="editorial-label-vertical">THENI, TAMIL NADU / INDIA</span>
+    </div>
+
+    <h1 class="page-main-title">
+      A LEGACY OF THREAD<br />
+      <span class="serif-italic">AND MANUFACTURING</span><br />
+      DISCIPLINE.
+    </h1>
+
+    <p class="header-lead">
+      LS Mills Limited is built upon the enduring traditions of South Indian textile manufacturing, driven by continuous engineering modernization and uncompromising material integrity.
+    </p>
+  </div>
+</header>
+
+
+<!-- Section: Corporate Narrative & Editorial Split -->
+<section class="editorial-section narrative-section" aria-label="Corporate Narrative">
+  <div class="ls-container">
+    <div class="ls-grid-12 narrative-grid">
+      <!-- Left Column: The Theni Context (5 Cols) -->
+      <div class="narrative-left-col">
+        <span class="editorial-kicker">GEOGRAPHY & TERROIR</span>
+        <h2 class="section-title">ROOTED IN THENI, TAMIL NADU</h2>
+
+        <div class="geo-card">
+          <div class="geo-stat">
+            <span class="geo-num">10.01° N</span>
+            <span class="geo-lbl">LATITUDE COORDINATES</span>
+          </div>
+          <p class="geo-text">
+            Nestled in the agricultural valley of Theni at the foothills of the Western Ghats, our location offers favorable atmospheric conditions, access to primary South Indian cotton corridors, and a generational textile workforce.
+          </p>
+        </div>
+
+        <div class="narrative-quote">
+          <p>&ldquo;True industrial quality cannot be fabricated by marketing. It is built one spindle rotation and one warp tension at a time.&rdquo;</p>
+        </div>
+      </div>
+
+      <!-- Right Column: Visual Narrative & Deep Overview (7 Cols) -->
+      <div class="narrative-right-col">
+        <div class="narrative-media-frame">
+          <img
+            src="https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&w=1200&q=80"
+            alt="Spindles and yarn cones at LS Mills"
+            loading="lazy"
+          />
+          <div class="media-meta-tag">FIGURE 02 &mdash; RING SPINNING FACILITY / CORRIDOR VIEW</div>
+        </div>
+
+        <div class="narrative-paragraphs">
+          <h3 class="narrative-h3">Our Foundation & Ethos</h3>
+          <p>
+            LS Mills Limited was founded to bridge the gap between agrarian raw cotton cultivation and high-precision engineered yarns and fabrics for discerning global converters.
+          </p>
+          <p>
+            Over the decades, we have evolved from regional yarn manufacturing into an integrated textile organization spanning high-speed carding, precision combing, compact ring spinning, wide-width air-jet weaving, and specialized finished home textiles.
+          </p>
+          <p>
+            Rather than emphasizing short-term production volume at the expense of yarn hairiness or dimensional stability, we implement continuous physical testing protocols across each operational shift.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Section: Verified Evolution Timeline -->
+<section class="editorial-section timeline-section bg-soft-stone" aria-label="Company Evolution">
+  <div class="ls-container">
+    <div class="timeline-head">
+      <span class="editorial-kicker">HISTORICAL PROGRESSION</span>
+      <h2 class="section-title">THE PATH OF GROWTH</h2>
+      <p class="section-lead">A verified timeline reflecting calculated investments in modern machinery and product diversification.</p>
+    </div>
+
+    <div class="timeline-sequence">
+      <div class="timeline-step" *ngFor="let item of timeline; let idx = index">
+        <div class="step-marker">
+          <span class="step-idx">0{{ idx + 1 }}</span>
+          <div class="step-line"></div>
+        </div>
+        <div class="step-content">
+          <span class="step-period">{{ item.period }}</span>
+          <h3 class="step-title">{{ item.title }}</h3>
+          <p class="step-desc">{{ item.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Section: Mission & Vision Editorial Split -->
+<section class="editorial-section mission-vision-section" aria-label="Mission and Vision">
+  <div class="ls-container">
+    <div class="ls-grid-12">
+      <!-- Mission Card -->
+      <div class="mission-card col-span-6">
+        <span class="editorial-kicker">PURPOSE</span>
+        <h3 class="card-headline">OUR MISSION</h3>
+        <p class="card-text">
+          To engineer textile yarns, fabrics, and home linens of uncompromising physical consistency, empowering our global partners with reliable delivery and transparent manufacturing standards.
+        </p>
+        <ul class="card-bullets">
+          <li>Continuous technological upgradation of spinning & weaving floors.</li>
+          <li>Systematic reduction of raw material waste via closed-loop recycling.</li>
+          <li>Equitable working conditions and safety across our Theni plants.</li>
+        </ul>
+      </div>
+
+      <!-- Vision Card -->
+      <div class="vision-card col-span-6">
+        <span class="editorial-kicker">HORIZON</span>
+        <h3 class="card-headline">OUR VISION</h3>
+        <p class="card-text">
+          To stand as South India’s benchmark textile enterprise for manufacturing discipline, where precision engineering and responsible stewardship converge into enduring customer trust.
+        </p>
+        <ul class="card-bullets">
+          <li>Deepening global customer relationships across North America, Europe, and Asia.</li>
+          <li>Expanding wide-width weaving capabilities up to 1000 Thread Count luxury constructions.</li>
+          <li>Fostering generational textile engineering talent in Tamil Nadu.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Section: Core Operating Values -->
+<section class="editorial-section values-section bg-charcoal" aria-label="Core Values">
+  <div class="ls-container">
+    <div class="values-header">
+      <span class="editorial-kicker">ETHICAL CODE</span>
+      <h2 class="section-title">FOUR OPERATING PILLARS</h2>
+    </div>
+
+    <div class="ls-grid-12 values-grid">
+      <div class="value-box" *ngFor="let val of coreValues">
+        <span class="value-num">{{ val.num }}</span>
+        <h3 class="value-title">{{ val.title }}</h3>
+        <p class="value-summary">{{ val.summary }}</p>
+      </div>
+    </div>
+
+    <div class="values-cta">
+      <a routerLink="/manufacturing" class="btn-editorial-copper">
+        <span>INSPECT OUR MANUFACTURING CAPABILITIES</span>
+        <app-icon name="arrow-right" [size]="16"></app-icon>
+      </a>
+      <a routerLink="/contact" class="btn-editorial-outline">
+        <span>CONNECT WITH MANAGEMENT</span>
+        <app-icon name="arrow-up-right" [size]="16"></app-icon>
+      </a>
+    </div>
+  </div>
+</section>

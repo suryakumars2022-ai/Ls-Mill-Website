@@ -1,0 +1,315 @@
+/* ==========================================================================
+   MANUFACTURING — SCSS STYLING
+   ========================================================================== */
+
+.page-editorial-header {
+  position: relative;
+  padding-top: 150px;
+  padding-bottom: 90px;
+  color: var(--color-warm-ivory);
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.header-texture-overlay {
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.02) 0px,
+    rgba(255, 255, 255, 0.02) 1px,
+    transparent 1px,
+    transparent 12px
+  );
+  pointer-events: none;
+}
+
+.header-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 1080px;
+}
+
+.header-kicker-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.page-main-title {
+  font-size: clamp(2.8rem, 6vw, 5.5rem);
+  line-height: 1.05;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+
+.serif-italic {
+  font-style: italic;
+  font-family: var(--font-serif);
+  color: var(--color-copper-light);
+}
+
+.header-lead {
+  font-size: clamp(1.1rem, 1.5vw, 1.35rem);
+  line-height: 1.65;
+  color: rgba(244, 241, 232, 0.85);
+  max-width: 780px;
+  font-weight: 300;
+}
+
+/* Divisions Section */
+.divisions-intro {
+  margin-bottom: 4.5rem;
+  max-width: 720px;
+
+  .section-title {
+    font-size: clamp(2.2rem, 4vw, 3.6rem);
+    margin-bottom: 0.75rem;
+  }
+
+  .section-lead {
+    font-size: 1.1rem;
+    color: rgba(32, 33, 30, 0.8);
+    line-height: 1.6;
+  }
+}
+
+.division-block {
+  margin-bottom: clamp(4rem, 7vw, 7.5rem);
+  padding-bottom: clamp(3rem, 5vw, 5rem);
+  border-bottom: 1px solid var(--color-border-stone);
+
+  &:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+}
+
+.division-grid {
+  align-items: center;
+}
+
+.div-media-col {
+  grid-column: span 12;
+
+  @media (min-width: 992px) {
+    grid-column: span 6;
+  }
+}
+
+.div-image-card {
+  position: relative;
+  border: 1px solid var(--color-border-stone);
+  background-color: var(--color-stone-light);
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    aspect-ratio: 16 / 11;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+  }
+
+  &:hover img {
+    transform: scale(1.03);
+  }
+}
+
+.div-badge {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(32, 33, 30, 0.92);
+  color: var(--color-warm-ivory);
+  padding: 12px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  backdrop-filter: blur(4px);
+
+  .div-num {
+    font-family: var(--font-marker);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: var(--color-muted-copper);
+  }
+
+  .div-tech {
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    color: rgba(244, 241, 232, 0.75);
+    text-transform: uppercase;
+  }
+}
+
+.div-info-col {
+  grid-column: span 12;
+  margin-top: 2rem;
+
+  @media (min-width: 992px) {
+    grid-column: span 6;
+    margin-top: 0;
+    padding-left: 2.5rem;
+  }
+}
+
+.division-reverse {
+  @media (min-width: 992px) {
+    .div-media-col {
+      order: 2;
+    }
+    .div-info-col {
+      order: 1;
+      padding-left: 0;
+      padding-right: 2.5rem;
+    }
+  }
+}
+
+.div-title {
+  font-size: clamp(2rem, 3.2vw, 3rem);
+  line-height: 1.1;
+  margin-bottom: 1.25rem;
+}
+
+.div-text {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: rgba(32, 33, 30, 0.82);
+  margin-bottom: 1.75rem;
+}
+
+.div-specs-box {
+  background-color: var(--color-stone-light);
+  border: 1px solid var(--color-border-stone);
+  padding: 20px 24px;
+  margin-bottom: 2rem;
+
+  h4 {
+    font-family: var(--font-marker);
+    font-size: 0.725rem;
+    letter-spacing: 0.18em;
+    color: var(--color-muted-copper);
+    margin-bottom: 12px;
+  }
+
+  ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    li {
+      font-size: 0.88rem;
+      line-height: 1.5;
+      color: rgba(32, 33, 30, 0.85);
+      position: relative;
+      padding-left: 16px;
+
+      &::before {
+        content: '&bull;';
+        position: absolute;
+        left: 0;
+        color: var(--color-muted-copper);
+      }
+    }
+  }
+}
+
+/* Quality Lab Section */
+.quality-lab-section {
+  color: var(--color-warm-ivory);
+}
+
+.lab-header {
+  margin-bottom: 3.5rem;
+  max-width: 720px;
+
+  .text-light {
+    color: var(--color-warm-ivory);
+  }
+
+  .section-lead {
+    font-size: 1.1rem;
+    color: rgba(244, 241, 232, 0.8);
+    line-height: 1.6;
+    margin-top: 0.75rem;
+  }
+}
+
+.quality-table-wrapper {
+  overflow-x: auto;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  margin-bottom: 3.5rem;
+}
+
+.quality-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.95rem;
+
+  th {
+    font-family: var(--font-marker);
+    font-size: 0.725rem;
+    letter-spacing: 0.18em;
+    color: var(--color-copper-light);
+    background-color: rgba(255, 255, 255, 0.04);
+    padding: 16px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  td {
+    padding: 16px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    color: rgba(244, 241, 232, 0.85);
+    line-height: 1.5;
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+
+  .font-semibold {
+    font-weight: 600;
+    color: var(--color-warm-ivory);
+  }
+
+  .target-col {
+    color: var(--color-copper-light);
+    font-weight: 500;
+  }
+}
+
+.lab-cta-box {
+  background-color: var(--color-charcoal-light);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: clamp(1.75rem, 3.5vw, 3rem);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  @media (min-width: 992px) {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .cta-text {
+    h3 {
+      font-size: 1.6rem;
+      color: var(--color-warm-ivory);
+      margin-bottom: 6px;
+    }
+
+    p {
+      color: rgba(244, 241, 232, 0.7);
+      font-size: 0.95rem;
+    }
+  }
+}

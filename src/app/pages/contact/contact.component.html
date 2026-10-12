@@ -1,0 +1,259 @@
+<!-- ==========================================================================
+     CONTACT & COMMERCIAL DESK — "INDUSTRIAL EDITORIAL" PAGE
+     ========================================================================== -->
+
+<!-- Page Header -->
+<header class="page-editorial-header bg-charcoal" aria-label="Contact Overview">
+  <div class="header-texture-overlay"></div>
+  <div class="ls-container header-inner">
+    <div class="header-kicker-row">
+      <span class="editorial-kicker">COMMERCIAL & TECHNICAL DESK</span>
+      <span class="editorial-label-vertical">THENI, TAMIL NADU, INDIA</span>
+    </div>
+
+    <h1 class="page-main-title">
+      LET'S BUILD<br />
+      <span class="serif-italic">WHAT COMES</span><br />
+      NEXT.
+    </h1>
+
+    <p class="header-lead">
+      Connect directly with our spinning, weaving, and finished home textile specialists. We review technical specifications, minimum order inquiries, and export delivery schedules.
+    </p>
+  </div>
+</header>
+
+
+<!-- Main Contact Layout -->
+<section class="editorial-section contact-main-section" aria-label="Contact Details and Enquiry Form">
+  <div class="ls-container">
+    <div class="ls-grid-12 contact-main-grid">
+      <!-- Left Column: Location & Facility Details (5 Cols) -->
+      <div class="contact-details-col">
+        <span class="editorial-kicker">REGISTERED OPERATIONS</span>
+        <h2 class="col-title">MANUFACTURING HEADQUARTERS</h2>
+
+        <div class="hq-card">
+          <div class="hq-item">
+            <app-icon name="map-pin" [size]="20" class="hq-icon"></app-icon>
+            <div>
+              <span class="hq-label">PHYSICAL ADDRESS</span>
+              <p class="hq-text">
+                <strong>LS Mills Limited</strong><br />
+                Theni District, Tamil Nadu &mdash; 625 531<br />
+                South India
+              </p>
+            </div>
+          </div>
+
+          <div class="hq-item">
+            <app-icon name="globe" [size]="20" class="hq-icon"></app-icon>
+            <div>
+              <span class="hq-label">GEOGRAPHIC COORDINATES</span>
+              <p class="hq-text">10.0104° N, 77.4768° E &bull; Tamil Nadu Textile Belt</p>
+            </div>
+          </div>
+
+          <div class="hq-item">
+            <app-icon name="mail" [size]="20" class="hq-icon"></app-icon>
+            <div>
+              <span class="hq-label">BUSINESS COMMUNICATIONS</span>
+              <p class="hq-text">Verified inquiries directed to corporate plant dispatch.</p>
+            </div>
+          </div>
+
+          <div class="hq-item">
+            <app-icon name="clock" [size]="20" class="hq-icon"></app-icon>
+            <div>
+              <span class="hq-label">COMMERCIAL OPERATING DESK</span>
+              <p class="hq-text">Monday &ndash; Saturday: 09:00 &ndash; 18:00 IST</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Simulated Map / Regional Connectivity Frame -->
+        <div class="region-map-card">
+          <div class="map-inner-graphic">
+            <div class="map-grid-lines"></div>
+            <div class="map-poi">
+              <span class="poi-dot"></span>
+              <span class="poi-label">LS MILLS (THENI)</span>
+            </div>
+            <div class="poi-connector"></div>
+            <div class="map-meta">
+              <span class="transit-note">&bull; Proximity to Madurai Logistics Hub (75 km)</span>
+              <span class="transit-note">&bull; Direct Corridor to Tuticorin Deepwater Port (160 km)</span>
+            </div>
+          </div>
+          <div class="map-caption">
+            <span>REGIONAL CONNECTIVITY & EXPORT LOGISTICS ROUTE</span>
+          </div>
+        </div>
+
+        <div class="demonstration-notice">
+          <span class="notice-badge">FRONTEND DEMONSTRATION</span>
+          <p class="notice-text">
+            This contact portal is configured as a fully functional client-side interactive demonstration. Form validation, state handling, and responses are simulated for review without backend requirements.
+          </p>
+        </div>
+      </div>
+
+      <!-- Right Column: Commercial Form (7 Cols) -->
+      <div class="contact-form-col">
+        <div class="enquiry-card-dark">
+          <span class="editorial-kicker">DIRECT ENQUIRY</span>
+          <h3 class="form-title">TRANSMIT A COMMERCIAL SPECIFICATION</h3>
+          <p class="form-subtitle">Complete all required fields. Our commercial directors handle yarn counts, fabric yardages, and private label bedding requests.</p>
+
+          <!-- Pre-filled Product Notice -->
+          <div *ngIf="contactForm.get('specificProduct')?.value" class="prefill-notice">
+            <app-icon name="sparkles" [size]="16" class="sparkle-icon"></app-icon>
+            <span>Active Product Reference: <strong>{{ contactForm.get('specificProduct')?.value }}</strong></span>
+          </div>
+
+          <!-- Success Alert -->
+          <div *ngIf="submitSuccess" class="form-alert-success" role="alert">
+            <div class="alert-icon">
+              <app-icon name="check" [size]="20"></app-icon>
+            </div>
+            <div class="alert-body">
+              <h4>COMMERCIAL ENQUIRY RECORDED (DEMO)</h4>
+              <p>Your inquiry parameters and contact details have been successfully captured and validated in this preview environment.</p>
+              <button class="btn-editorial-link" (click)="resetForm()">Send Another Message</button>
+            </div>
+          </div>
+
+          <!-- Contact Form -->
+          <form *ngIf="!submitSuccess" [formGroup]="contactForm" (ngSubmit)="onSubmit()" novalidate>
+            <div class="form-row-2">
+              <div class="editorial-input-group">
+                <label for="fullName">YOUR FULL NAME *</label>
+                <input
+                  id="fullName"
+                  type="text"
+                  formControlName="fullName"
+                  placeholder="e.g. S. Ramachandran"
+                />
+                <span class="field-error" *ngIf="contactForm.get('fullName')?.invalid && contactForm.get('fullName')?.touched">
+                  Your full name is required.
+                </span>
+              </div>
+
+              <div class="editorial-input-group">
+                <label for="companyName">COMPANY / CONVERTING MILL *</label>
+                <input
+                  id="companyName"
+                  type="text"
+                  formControlName="companyName"
+                  placeholder="e.g. Apex Textiles International"
+                />
+                <span class="field-error" *ngIf="contactForm.get('companyName')?.invalid && contactForm.get('companyName')?.touched">
+                  Company name is required.
+                </span>
+              </div>
+            </div>
+
+            <div class="form-row-2">
+              <div class="editorial-input-group">
+                <label for="email">BUSINESS EMAIL *</label>
+                <input
+                  id="email"
+                  type="email"
+                  formControlName="email"
+                  placeholder="procurement@company.com"
+                />
+                <span class="field-error" *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched">
+                  Valid corporate email is required.
+                </span>
+              </div>
+
+              <div class="editorial-input-group">
+                <label for="phone">CONTACT TELEPHONE *</label>
+                <input
+                  id="phone"
+                  type="tel"
+                  formControlName="phone"
+                  placeholder="+91 98400 00000"
+                />
+                <span class="field-error" *ngIf="contactForm.get('phone')?.invalid && contactForm.get('phone')?.touched">
+                  Valid phone number is required.
+                </span>
+              </div>
+            </div>
+
+            <div class="form-row-2">
+              <div class="editorial-input-group">
+                <label for="country">COUNTRY / REGION *</label>
+                <input
+                  id="country"
+                  type="text"
+                  formControlName="country"
+                  placeholder="e.g. India, United States, Germany..."
+                />
+              </div>
+
+              <div class="editorial-input-group">
+                <label for="enquiryType">ENQUIRY CATEGORY *</label>
+                <select id="enquiryType" formControlName="enquiryType">
+                  <option value="yarn">Yarn & Spinning Procurement</option>
+                  <option value="fabric">Woven Fabrics (Greige / Finished)</option>
+                  <option value="home-textile">Home Textiles & Bed Linens</option>
+                  <option value="product">Specific Product Sample Request</option>
+                  <option value="general">Corporate & Supply Chain General</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="editorial-input-group">
+              <label for="specificProduct">SPECIFIC PRODUCT REFERENCE (OPTIONAL)</label>
+              <input
+                id="specificProduct"
+                type="text"
+                formControlName="specificProduct"
+                placeholder="e.g. Ne 60/1 Compact Yarn or 400 TC Sateen Fabric"
+              />
+            </div>
+
+            <div class="editorial-input-group">
+              <label for="message">PROJECT DETAILS / VOLUMES / SPECIFICATIONS *</label>
+              <textarea
+                id="message"
+                formControlName="message"
+                rows="4"
+                placeholder="Please include target counts, weave construction, estimated monthly yardage, or testing requirements..."
+              ></textarea>
+              <span class="field-error" *ngIf="contactForm.get('message')?.invalid && contactForm.get('message')?.touched">
+                Please enter your enquiry (minimum 10 characters).
+              </span>
+            </div>
+
+            <div class="editorial-input-checkbox">
+              <label class="checkbox-container">
+                <input type="checkbox" formControlName="acceptedTerms" id="acceptedTerms" />
+                <span class="checkmark"></span>
+                <span class="checkbox-label">
+                  I accept contact regarding this commercial specification and confirm the accuracy of information provided.
+                </span>
+              </label>
+              <span class="field-error" *ngIf="contactForm.get('acceptedTerms')?.invalid && contactForm.get('acceptedTerms')?.touched">
+                You must accept before proceeding.
+              </span>
+            </div>
+
+            <div class="form-submit-row">
+              <button
+                type="submit"
+                class="btn-editorial-copper w-full"
+                [disabled]="isSubmitting"
+              >
+                <span *ngIf="!isSubmitting">TRANSMIT SPECIFICATION</span>
+                <span *ngIf="isSubmitting">RECORDING SPECIFICATION...</span>
+                <app-icon *ngIf="!isSubmitting" name="arrow-right" [size]="16"></app-icon>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

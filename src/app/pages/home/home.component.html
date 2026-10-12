@@ -1,0 +1,655 @@
+<!-- ==========================================================================
+     SECTION B: CINEMATIC HERO
+     ========================================================================== -->
+<section class="hero-section" aria-label="Hero Introduction">
+  <!-- Cinematic Background with Warm Industrial Textile Grading -->
+  <div class="hero-background-wrapper">
+    <img
+      src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=2000&q=85"
+      alt="Textile spinning spindles at LS Mills"
+      class="hero-bg-image"
+    />
+    <div class="hero-scrim"></div>
+    <div class="hero-textile-pattern"></div>
+  </div>
+
+  <!-- Vertical Side Label (Asymmetric Placement) -->
+  <aside class="hero-vertical-meta" aria-hidden="true">
+    <span class="editorial-label-vertical">THENI, TAMIL NADU / INDIA</span>
+    <span class="vertical-geo-line"></span>
+    <span class="vertical-geo-code">10.0104° N, 77.4768° E</span>
+  </aside>
+
+  <!-- Main Hero Content -->
+  <div class="ls-container hero-container">
+    <div class="hero-content">
+      <div class="hero-kicker-wrap">
+        <span class="editorial-kicker">LS MILLS LIMITED &mdash; INDUSTRIAL EDITORIAL</span>
+      </div>
+
+      <!-- Asymmetric Editorial Headline -->
+      <h1 class="hero-headline">
+        <span class="headline-row">ENGINEERED BY</span>
+        <span class="headline-row italic-accent">NATURE.</span>
+        <span class="headline-row">PERFECTED BY</span>
+        <span class="headline-row copper-accent">PRECISION.</span>
+      </h1>
+
+      <p class="hero-subtext">
+        Textile expertise. Manufacturing excellence. A commitment to quality. From selected cotton staples to fine-count yarns and finished woven textiles in South India.
+      </p>
+
+      <!-- Action Buttons -->
+      <div class="hero-actions">
+        <a href="#capabilities" class="btn-editorial-copper">
+          <span>EXPLORE OUR CAPABILITIES</span>
+          <app-icon name="arrow-right" [size]="16"></app-icon>
+        </a>
+        <a routerLink="/about" class="btn-editorial-outline">
+          <span>DISCOVER LS MILLS</span>
+          <app-icon name="arrow-up-right" [size]="16"></app-icon>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll Down Indicator -->
+  <a href="#journey" class="hero-scroll-indicator" aria-label="Scroll down to textile journey">
+    <span class="scroll-text">EXPLORE THE CRAFT</span>
+    <div class="scroll-line">
+      <div class="scroll-dot"></div>
+    </div>
+  </a>
+</section>
+
+
+<!-- ==========================================================================
+     SECTION C: TEXTILE JOURNEY — SIGNATURE INTERACTION
+     ========================================================================== -->
+<section id="journey" class="editorial-section journey-section" aria-label="Textile Manufacturing Journey">
+  <div class="ls-container">
+    <!-- Section Header -->
+    <div class="journey-header">
+      <div class="header-left">
+        <span class="editorial-kicker">SIGNATURE PROCESS / 05 STAGES</span>
+        <h2 class="journey-main-title">THE ARCHITECTURE OF A TEXTILE</h2>
+      </div>
+      <div class="header-right">
+        <p class="journey-lead">
+          From natural staple fibers to woven fabrics and finished consumer goods. Each stage represents disciplined engineering and tight quality parameters.
+        </p>
+        <span class="process-disclaimer">
+          Note: Industrial processes depicted illustrate standard high-grade textile manufacturing pipelines.
+        </span>
+      </div>
+    </div>
+
+    <!-- Interactive Navigation Bar for the 5 Stages -->
+    <div class="journey-stepper-nav" role="tablist" aria-label="Manufacturing Stages">
+      <div class="stepper-track-line"></div>
+      <button
+        *ngFor="let stage of journeyStages; let idx = index"
+        class="stage-tab-btn"
+        [ngClass]="{ 'active': activeStageIndex === idx }"
+        (click)="setStage(idx)"
+        role="tab"
+        [attr.aria-selected]="activeStageIndex === idx"
+        [attr.aria-controls]="'stage-panel-' + stage.step"
+      >
+        <span class="tab-num">{{ stage.step }}</span>
+        <span class="tab-title">{{ stage.title }}</span>
+        <span class="tab-dot"></span>
+      </button>
+    </div>
+
+    <!-- Active Stage Exhibition Panel -->
+    <div
+      class="journey-stage-display"
+      *ngIf="journeyStages[activeStageIndex] as currentStage"
+      [attr.id]="'stage-panel-' + currentStage.step"
+      role="tabpanel"
+    >
+      <div class="ls-grid-12 stage-grid">
+        <!-- Visual Exhibition Frame (7 Cols) -->
+        <div class="stage-media-col">
+          <div class="stage-image-frame">
+            <img [src]="currentStage.image" [alt]="currentStage.title + ' process at LS Mills'" loading="lazy" />
+            <div class="stage-image-overlay">
+              <span class="stage-large-watermark">{{ currentStage.step }}</span>
+            </div>
+            <div class="stage-tag-row">
+              <span class="editorial-tag" *ngFor="let tag of currentStage.tags">{{ tag }}</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Narrative & Technical Spec Column (5 Cols) -->
+        <div class="stage-narrative-col">
+          <div class="stage-meta-head">
+            <span class="stage-indicator">STAGE {{ currentStage.step }} OF 05</span>
+            <div class="stage-navigation-arrows">
+              <button class="arrow-btn" (click)="prevStage()" aria-label="Previous process stage">
+                <app-icon name="arrow-right" [size]="16" class="rotate-180"></app-icon>
+              </button>
+              <button class="arrow-btn" (click)="nextStage()" aria-label="Next process stage">
+                <app-icon name="arrow-right" [size]="16"></app-icon>
+              </button>
+            </div>
+          </div>
+
+          <h3 class="stage-display-title">{{ currentStage.title }}</h3>
+          <h4 class="stage-subtitle">{{ currentStage.subtitle }}</h4>
+
+          <p class="stage-desc">{{ currentStage.description }}</p>
+
+          <!-- Stage Parameter Highlights -->
+          <div class="stage-stats-table" *ngIf="currentStage.stats">
+            <div class="stat-cell" *ngFor="let stat of currentStage.stats">
+              <span class="stat-label">{{ stat.label }}</span>
+              <span class="stat-value">{{ stat.value }}</span>
+            </div>
+          </div>
+
+          <div class="stage-action-row">
+            <a routerLink="/manufacturing" class="btn-editorial-link">
+              <span>EXPLORE MANUFACTURING PIPELINE</span>
+              <app-icon name="arrow-right" [size]="14"></app-icon>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ==========================================================================
+     SECTION D: ABOUT LS MILLS (ASYMMETRICAL MAGAZINE SPREAD)
+     ========================================================================== -->
+<section class="editorial-section about-spread-section" aria-label="About LS Mills">
+  <div class="ls-container">
+    <div class="ls-grid-12 spread-grid">
+      <!-- Left Editorial Column: Oversized Typographic Statement -->
+      <div class="spread-left-col">
+        <span class="editorial-kicker">OUR STORY / 01</span>
+        <h2 class="spread-headline">
+          BUILT ON<br />
+          <span class="serif-italic">TEXTILE</span><br />
+          EXCELLENCE.
+        </h2>
+
+        <div class="spread-quote-block">
+          <p class="quote-text">
+            &ldquo;In an industry driven by speed, enduring value is created through consistency, process fidelity, and respect for every strand of cotton.&rdquo;
+          </p>
+          <span class="quote-author">&mdash; LS Mills Manufacturing Philosophy</span>
+        </div>
+      </div>
+
+      <!-- Right Editorial Column: Narrative, Factory Imagery, Links -->
+      <div class="spread-right-col">
+        <div class="spread-image-wrapper">
+          <img
+            src="https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&w=1000&q=80"
+            alt="Textile bobbin cones produced with precision"
+            class="spread-featured-image"
+            loading="lazy"
+          />
+          <div class="spread-image-caption">
+            <span>FIGURE 01 &mdash; RING SPUN YARN CONES / INSPECTION LOT</span>
+          </div>
+        </div>
+
+        <div class="spread-text-content">
+          <p class="text-lead">
+            Headquartered in <strong>Theni, Tamil Nadu</strong>, LS Mills Limited represents South India’s rich textile manufacturing lineage augmented by modern industrial machinery.
+          </p>
+          <p class="text-body">
+            Our facilities prioritize disciplined yarn production, precision fabric weaving, and meticulous cut-and-sew operations. Rather than chasing fleeting trends, we anchor our production philosophy on rigorous dimensional stability, tensile tenacity, and responsive partnership with global textile houses.
+          </p>
+
+          <div class="spread-action">
+            <a routerLink="/about" class="btn-editorial-copper">
+              <span>LEARN MORE ABOUT OUR HERITAGE</span>
+              <app-icon name="arrow-right" [size]="16"></app-icon>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ==========================================================================
+     SECTION E: MANUFACTURING CAPABILITIES (INTERACTIVE EXPANDABLE PANELS)
+     ========================================================================== -->
+<section id="capabilities" class="editorial-section capabilities-section bg-soft-stone" aria-label="Manufacturing Capabilities">
+  <div class="ls-container">
+    <!-- Capabilities Title Header -->
+    <div class="capabilities-head">
+      <div>
+        <span class="editorial-kicker">INDUSTRIAL INFRASTRUCTURE</span>
+        <h2 class="section-title">MANUFACTURING CAPABILITIES</h2>
+      </div>
+      <p class="section-desc">
+        Explore our four operational divisions. Select or hover each panel to reveal technical capabilities, machinery specifications, and production ranges.
+      </p>
+    </div>
+
+    <!-- Expandable Horizontal Panels Container -->
+    <div class="capability-accordion" role="tablist">
+      <div
+        *ngFor="let cap of capabilities"
+        class="capability-panel"
+        [ngClass]="{ 'expanded': activeCapabilityId === cap.id }"
+        (mouseenter)="setCapability(cap.id)"
+        (click)="setCapability(cap.id)"
+        tabindex="0"
+        (keydown.enter)="setCapability(cap.id)"
+        role="tab"
+        [attr.aria-selected]="activeCapabilityId === cap.id"
+      >
+        <!-- Background Imagery with Parallax Feel -->
+        <div class="panel-bg-media">
+          <img [src]="cap.image" [alt]="cap.title" loading="lazy" />
+          <div class="panel-overlay"></div>
+        </div>
+
+        <!-- Panel Header / Collapsed Title -->
+        <div class="panel-collapsed-view">
+          <span class="panel-num">{{ cap.num }}</span>
+          <div class="panel-rotated-title">
+            <span class="category-micro">{{ cap.category }}</span>
+            <span class="title-bold">{{ cap.title }}</span>
+          </div>
+        </div>
+
+        <!-- Expanded Content Reveal -->
+        <div class="panel-expanded-view">
+          <div class="expanded-top">
+            <span class="editorial-tag">{{ cap.category }}</span>
+            <span class="expanded-num">{{ cap.num }} / 04</span>
+          </div>
+
+          <h3 class="expanded-title">{{ cap.title }}</h3>
+          <p class="expanded-summary">{{ cap.summary }}</p>
+
+          <ul class="expanded-spec-list">
+            <li *ngFor="let spec of cap.detailedSpecs">
+              <app-icon name="check" [size]="14" class="check-icon"></app-icon>
+              <span>{{ spec }}</span>
+            </li>
+          </ul>
+
+          <div class="expanded-action">
+            <a [routerLink]="cap.link" class="btn-editorial-copper">
+              <span>VIEW DIVISION SPECIFICATIONS</span>
+              <app-icon name="arrow-right" [size]="16"></app-icon>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ==========================================================================
+     SECTION F: VISUAL STATEMENT (DARK CHARCOAL DRAMATIC SECTION)
+     ========================================================================== -->
+<section class="visual-statement-section bg-charcoal-deep" aria-label="Visual Brand Statement">
+  <div class="statement-media-bg">
+    <img
+      src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1920&q=85"
+      alt="Close-up macro of finely woven threads"
+      class="statement-bg-image"
+      loading="lazy"
+    />
+    <div class="statement-scrim"></div>
+  </div>
+
+  <div class="ls-container statement-content-container">
+    <div class="statement-inner">
+      <span class="editorial-kicker">THE PHILOSOPHY OF DETAIL</span>
+
+      <h2 class="statement-huge-title">
+        &ldquo;EVERY THREAD<br />
+        HAS A PURPOSE.&rdquo;
+      </h2>
+
+      <p class="statement-body">
+        We believe quality is built through attention to detail, consistent processes, and a commitment to continuous improvement. In every bobbin, warp beam, and finished selvedge, our standard is precision.
+      </p>
+
+      <div class="statement-stats-grid">
+        <div class="statement-stat-item">
+          <span class="stat-number">100%</span>
+          <span class="stat-desc">FIBER-TO-FABRIC TRACEABILITY DISCIPLINE</span>
+        </div>
+        <div class="statement-stat-item">
+          <span class="stat-number">4-PT</span>
+          <span class="stat-desc">INTERNATIONAL DEFECT GRADING RIGOR</span>
+        </div>
+        <div class="statement-stat-item">
+          <span class="stat-number">340 CM</span>
+          <span class="stat-desc">MAXIMUM GREIGE WEAVING WIDTH</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ==========================================================================
+     SECTION G: QUALITY AND RESPONSIBILITY (EDITORIAL SPLIT COMPOSITION)
+     ========================================================================== -->
+<section class="editorial-section quality-section" aria-label="Quality and Responsibility">
+  <div class="ls-container">
+    <div class="ls-grid-12 quality-grid">
+      <!-- Media Frame (5 Cols) -->
+      <div class="quality-media-col">
+        <div class="quality-image-card">
+          <img
+            src="https://images.unsplash.com/photo-1579208575657-c595a05383b7?auto=format&fit=crop&w=1000&q=80"
+            alt="Quality testing laboratory equipment"
+            loading="lazy"
+          />
+          <div class="quality-badge-wrap">
+            <span class="badge-title">IN-HOUSE PHYSICAL TESTING</span>
+            <span class="badge-sub">THENI LABORATORY DIVISION</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Narrative Text (7 Cols) -->
+      <div class="quality-narrative-col">
+        <span class="editorial-kicker">MANUFACTURING INTEGRITY</span>
+        <h2 class="quality-title">DISCIPLINED PROCESSES. HONEST STANDARDS.</h2>
+
+        <p class="quality-lead">
+          Textile quality is not an accident of good luck; it is the verifiable output of disciplined machinery maintenance, uniform raw materials, and strict tolerance standards.
+        </p>
+
+        <div class="pillars-list">
+          <div class="pillar-row">
+            <span class="pillar-num">01</span>
+            <div class="pillar-text">
+              <h4>Product Consistency</h4>
+              <p>Continuous monitoring of yarn hairiness, count variation, and fabric tensile strength ensures reproducibility across bulk production runs.</p>
+            </div>
+          </div>
+
+          <div class="pillar-row">
+            <span class="pillar-num">02</span>
+            <div class="pillar-text">
+              <h4>Manufacturing Discipline</h4>
+              <p>Systematic scheduled maintenance on ring frames, blowroom lines, and airjet looms prevents mechanical wear from influencing weave metrics.</p>
+            </div>
+          </div>
+
+          <div class="pillar-row">
+            <span class="pillar-num">03</span>
+            <div class="pillar-text">
+              <h4>Responsible Resource Utilization</h4>
+              <p>Air filtration systems in spinning corridors, closed-loop waste fiber reclamation, and conscientious energy utilization across our Theni footprint.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="quality-cta-wrap">
+          <a routerLink="/sustainability" class="btn-editorial-outline">
+            <span>EXPLORE OUR SUSTAINABILITY PRINCIPLES</span>
+            <app-icon name="arrow-right" [size]="16"></app-icon>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ==========================================================================
+     SECTION H: CAREERS SPOTLIGHT
+     ========================================================================== -->
+<section class="editorial-section careers-spotlight bg-soft-stone" aria-label="Careers at LS Mills">
+  <div class="ls-container">
+    <div class="careers-editorial-box">
+      <div class="careers-content-wrap">
+        <span class="editorial-kicker">TALENT & CULTURE</span>
+        <h2 class="careers-headline">
+          MAKE SOMETHING<br />
+          <span class="serif-italic">THAT LASTS.</span>
+        </h2>
+        <p class="careers-desc">
+          We invite passionate individuals interested in textile engineering, plant operations, quality assurance, and international sales to grow their careers with an established industrial leader in South India.
+        </p>
+
+        <div class="careers-actions">
+          <a routerLink="/careers" class="btn-editorial-copper">
+            <span>EXPLORE CAREERS AT LS MILLS</span>
+            <app-icon name="arrow-right" [size]="16"></app-icon>
+          </a>
+          <a routerLink="/careers" class="btn-editorial-link">
+            <span>SUBMIT GENERAL ENQUIRY &rarr;</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="careers-visual-wrap">
+        <img
+          src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80"
+          alt="Textile engineering and operational review"
+          loading="lazy"
+        />
+        <div class="careers-floater">
+          <span class="floater-title">THENI FACILITY</span>
+          <span class="floater-sub">Engineering & Operations Teams</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ==========================================================================
+     SECTION I: CONTACT & BUSINESS ENQUIRY (DISTINCTIVE FINAL CTA)
+     ========================================================================== -->
+<section id="contact-cta" class="editorial-section contact-cta-section bg-charcoal" aria-label="Business Enquiry and Contact">
+  <div class="ls-container">
+    <div class="ls-grid-12 contact-cta-grid">
+      <!-- Left Column: Oversized Typographic Statement & Company Location (5 Cols) -->
+      <div class="contact-cta-left">
+        <span class="editorial-kicker">COLLABORATE WITH US</span>
+
+        <h2 class="contact-huge-headline">
+          LET'S BUILD<br />
+          <span class="copper-accent">WHAT COMES</span><br />
+          <span class="serif-italic">NEXT.</span>
+        </h2>
+
+        <p class="contact-intro">
+          Whether you require customized yarn counts, wide-width woven greige fabrics, or export-grade home textile collections, our technical and sales directors are ready to review your specifications.
+        </p>
+
+        <div class="company-address-block">
+          <div class="address-item">
+            <app-icon name="map-pin" [size]="18" class="addr-icon"></app-icon>
+            <div>
+              <span class="addr-label">MANUFACTURING HEADQUARTERS</span>
+              <p class="addr-text">
+                LS Mills Limited<br />
+                Theni District, Tamil Nadu &mdash; 625 531<br />
+                India
+              </p>
+            </div>
+          </div>
+
+          <div class="address-item">
+            <app-icon name="mail" [size]="18" class="addr-icon"></app-icon>
+            <div>
+              <span class="addr-label">BUSINESS DESK</span>
+              <p class="addr-text">Inquiries directly handled through our corporate desk.</p>
+            </div>
+          </div>
+
+          <div class="address-item">
+            <app-icon name="clock" [size]="18" class="addr-icon"></app-icon>
+            <div>
+              <span class="addr-label">OPERATING HOURS</span>
+              <p class="addr-text">Monday &ndash; Saturday: 09:00 &ndash; 18:00 IST</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="demonstration-notice">
+          <span class="notice-badge">FRONTEND DEMONSTRATION</span>
+          <p class="notice-text">
+            This contact portal is configured as a fully functional client-side interactive demonstration. Form validation, state handling, and responses are simulated for review.
+          </p>
+        </div>
+      </div>
+
+      <!-- Right Column: Interactive Business Enquiry Form (7 Cols) -->
+      <div class="contact-cta-right">
+        <div class="enquiry-card-dark">
+          <h3 class="form-title">INITIATE A COMMERCIAL ENQUIRY</h3>
+          <p class="form-subtitle">Complete the fields below to request sample yardage or count specifications.</p>
+
+          <!-- Success Notification Banner -->
+          <div *ngIf="submitSuccess" class="form-alert-success" role="alert">
+            <div class="alert-icon">
+              <app-icon name="check" [size]="20"></app-icon>
+            </div>
+            <div class="alert-body">
+              <h4>ENQUIRY SIMULATION RECORDED</h4>
+              <p>Your commercial enquiry has been successfully simulated and validated. All required parameters were checked.</p>
+              <button class="btn-editorial-link" (click)="resetSuccessState()">Submit Another Inquiry</button>
+            </div>
+          </div>
+
+          <!-- The Form -->
+          <form *ngIf="!submitSuccess" [formGroup]="enquiryForm" (ngSubmit)="onSubmitEnquiry()" novalidate>
+            <div class="form-row-2">
+              <div class="editorial-input-group">
+                <label for="fullName">YOUR FULL NAME *</label>
+                <input
+                  id="fullName"
+                  type="text"
+                  formControlName="fullName"
+                  placeholder="e.g. S. Ramachandran"
+                  [attr.aria-invalid]="enquiryForm.get('fullName')?.invalid && enquiryForm.get('fullName')?.touched"
+                />
+                <span class="field-error" *ngIf="enquiryForm.get('fullName')?.invalid && enquiryForm.get('fullName')?.touched">
+                  Please enter your name.
+                </span>
+              </div>
+
+              <div class="editorial-input-group">
+                <label for="companyName">ORGANIZATION / COMPANY *</label>
+                <input
+                  id="companyName"
+                  type="text"
+                  formControlName="companyName"
+                  placeholder="e.g. Global Apparel Imports Ltd."
+                />
+                <span class="field-error" *ngIf="enquiryForm.get('companyName')?.invalid && enquiryForm.get('companyName')?.touched">
+                  Please enter company name.
+                </span>
+              </div>
+            </div>
+
+            <div class="form-row-2">
+              <div class="editorial-input-group">
+                <label for="email">BUSINESS EMAIL *</label>
+                <input
+                  id="email"
+                  type="email"
+                  formControlName="email"
+                  placeholder="name@company.com"
+                />
+                <span class="field-error" *ngIf="enquiryForm.get('email')?.invalid && enquiryForm.get('email')?.touched">
+                  Valid corporate email is required.
+                </span>
+              </div>
+
+              <div class="editorial-input-group">
+                <label for="phone">CONTACT PHONE *</label>
+                <input
+                  id="phone"
+                  type="tel"
+                  formControlName="phone"
+                  placeholder="+91 98400 00000"
+                />
+                <span class="field-error" *ngIf="enquiryForm.get('phone')?.invalid && enquiryForm.get('phone')?.touched">
+                  Valid contact number required.
+                </span>
+              </div>
+            </div>
+
+            <div class="form-row-2">
+              <div class="editorial-input-group">
+                <label for="enquiryType">COMMERCIAL CATEGORY *</label>
+                <select id="enquiryType" formControlName="enquiryType">
+                  <option value="yarn">Yarn & Spinning Division</option>
+                  <option value="fabric">Woven Fabrics Division</option>
+                  <option value="home-textile">Finished Home Textiles</option>
+                  <option value="career">Careers & Employment</option>
+                  <option value="general">General Corporate Communication</option>
+                </select>
+              </div>
+
+              <div class="editorial-input-group">
+                <label for="specificProduct">SPECIFIC PRODUCT / COUNT (OPTIONAL)</label>
+                <input
+                  id="specificProduct"
+                  type="text"
+                  formControlName="specificProduct"
+                  placeholder="e.g. Ne 60/1 Compact or 400 TC Sateen"
+                />
+              </div>
+            </div>
+
+            <div class="editorial-input-group">
+              <label for="message">PROJECT DETAILS / SPECIFICATION REQUIREMENTS *</label>
+              <textarea
+                id="message"
+                formControlName="message"
+                rows="4"
+                placeholder="Please describe yarn counts, target GSM, monthly volume estimates, or test parameters..."
+              ></textarea>
+              <span class="field-error" *ngIf="enquiryForm.get('message')?.invalid && enquiryForm.get('message')?.touched">
+                Please provide enquiry details (minimum 10 characters).
+              </span>
+            </div>
+
+            <div class="editorial-input-checkbox">
+              <label class="checkbox-container">
+                <input type="checkbox" formControlName="acceptedTerms" id="acceptedTerms" />
+                <span class="checkmark"></span>
+                <span class="checkbox-label">
+                  I acknowledge this is an official business inquiry to LS Mills Limited and accept contact for technical clarification.
+                </span>
+              </label>
+              <span class="field-error" *ngIf="enquiryForm.get('acceptedTerms')?.invalid && enquiryForm.get('acceptedTerms')?.touched">
+                You must accept the terms before submitting.
+              </span>
+            </div>
+
+            <div class="form-submit-row">
+              <button
+                type="submit"
+                class="btn-editorial-copper submit-btn"
+                [disabled]="isSubmitting"
+              >
+                <span *ngIf="!isSubmitting">TRANSMIT COMMERCIAL ENQUIRY</span>
+                <span *ngIf="isSubmitting">PROCESSING ENQUIRY...</span>
+                <app-icon *ngIf="!isSubmitting" name="arrow-right" [size]="16"></app-icon>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
