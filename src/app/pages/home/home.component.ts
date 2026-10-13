@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, AfterViewInit, OnDestroy, ElementRef, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -6,29 +6,58 @@ import { TextileDataService } from '../../services/textile-data.service';
 import { EnquiryService } from '../../services/enquiry.service';
 import { IconComponent } from '../../components/icon/icon.component';
 import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive';
+import { GalleryItem } from '../../models/textile.model';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule, IconComponent, ScrollRevealDirective],
+  imports: [
+    CommonModule,
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
+    IconComponent,
+    ScrollRevealDirective
+  ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   private dataService = inject(TextileDataService);
   private enquiryService = inject(EnquiryService);
   private fb = inject(FormBuilder);
+  private hostEl = inject(ElementRef);
 
   journeyStages = this.dataService.journeyStages;
+  coreDivisions = this.dataService.coreDivisions;
   capabilities = this.dataService.capabilities;
+  companyProfile = this.dataService.companyProfile;
+  galleryItems = this.dataService.galleryItems;
+  assets = this.dataService.assets;
 
-  // Signature Interaction: Active Textile Journey Stage (0 to 4)
+  // Image availability fallbacks
+  heroImgFailed = false;
+  yarnImgFailed = false;
+  fabricImgFailed = false;
+  homeTextileImgFailed = false;
+  qualityImgFailed = false;
+
+  // Active Textile Journey Stage (0 to 4)
   activeStageIndex = 0;
 
-  // Active Capability Panel (defaults to 0: Spinning)
+  // Active Capability Accordion ID
   activeCapabilityId = 'spinning';
 
-  // Contact Form
+  // Gallery Filter State
+  activeGalleryCategory: 'all' | 'spinning' | 'weaving' | 'home-textile' | 'facilities' = 'all';
+
+  // Gallery Lightbox State
+  activeLightboxItem: GalleryItem | null = null;
+
+  // Intersection Observer for sticky journey scroll tracking
+  private journeyObserver?: IntersectionObserver;
+
+  // Contact / Commercial Enquiry Form
   enquiryForm!: FormGroup;
   isSubmitting = false;
   submitSuccess = false;
@@ -37,7 +66,6 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.initForm();
 
-    // Check if a product was requested
     const prefilledProduct = this.enquiryService.selectedProductForEnquiry();
     if (prefilledProduct) {
       this.enquiryForm.patchValue({
@@ -62,30 +90,126 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  ngAfterViewInit(): void {
+    this.initJourneyScrollObserver();
+  }
+
+  ngOnDestroy(): void {
+    this.journeyObserver?.disconnect();
+  }
+
+  private initJourneyScrollObserver(): void {
+    if (typeof window === 'undefined' || !('IntersectionObserver' in window)) return;
+
+    const cards = this.hostEl.nativeElement.querySelectorAll('.journey-scroll-card');
+    if (!cards || cards.length === 0) return;
+
+    this.journeyObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const indexAttr = entry.target.getAttribute('data-stage-index');
+            if (indexAttr !== null) {
+              const idx = parseInt(indexAttr, 10);
+              if (!isNaN(idx) && idx >= 0 && idx < this.journeyStages.length) {
+                this.activeStageIndex = idx;
+              }
+            }
+          }
+        });
+      },
+      {
+        root: null,
+        rootMargin: '-20% 0px -40% 0px',
+        threshold: 0.3
+      }
+    );
+
+    cards.forEach((card: Element) => this.journeyObserver?.observe(card));
+  }
+
   setStage(index: number): void {
     this.activeStageIndex = index;
   }
 
-  nextStage(): void {
-    if (this.activeStageIndex < this.journeyStages.length - 1) {
-      this.activeStageIndex++;
-    } else {
-      this.activeStageIndex = 0;
+  scrollToStage(index: number): void {
+    this.activeStageIndex = index;
+    const targetEl = this.hostEl.nativeElement.querySelector(`#stage-card-${index}`);
+    if (targetEl) {
+      targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
   }
 
+  nextStage(): void {
+    const nextIdx = (this.activeStageIndex + 1) % this.journeyStages.length;
+    this.scrollToStage(nextIdx);
+  }
+
   prevStage(): void {
-    if (this.activeStageIndex > 0) {
-      this.activeStageIndex--;
-    } else {
-      this.activeStageIndex = this.journeyStages.length - 1;
-    }
+    const prevIdx = (this.activeStageIndex - 1 + this.journeyStages.length) % this.journeyStages.length;
+    this.scrollToStage(prevIdx);
   }
 
   setCapability(id: string): void {
     this.activeCapabilityId = id;
   }
 
+  // Gallery Filtering
+  setGalleryCategory(category: 'all' | 'spinning' | 'weaving' | 'home-textile' | 'facilities'): void {
+    this.activeGalleryCategory = category;
+  }
+
+  get filteredGallery(): GalleryItem[] {
+    if (this.activeGalleryCategory === 'all') {
+      return this.galleryItems;
+    }
+    return this.galleryItems.filter(item => item.category === this.activeGalleryCategory);
+  }
+
+  // Lightbox Controls
+  openLightbox(item: GalleryItem): void {
+    this.activeLightboxItem = item;
+    if (typeof document !== 'undefined') {
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  closeLightbox(): void {
+    this.activeLightboxItem = null;
+    if (typeof document !== 'undefined') {
+      document.body.style.overflow = '';
+    }
+  }
+
+  nextLightbox(): void {
+    if (!this.activeLightboxItem) return;
+    const currentList = this.filteredGallery;
+    const idx = currentList.findIndex(i => i.id === this.activeLightboxItem?.id);
+    const nextIdx = (idx + 1) % currentList.length;
+    this.activeLightboxItem = currentList[nextIdx];
+  }
+
+  prevLightbox(): void {
+    if (!this.activeLightboxItem) return;
+    const currentList = this.filteredGallery;
+    const idx = currentList.findIndex(i => i.id === this.activeLightboxItem?.id);
+    const prevIdx = (idx - 1 + currentList.length) % currentList.length;
+    this.activeLightboxItem = currentList[prevIdx];
+  }
+
+  @HostListener('window:keydown', ['$event'])
+  handleKeyDown(event: KeyboardEvent): void {
+    if (!this.activeLightboxItem) return;
+    if (event.key === 'Escape') {
+      this.closeLightbox();
+    } else if (event.key === 'ArrowRight') {
+      this.nextLightbox();
+    } else if (event.key === 'ArrowLeft') {
+      this.prevLightbox();
+    }
+  }
+
+  // Form Submission
   onSubmitEnquiry(): void {
     if (this.enquiryForm.invalid) {
       this.enquiryForm.markAllAsTouched();
@@ -96,7 +220,6 @@ export class HomeComponent implements OnInit {
     this.isSubmitting = true;
     this.submitError = false;
 
-    // Simulate realistic frontend submission
     setTimeout(() => {
       this.isSubmitting = false;
       this.submitSuccess = true;

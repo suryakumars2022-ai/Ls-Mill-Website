@@ -14,6 +14,12 @@ import { IconComponent } from '../../components/icon/icon.component';
 export class ManufacturingComponent {
   private dataService = inject(TextileDataService);
   capabilities = this.dataService.capabilities;
+  companyProfile = this.dataService.companyProfile;
+  assets = this.dataService.assets;
+
+  spinningImgFailed = false;
+  weavingImgFailed = false;
+  madeupImgFailed = false;
 
   // Active facility tab for inspection
   activeDivision = 'spinning';

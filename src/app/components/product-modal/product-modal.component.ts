@@ -65,7 +65,7 @@ import { IconComponent } from '../icon/icon.component';
     .modal-overlay {
       position: fixed;
       inset: 0;
-      background-color: rgba(22, 23, 20, 0.82);
+      background-color: rgba(24, 61, 50, 0.88);
       backdrop-filter: blur(8px);
       z-index: 10005;
       display: flex;
@@ -76,7 +76,7 @@ import { IconComponent } from '../icon/icon.component';
     }
 
     .modal-container {
-      background-color: var(--color-warm-ivory);
+      background-color: var(--color-cotton-ivory);
       color: var(--color-charcoal);
       width: 100%;
       max-width: 960px;
@@ -84,7 +84,7 @@ import { IconComponent } from '../icon/icon.component';
       overflow-y: auto;
       border: 1px solid var(--color-border-stone);
       position: relative;
-      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.35);
+      box-shadow: 0 25px 50px rgba(24, 61, 50, 0.35);
       border-radius: 2px;
     }
 
@@ -93,18 +93,20 @@ import { IconComponent } from '../icon/icon.component';
       top: 18px;
       right: 18px;
       z-index: 10;
-      background: var(--color-charcoal);
-      color: var(--color-warm-ivory);
+      background: var(--color-forest-green);
+      color: var(--color-cotton-ivory);
       width: 38px;
       height: 38px;
       display: flex;
       align-items: center;
       justify-content: center;
       border-radius: 2px;
-      transition: background-color var(--transition-fast);
+      border: 1px solid var(--color-harvest-gold);
+      transition: all var(--transition-fast);
 
       &:hover {
-        background-color: var(--color-muted-copper);
+        background-color: var(--color-harvest-gold);
+        color: var(--color-forest-deep);
       }
     }
 

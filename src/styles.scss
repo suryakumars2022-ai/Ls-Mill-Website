@@ -1,44 +1,68 @@
 /* ==========================================================================
-   LS MILLS LIMITED — "INDUSTRIAL EDITORIAL" DESIGN SYSTEM
-   Premium Textile Industry Website — Theni, Tamil Nadu, India
+   LS MILLS LIMITED — "THENI NATURE & TEXTILE" DESIGN SYSTEM
+   Inspired by Theni, Western Ghats, Natural Cotton, & Textile Craftsmanship
+   Color Palette:
+     - Forest Green: #183D32 (primary brand color, navigation, dark sections)
+     - Harvest Gold: #D6A85F (restrained highlights, active indicators, fine thread lines)
+     - Cotton Ivory: #F3F0E5 (main background and negative space)
+     - Leaf Sage:    #789078 (secondary backgrounds, supporting graphics)
+     - Terracotta:   #B96F4A (selective accent details)
+     - Charcoal:     #242923 (typography and high-contrast elements)
+     - White:        #FFFFFF (contrast surfaces)
    ========================================================================== */
 
 :root {
-  /* Core Palette */
-  --color-warm-ivory: #F4F1E8;
-  --color-charcoal: #20211E;
-  --color-charcoal-deep: #161714;
-  --color-charcoal-light: #2D2E2B;
-  --color-muted-copper: #A66C4B;
-  --color-copper-light: #C08563;
-  --color-copper-subtle: rgba(166, 108, 75, 0.15);
-  --color-soft-stone: #D8D1C4;
-  --color-stone-light: #E9E5DD;
+  /* Exact Specified Palette */
+  --color-forest-green: #183D32;
+  --color-forest-deep: #102922;
+  --color-forest-light: #235244;
+  --color-forest-glass: rgba(24, 61, 50, 0.94);
+
+  --color-harvest-gold: #D6A85F;
+  --color-harvest-gold-light: #E8C488;
+  --color-harvest-gold-subtle: rgba(214, 168, 95, 0.16);
+
+  --color-cotton-ivory: #F3F0E5;
+  --color-cotton-ivory-light: #FAF8F2;
+  --color-cotton-ivory-subtle: rgba(243, 240, 229, 0.85);
+
+  --color-leaf-sage: #789078;
+  --color-leaf-sage-light: #8FA68F;
+  --color-leaf-sage-soft: #E3E9E0;
+  --color-leaf-sage-subtle: rgba(120, 144, 120, 0.18);
+
+  --color-terracotta: #B96F4A;
+  --color-terracotta-light: #CF8560;
+  --color-terracotta-subtle: rgba(185, 111, 74, 0.16);
+
+  --color-charcoal: #242923;
+  --color-charcoal-deep: #191D18;
+  --color-charcoal-muted: rgba(36, 41, 35, 0.78);
   --color-white: #FFFFFF;
-  --color-border-stone: rgba(216, 209, 196, 0.5);
-  --color-border-dark: rgba(255, 255, 255, 0.12);
+
+  /* Borders & Dividers */
+  --color-border-stone: rgba(120, 144, 120, 0.28);
+  --color-border-dark: rgba(243, 240, 229, 0.16);
+  --color-border-gold: rgba(214, 168, 95, 0.45);
+
+  /* Semantic Compatibility Tokens */
+  --color-warm-ivory: var(--color-cotton-ivory);
+  --color-muted-copper: var(--color-harvest-gold);
+  --color-copper-light: var(--color-harvest-gold-light);
+  --color-copper-subtle: var(--color-harvest-gold-subtle);
+  --color-soft-stone: var(--color-leaf-sage-soft);
+  --color-stone-light: #E7ECE4;
 
   /* Typography */
   --font-serif: 'Cormorant Garamond', Garamond, Georgia, serif;
   --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-marker: 'Cinzel', serif;
 
-  /* Spacing Scale */
-  --space-unit: 8px;
-  --space-xs: 4px;
-  --space-sm: 8px;
-  --space-md: 16px;
-  --space-lg: 24px;
-  --space-xl: 40px;
-  --space-2xl: 64px;
-  --space-3xl: 96px;
-  --space-4xl: 140px;
-
   /* Transitions */
   --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   --transition-normal: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   --transition-slow: 0.65s cubic-bezier(0.16, 1, 0.3, 1);
-  --transition-reveal: 0.9s cubic-bezier(0.25, 1, 0.5, 1);
+  --transition-reveal: 0.85s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 /* Base Reset & Typography Setup */
@@ -51,7 +75,7 @@
 html {
   font-size: 16px;
   scroll-behavior: smooth;
-  background-color: var(--color-warm-ivory);
+  background-color: var(--color-cotton-ivory);
   color: var(--color-charcoal);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
@@ -59,7 +83,7 @@ html {
 }
 
 body.editorial-body {
-  background-color: var(--color-warm-ivory);
+  background-color: var(--color-cotton-ivory);
   color: var(--color-charcoal);
   min-height: 100vh;
   overflow-x: hidden;
@@ -67,7 +91,7 @@ body.editorial-body {
   line-height: 1.6;
 }
 
-/* Textile Grain Texture Background Overlay */
+/* Subtle Organic Textile Fiber Grain Overlay */
 body::before {
   content: '';
   position: fixed;
@@ -76,9 +100,9 @@ body::before {
   width: 100vw;
   height: 100vh;
   pointer-events: none;
-  opacity: 0.025;
-  background-image: radial-gradient(var(--color-charcoal) 1px, transparent 1px);
-  background-size: 14px 14px;
+  opacity: 0.03;
+  background-image: radial-gradient(var(--color-forest-green) 1px, transparent 1px);
+  background-size: 16px 16px;
   z-index: 9999;
 }
 
@@ -92,12 +116,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: clamp(2.75rem, 6.5vw, 6rem);
+  font-size: clamp(2.75rem, 6.2vw, 6rem);
   letter-spacing: -0.025em;
 }
 
 h2 {
-  font-size: clamp(2.2rem, 4.5vw, 4.25rem);
+  font-size: clamp(2.2rem, 4.4vw, 4.25rem);
 }
 
 h3 {
@@ -134,13 +158,13 @@ img {
   display: block;
 }
 
-/* Focus States for Accessibility */
+/* Accessibility Focus States */
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
 select:focus-visible,
 textarea:focus-visible {
-  outline: 2px solid var(--color-muted-copper);
+  outline: 2px solid var(--color-harvest-gold);
   outline-offset: 3px;
 }
 
@@ -180,41 +204,40 @@ textarea:focus-visible {
   padding-bottom: clamp(2.5rem, 5vw, 5rem);
 }
 
-/* Charcoal Theme Sections */
-.bg-charcoal {
-  background-color: var(--color-charcoal);
-  color: var(--color-warm-ivory);
-}
-
+/* Thematic Section Backgrounds */
+.bg-forest-green,
+.bg-charcoal,
 .bg-charcoal-deep {
-  background-color: var(--color-charcoal-deep);
-  color: var(--color-warm-ivory);
+  background-color: var(--color-forest-green) !important;
+  color: var(--color-cotton-ivory) !important;
 }
 
-.bg-soft-stone {
-  background-color: var(--color-stone-light);
-  color: var(--color-charcoal);
+.bg-soft-stone,
+.bg-leaf-sage {
+  background-color: var(--color-leaf-sage-soft) !important;
+  color: var(--color-charcoal) !important;
 }
 
-.bg-ivory {
-  background-color: var(--color-warm-ivory);
-  color: var(--color-charcoal);
+.bg-ivory,
+.bg-cotton-ivory {
+  background-color: var(--color-cotton-ivory) !important;
+  color: var(--color-charcoal) !important;
 }
 
 .bg-white {
-  background-color: var(--color-white);
-  color: var(--color-charcoal);
+  background-color: var(--color-white) !important;
+  color: var(--color-charcoal) !important;
 }
 
 /* ==========================================================================
-   EDITORIAL LABELS, KICKERS & THREAD DIVIDERS
+   EDITORIAL LABELS, KICKERS & BOTANICAL THREAD DIVIDERS
    ========================================================================== */
 .editorial-kicker {
   font-family: var(--font-marker);
   font-size: 0.75rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--color-muted-copper);
+  color: var(--color-harvest-gold);
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -226,14 +249,15 @@ textarea:focus-visible {
     display: inline-block;
     width: 24px;
     height: 1px;
-    background-color: var(--color-muted-copper);
+    background-color: var(--color-harvest-gold);
   }
 }
 
+.bg-forest-green .editorial-kicker,
 .bg-charcoal .editorial-kicker {
-  color: var(--color-copper-light);
+  color: var(--color-harvest-gold);
   &::before {
-    background-color: var(--color-copper-light);
+    background-color: var(--color-harvest-gold);
   }
 }
 
@@ -244,7 +268,7 @@ textarea:focus-visible {
   font-size: 0.7rem;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  opacity: 0.65;
+  opacity: 0.75;
   white-space: nowrap;
 }
 
@@ -256,38 +280,41 @@ textarea:focus-visible {
   text-transform: uppercase;
   border: 1px solid var(--color-border-stone);
   border-radius: 2px;
-  background-color: rgba(255, 255, 255, 0.4);
+  background-color: rgba(255, 255, 255, 0.6);
   font-family: var(--font-sans);
   font-weight: 500;
+  color: var(--color-charcoal);
 }
 
+.bg-forest-green .editorial-tag,
 .bg-charcoal .editorial-tag {
-  border-color: var(--color-border-dark);
-  background-color: rgba(255, 255, 255, 0.05);
-  color: var(--color-warm-ivory);
+  border-color: rgba(214, 168, 95, 0.3);
+  background-color: rgba(255, 255, 255, 0.07);
+  color: var(--color-cotton-ivory);
 }
 
-/* Textile Thread Lines */
+/* Fine Woven Thread Dividers */
 .thread-divider {
   width: 100%;
   height: 1px;
   background: linear-gradient(
     90deg,
-    rgba(166, 108, 75, 0.6) 0%,
+    rgba(214, 168, 95, 0.7) 0%,
     var(--color-border-stone) 30%,
     var(--color-border-stone) 70%,
-    rgba(166, 108, 75, 0.2) 100%
+    rgba(214, 168, 95, 0.3) 100%
   );
   margin: 0;
   border: none;
 }
 
+.bg-forest-green .thread-divider,
 .bg-charcoal .thread-divider {
   background: linear-gradient(
     90deg,
-    rgba(192, 133, 99, 0.6) 0%,
-    rgba(255, 255, 255, 0.15) 35%,
-    rgba(255, 255, 255, 0.08) 100%
+    rgba(214, 168, 95, 0.7) 0%,
+    rgba(243, 240, 229, 0.15) 35%,
+    rgba(243, 240, 229, 0.08) 100%
   );
 }
 
@@ -301,21 +328,22 @@ textarea:focus-visible {
 }
 
 /* ==========================================================================
-   BUTTONS & INTERACTIVE ELEMENTS
+   BUTTONS & ACTIONS ("Theni Nature & Textile")
    ========================================================================== */
+.btn-nature-primary,
 .btn-editorial-copper {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 12px;
-  background-color: var(--color-muted-copper);
-  color: var(--color-white);
+  background-color: var(--color-forest-green);
+  color: var(--color-cotton-ivory);
   padding: 1rem 2.25rem;
   font-size: 0.85rem;
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  border: 1px solid var(--color-muted-copper);
+  border: 1px solid var(--color-harvest-gold);
   border-radius: 2px;
   transition: all var(--transition-fast);
   cursor: pointer;
@@ -329,21 +357,21 @@ textarea:focus-visible {
     left: -100%;
     width: 100%;
     height: 100%;
-    background-color: var(--color-charcoal);
+    background-color: var(--color-harvest-gold);
     transition: transform var(--transition-normal);
     z-index: 0;
   }
 
-  span, svg {
+  span, svg, app-icon {
     position: relative;
     z-index: 1;
   }
 
   &:hover {
-    color: var(--color-white);
-    border-color: var(--color-charcoal);
+    color: var(--color-forest-deep);
+    border-color: var(--color-harvest-gold);
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(32, 33, 30, 0.15);
+    box-shadow: 0 8px 24px rgba(24, 61, 50, 0.25);
 
     &::before {
       transform: translateX(100%);
@@ -351,38 +379,40 @@ textarea:focus-visible {
   }
 }
 
+.btn-nature-secondary,
 .btn-editorial-outline {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 12px;
   background-color: transparent;
-  color: var(--color-charcoal);
+  color: var(--color-forest-green);
   padding: 1rem 2.25rem;
   font-size: 0.85rem;
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  border: 1px solid var(--color-charcoal);
+  border: 1px solid var(--color-forest-green);
   border-radius: 2px;
   transition: all var(--transition-fast);
   cursor: pointer;
 
   &:hover {
-    background-color: var(--color-charcoal);
-    color: var(--color-warm-ivory);
+    background-color: var(--color-forest-green);
+    color: var(--color-cotton-ivory);
     transform: translateY(-2px);
   }
 }
 
+.bg-forest-green .btn-editorial-outline,
 .bg-charcoal .btn-editorial-outline {
-  color: var(--color-warm-ivory);
-  border-color: rgba(255, 255, 255, 0.4);
+  color: var(--color-cotton-ivory);
+  border-color: rgba(243, 240, 229, 0.45);
 
   &:hover {
-    background-color: var(--color-warm-ivory);
-    color: var(--color-charcoal);
-    border-color: var(--color-warm-ivory);
+    background-color: var(--color-harvest-gold);
+    color: var(--color-forest-deep);
+    border-color: var(--color-harvest-gold);
   }
 }
 
@@ -394,7 +424,7 @@ textarea:focus-visible {
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--color-muted-copper);
+  color: var(--color-harvest-gold);
   position: relative;
   padding-bottom: 4px;
   transition: color var(--transition-fast);
@@ -413,7 +443,7 @@ textarea:focus-visible {
   }
 
   &:hover {
-    color: var(--color-charcoal);
+    color: var(--color-forest-green);
 
     &::after {
       transform: scaleX(0.7);
@@ -421,16 +451,17 @@ textarea:focus-visible {
   }
 }
 
+.bg-forest-green .btn-editorial-link,
 .bg-charcoal .btn-editorial-link {
-  color: var(--color-copper-light);
+  color: var(--color-harvest-gold);
 
   &:hover {
-    color: var(--color-warm-ivory);
+    color: var(--color-cotton-ivory);
   }
 }
 
 /* ==========================================================================
-   CARD & CONTENT BLOCKS (EDITORIAL MAGAZINE STYLE)
+   CARDS & EDITORIAL BLOCKS
    ========================================================================== */
 .editorial-card {
   background-color: var(--color-white);
@@ -440,33 +471,32 @@ textarea:focus-visible {
   transition: transform var(--transition-normal), border-color var(--transition-normal), box-shadow var(--transition-normal);
 
   &:hover {
-    border-color: var(--color-muted-copper);
+    border-color: var(--color-leaf-sage);
     transform: translateY(-4px);
-    box-shadow: 0 16px 36px rgba(32, 33, 30, 0.06);
+    box-shadow: 0 16px 36px rgba(24, 61, 50, 0.08);
   }
 }
 
 .editorial-card-dark {
-  background-color: var(--color-charcoal-light);
-  border: 1px solid var(--color-border-dark);
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(243, 240, 229, 0.15);
   padding: clamp(1.75rem, 3vw, 2.75rem);
-  color: var(--color-warm-ivory);
+  color: var(--color-cotton-ivory);
   transition: transform var(--transition-normal), border-color var(--transition-normal);
 
   &:hover {
-    border-color: var(--color-copper-light);
+    border-color: var(--color-harvest-gold);
     transform: translateY(-4px);
   }
 }
 
-/* Numbered Indicators */
 .editorial-num {
   font-family: var(--font-serif);
   font-size: clamp(2.5rem, 4vw, 4rem);
   font-style: italic;
   line-height: 1;
-  color: var(--color-muted-copper);
-  opacity: 0.9;
+  color: var(--color-harvest-gold);
+  opacity: 0.95;
   font-weight: 400;
 }
 
@@ -474,11 +504,11 @@ textarea:focus-visible {
   font-family: var(--font-serif);
   font-size: clamp(4.5rem, 8vw, 7.5rem);
   line-height: 0.85;
-  color: rgba(166, 108, 75, 0.25);
+  color: rgba(214, 168, 95, 0.28);
   font-weight: 300;
 }
 
-/* Edge-to-Edge Image Frames with Architectural Overlays */
+/* Media Frame */
 .editorial-media-frame {
   position: relative;
   overflow: hidden;
@@ -497,7 +527,7 @@ textarea:focus-visible {
 }
 
 /* ==========================================================================
-   FORM CONTROLS (EDITORIAL AESTHETIC)
+   FORM CONTROLS (COTTON IVORY & FOREST GREEN)
    ========================================================================== */
 .editorial-input-group {
   margin-bottom: 1.5rem;
@@ -525,12 +555,12 @@ textarea:focus-visible {
     transition: border-color var(--transition-fast), background-color var(--transition-fast);
 
     &:focus {
-      border-color: var(--color-muted-copper);
+      border-color: var(--color-forest-green);
       background-color: var(--color-white);
     }
 
     &::placeholder {
-      color: rgba(32, 33, 30, 0.4);
+      color: rgba(36, 41, 35, 0.45);
     }
   }
 
@@ -540,28 +570,29 @@ textarea:focus-visible {
   }
 }
 
+.bg-forest-green .editorial-input-group,
 .bg-charcoal .editorial-input-group {
   label {
-    color: var(--color-warm-ivory);
+    color: var(--color-cotton-ivory);
   }
 
   input, select, textarea {
     background-color: rgba(255, 255, 255, 0.06);
-    border-color: rgba(255, 255, 255, 0.18);
-    color: var(--color-warm-ivory);
+    border-color: rgba(243, 240, 229, 0.2);
+    color: var(--color-cotton-ivory);
 
     &:focus {
-      border-color: var(--color-copper-light);
-      background-color: rgba(255, 255, 255, 0.09);
+      border-color: var(--color-harvest-gold);
+      background-color: rgba(255, 255, 255, 0.1);
     }
 
     &::placeholder {
-      color: rgba(244, 241, 232, 0.4);
+      color: rgba(243, 240, 229, 0.45);
     }
 
     option {
-      background-color: var(--color-charcoal);
-      color: var(--color-warm-ivory);
+      background-color: var(--color-forest-green);
+      color: var(--color-cotton-ivory);
     }
   }
 }
@@ -574,13 +605,13 @@ textarea:focus-visible {
   top: 0;
   left: 0;
   height: 3px;
-  background-color: var(--color-muted-copper);
+  background-color: var(--color-harvest-gold);
   z-index: 10001;
   transition: width 0.1s linear;
 }
 
 /* ==========================================================================
-   SCROLL REVEAL ANIMATIONS (INTERSECTION OBSERVER)
+   SCROLL REVEAL ANIMATIONS
    ========================================================================== */
 .reveal-init {
   opacity: 0;
@@ -601,11 +632,14 @@ textarea:focus-visible {
     transform: none !important;
     transition: none !important;
   }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
-/* ==========================================================================
-   RESPONSIVE OVERFLOW & ACCESSIBILITY
-   ========================================================================== */
 @media (max-width: 992px) {
   .ls-grid-12 {
     gap: 20px;
@@ -623,14 +657,5 @@ textarea:focus-visible {
     transform: none;
     margin-bottom: 0.75rem;
     display: block;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
   }
 }

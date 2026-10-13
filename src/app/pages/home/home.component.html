@@ -1,61 +1,85 @@
 <!-- ==========================================================================
-     SECTION B: CINEMATIC HERO
+     SECTION 1: CINEMATIC HERO — IMAGE-FIRST TEXTILE IDENTITY
      ========================================================================== -->
 <section class="hero-section" aria-label="Hero Introduction">
-  <!-- Cinematic Background with Warm Industrial Textile Grading -->
+  <!-- Full-Width Cinematic Background -->
   <div class="hero-background-wrapper">
     <img
-      src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=2000&q=85"
-      alt="Textile spinning spindles at LS Mills"
+      [src]="assets.hero.banner1"
+      (error)="heroImgFailed = true"
+      *ngIf="!heroImgFailed; else fallbackHero"
+      alt="Textile spinning spindles and industrial craftsmanship at LS Mills"
       class="hero-bg-image"
     />
+    <ng-template #fallbackHero>
+      <img
+        [src]="assets.hero.cinematicTextile"
+        alt="Textile manufacturing in Theni"
+        class="hero-bg-image"
+      />
+    </ng-template>
     <div class="hero-scrim"></div>
     <div class="hero-textile-pattern"></div>
   </div>
 
-  <!-- Vertical Side Label (Asymmetric Placement) -->
-  <aside class="hero-vertical-meta" aria-hidden="true">
-    <span class="editorial-label-vertical">THENI, TAMIL NADU / INDIA</span>
-    <span class="vertical-geo-line"></span>
-    <span class="vertical-geo-code">10.0104° N, 77.4768° E</span>
-  </aside>
+  <!-- Subtle Animated Continuous Thread Line -->
+  <div class="hero-thread-motif" aria-hidden="true">
+    <div class="thread-line-vertical"></div>
+    <div class="thread-pulse-orb"></div>
+  </div>
+
+
 
   <!-- Main Hero Content -->
   <div class="ls-container hero-container">
     <div class="hero-content">
       <div class="hero-kicker-wrap">
-        <span class="editorial-kicker">LS MILLS LIMITED &mdash; INDUSTRIAL EDITORIAL</span>
+        <span class="editorial-kicker">THENI, TAMIL NADU, INDIA &bull; EST. 1979</span>
       </div>
 
-      <!-- Asymmetric Editorial Headline -->
+      <!-- Main Headline requested -->
       <h1 class="hero-headline">
-        <span class="headline-row">ENGINEERED BY</span>
-        <span class="headline-row italic-accent">NATURE.</span>
-        <span class="headline-row">PERFECTED BY</span>
-        <span class="headline-row copper-accent">PRECISION.</span>
+        <span class="headline-row">FROM YARN TO</span>
+        <span class="headline-row italic-gold">EVERYDAY LIVING.</span>
       </h1>
 
       <p class="hero-subtext">
-        Textile expertise. Manufacturing excellence. A commitment to quality. From selected cotton staples to fine-count yarns and finished woven textiles in South India.
+        Crafting quality textiles through precision, innovation and responsible manufacturing.
       </p>
 
-      <!-- Action Buttons -->
+      <!-- Two Clear Action Links -->
       <div class="hero-actions">
-        <a href="#capabilities" class="btn-editorial-copper">
+        <a href="#core-divisions" class="btn-nature-primary">
           <span>EXPLORE OUR CAPABILITIES</span>
           <app-icon name="arrow-right" [size]="16"></app-icon>
         </a>
-        <a routerLink="/about" class="btn-editorial-outline">
-          <span>DISCOVER LS MILLS</span>
+        <a routerLink="/contact" class="btn-nature-secondary">
+          <span>CONTACT US</span>
           <app-icon name="arrow-up-right" [size]="16"></app-icon>
         </a>
+      </div>
+
+      <!-- Subtle Terroir & Capacity Indicators -->
+      <div class="hero-pill-row">
+        <div class="meta-pill">
+          <span class="pill-dot"></span>
+          <span>SPINNING: 150,000 SPINDLES &bull; 25 TPD</span>
+        </div>
+        <div class="meta-pill">
+          <span class="pill-dot"></span>
+          <span>WEAVING: TSUDAKOMA AIRJET &bull; 200–1,500 TC</span>
+        </div>
+        <div class="meta-pill">
+          <span class="pill-dot"></span>
+          <span>MADE UPS: 6,000 SHEETS / SHIFT</span>
+        </div>
       </div>
     </div>
   </div>
 
   <!-- Scroll Down Indicator -->
-  <a href="#journey" class="hero-scroll-indicator" aria-label="Scroll down to textile journey">
-    <span class="scroll-text">EXPLORE THE CRAFT</span>
+  <a href="#core-divisions" class="hero-scroll-indicator" aria-label="Scroll down to core business divisions">
+    <span class="scroll-text">DISCOVER THE DIVISIONS</span>
     <div class="scroll-line">
       <div class="scroll-dot"></div>
     </div>
@@ -64,156 +88,380 @@
 
 
 <!-- ==========================================================================
-     SECTION C: TEXTILE JOURNEY — SIGNATURE INTERACTION
+     SECTION 2: THREE CORE BUSINESS SECTIONS (IMAGE-FIRST & ASYMMETRICAL)
      ========================================================================== -->
-<section id="journey" class="editorial-section journey-section" aria-label="Textile Manufacturing Journey">
+<div id="core-divisions" class="core-divisions-wrapper" aria-label="Core Business Divisions">
+
+  <!-- ------------------------------------------------------------------------
+       DIVISION 01: YARN & SPINNING
+       ------------------------------------------------------------------------ -->
+  <section class="division-section division-yarn bg-cotton-ivory" aria-label="Yarn and Spinning Division">
+    <div class="ls-container">
+      <div class="division-grid division-yarn-grid" appScrollReveal>
+        <!-- Left Image Composition: Primary Factory Machinery + Overlapping Macro Cones -->
+        <div class="division-imagery-col">
+          <div class="imagery-staggered-wrap">
+            <div class="img-frame primary-frame">
+              <img
+                [src]="assets.spinning.ringFrames1"
+                (error)="yarnImgFailed = true"
+                *ngIf="!yarnImgFailed; else fallbackYarn"
+                alt="Spinning frames and ring spindles at LS Mills in Theni"
+                loading="lazy"
+              />
+              <ng-template #fallbackYarn>
+                <img [src]="assets.spinning.heroBg" alt="Ring spinning machine floor" loading="lazy" />
+              </ng-template>
+              <div class="frame-tag-badge">150,000 SPINDLES &bull; THENI</div>
+            </div>
+
+            <div class="img-frame inset-macro-frame">
+              <img
+                [src]="assets.spinning.yarnCones"
+                alt="Close-up macro of spun cotton yarn cones"
+                loading="lazy"
+              />
+              <div class="inset-caption">NE 40S TO NE 200S COMPACT</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Content Block: Headline, Short Text, Specs, Link -->
+        <div class="division-content-col">
+          <div class="division-meta-row">
+            <span class="division-index">01</span>
+            <span class="editorial-kicker">CORE DIVISION &bull; YARN &amp; SPINNING</span>
+          </div>
+
+          <h2 class="division-headline">Precision in Every Yarn.</h2>
+          <p class="division-lead">
+            Quality-driven yarn manufacturing, built on consistency and care.
+          </p>
+
+          <!-- Technical Specs Micro Grid -->
+          <div class="division-specs-grid">
+            <div class="spec-cell">
+              <span class="spec-num">150,000</span>
+              <span class="spec-lbl">RING SPINDLES</span>
+            </div>
+            <div class="spec-cell">
+              <span class="spec-num">25 TPD</span>
+              <span class="spec-lbl">DAILY YARN OUTPUT</span>
+            </div>
+            <div class="spec-cell">
+              <span class="spec-num">Ne 40–200s</span>
+              <span class="spec-lbl">COUNT SPECTRUM</span>
+            </div>
+            <div class="spec-cell">
+              <span class="spec-num">Muratec/Rieter</span>
+              <span class="spec-lbl">SPINNING TECHNOLOGY</span>
+            </div>
+          </div>
+
+          <div class="division-action">
+            <a routerLink="/products" [queryParams]="{ category: 'yarn' }" class="btn-nature-primary">
+              <span>EXPLORE YARN &amp; SPINNING</span>
+              <app-icon name="arrow-right" [size]="16"></app-icon>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ------------------------------------------------------------------------
+       DIVISION 02: WOVEN FABRICS
+       ------------------------------------------------------------------------ -->
+  <section class="division-section division-fabric bg-leaf-sage" aria-label="Woven Fabrics Division">
+    <div class="ls-container">
+      <div class="division-grid division-fabric-grid" appScrollReveal>
+        <!-- Left Content Block (Asymmetric Inversion) -->
+        <div class="division-content-col">
+          <div class="division-meta-row">
+            <span class="division-index">02</span>
+            <span class="editorial-kicker">CORE DIVISION &bull; WOVEN FABRICS</span>
+          </div>
+
+          <h2 class="division-headline">Weaving Possibilities.</h2>
+          <p class="division-lead">
+            Engineered fabrics shaped by craftsmanship and technology.
+          </p>
+
+          <div class="division-specs-grid">
+            <div class="spec-cell">
+              <span class="spec-num">200–1,500</span>
+              <span class="spec-lbl">THREAD COUNT RANGE</span>
+            </div>
+            <div class="spec-cell">
+              <span class="spec-num">Tsudakoma</span>
+              <span class="spec-lbl">AIRJET LOOMS</span>
+            </div>
+            <div class="spec-cell">
+              <span class="spec-num">Benninger</span>
+              <span class="spec-lbl">SIZING &amp; WARPING</span>
+            </div>
+            <div class="spec-cell">
+              <span class="spec-num">340 CM</span>
+              <span class="spec-lbl">MAX GREIGE WIDTH</span>
+            </div>
+          </div>
+
+          <div class="division-action">
+            <a routerLink="/products" [queryParams]="{ category: 'fabric' }" class="btn-nature-primary">
+              <span>EXPLORE WOVEN FABRICS</span>
+              <app-icon name="arrow-right" [size]="16"></app-icon>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Image Composition: Wide Panoramic Loom + Fabric Roll Inset -->
+        <div class="division-imagery-col">
+          <div class="imagery-staggered-wrap fabric-wrap">
+            <div class="img-frame primary-frame">
+              <img
+                [src]="assets.weaving.airjetLoom1"
+                (error)="fabricImgFailed = true"
+                *ngIf="!fabricImgFailed; else fallbackFabric"
+                alt="Tsudakoma airjet weaving looms weaving luxury cotton fabric at LS Mills"
+                loading="lazy"
+              />
+              <ng-template #fallbackFabric>
+                <img [src]="assets.weaving.heroBg" alt="Airjet weaving machines in Theni" loading="lazy" />
+              </ng-template>
+              <div class="frame-tag-badge">AIRJET WEAVING SHED &bull; THENI</div>
+            </div>
+
+            <div class="img-frame inset-macro-frame">
+              <img
+                [src]="assets.weaving.greyFabrics"
+                alt="Woven cotton texture and sateen selvage inspection"
+                loading="lazy"
+              />
+              <div class="inset-caption">4-POINT ASTM D5430 INSPECTION</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ------------------------------------------------------------------------
+       DIVISION 03: HOME TEXTILES
+       ------------------------------------------------------------------------ -->
+  <section class="division-section division-home bg-cotton-ivory" aria-label="Home Textiles Division">
+    <div class="ls-container">
+      <div class="division-grid division-home-grid" appScrollReveal>
+        <!-- Left Image Composition: Lifestyle Bedroom Architecture + Stitching Inset -->
+        <div class="division-imagery-col">
+          <div class="imagery-staggered-wrap">
+            <div class="img-frame primary-frame">
+              <img
+                [src]="assets.madeups.bedLinenInterior"
+                (error)="homeTextileImgFailed = true"
+                *ngIf="!homeTextileImgFailed; else fallbackHome"
+                alt="Modern bedroom interior featuring luxury cotton bed linen"
+                loading="lazy"
+              />
+              <ng-template #fallbackHome>
+                <img [src]="assets.madeups.stitchingUnit1" alt="Home textile stitching floor" loading="lazy" />
+              </ng-template>
+              <div class="frame-tag-badge">6,000 SHEETS / SHIFT &bull; THENI CUT &amp; SEW</div>
+            </div>
+
+            <div class="img-frame inset-macro-frame">
+              <img
+                [src]="assets.madeups.stitchingUnit1"
+                alt="Skilled stitching artisans hemming luxury bedsheets at LS Mills"
+                loading="lazy"
+              />
+              <div class="inset-caption">PRECISION CUT &amp; SEW CRAFT</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Content Block -->
+        <div class="division-content-col">
+          <div class="division-meta-row">
+            <span class="division-index">03</span>
+            <span class="editorial-kicker">CORE DIVISION &bull; HOME TEXTILES</span>
+          </div>
+
+          <h2 class="division-headline">Comfort, Woven Into Life.</h2>
+          <p class="division-lead">
+            Thoughtfully crafted textiles for modern living.
+          </p>
+
+          <div class="division-specs-grid">
+            <div class="spec-cell">
+              <span class="spec-num">6,000</span>
+              <span class="spec-lbl">SHEETS PER SHIFT</span>
+            </div>
+            <div class="spec-cell">
+              <span class="spec-num">200–1,500</span>
+              <span class="spec-lbl">THREAD COUNT BED LINEN</span>
+            </div>
+            <div class="spec-cell">
+              <span class="spec-num">New York</span>
+              <span class="spec-lbl">230 FIFTH AVE SHOWROOM</span>
+            </div>
+            <div class="spec-cell">
+              <span class="spec-num">Global</span>
+              <span class="spec-lbl">US &amp; EUROPEAN EXPORTS</span>
+            </div>
+          </div>
+
+          <div class="division-action">
+            <a routerLink="/products" [queryParams]="{ category: 'home-textile' }" class="btn-nature-primary">
+              <span>EXPLORE HOME TEXTILES</span>
+              <app-icon name="arrow-right" [size]="16"></app-icon>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+
+<!-- ==========================================================================
+     SECTION 3: OUR MANUFACTURING (INFRASTRUCTURE & FACILITIES GALLERY)
+     ========================================================================== -->
+<section class="editorial-section manufacturing-feature-section bg-cotton-ivory" aria-label="Our Manufacturing">
   <div class="ls-container">
-    <!-- Section Header -->
-    <div class="journey-header" appScrollReveal>
+    <div class="section-header-row" appScrollReveal>
       <div class="header-left">
-        <span class="editorial-kicker">SIGNATURE PROCESS / 05 STAGES</span>
-        <h2 class="journey-main-title">THE ARCHITECTURE OF A TEXTILE</h2>
+        <span class="editorial-kicker">INDUSTRIAL INFRASTRUCTURE &bull; THENI, SOUTH INDIA</span>
+        <h2 class="section-main-title">OUR MANUFACTURING</h2>
       </div>
       <div class="header-right">
-        <p class="journey-lead">
-          From natural staple fibers to woven fabrics and finished consumer goods. Each stage represents disciplined engineering and tight quality parameters.
+        <p class="section-lead-text">
+          Precision engineering across 150,000 spindles, high-speed Tsudakoma airjet looms, and forward-integrated cut-and-sew operations in Theni.
         </p>
-        <span class="process-disclaimer">
-          Note: Industrial processes depicted illustrate standard high-grade textile manufacturing pipelines.
-        </span>
+        <a routerLink="/manufacturing" class="btn-editorial-link">
+          <span>EXPLORE OUR INFRASTRUCTURE & FACILITIES &rarr;</span>
+        </a>
       </div>
     </div>
 
-    <!-- Interactive Navigation Bar for the 5 Stages -->
-    <div class="journey-stepper-nav" role="tablist" aria-label="Manufacturing Stages">
-      <div class="stepper-track-line"></div>
+    <!-- Varied Manufacturing Imagery Spread (Landscape + Vertical Details) -->
+    <div class="mfg-gallery-spread" appScrollReveal [revealDelay]="100">
+      <div class="mfg-grid-item mfg-wide">
+        <img [src]="assets.about.factoryInterior" alt="Ring spinning frames at LS Mills plant in Theni" loading="lazy" />
+        <div class="mfg-overlay">
+          <span class="mfg-caption-title">THENI RING SPINNING PLANT</span>
+          <span class="mfg-caption-sub">150,000 Spindles Spinning 25 Tonnes of Yarn Daily</span>
+        </div>
+      </div>
+
+      <div class="mfg-grid-item mfg-tall">
+        <img [src]="assets.spinning.ringFrames2" alt="Spindle alignment and ring frame operator" loading="lazy" />
+        <div class="mfg-overlay">
+          <span class="mfg-caption-title">COMPACT SPINNING PRECISION</span>
+          <span class="mfg-caption-sub">Muratec &amp; Rieter Frames with Low Imperfection Index</span>
+        </div>
+      </div>
+
+      <div class="mfg-grid-item mfg-tall">
+        <img [src]="assets.weaving.airjetLoom2" alt="Tsudakoma airjet looms weaving wide-width greige" loading="lazy" />
+        <div class="mfg-overlay">
+          <span class="mfg-caption-title">AIRJET WEAVING SHED</span>
+          <span class="mfg-caption-sub">Benninger Sizing &amp; High-Speed Airjet Technology</span>
+        </div>
+      </div>
+
+      <div class="mfg-grid-item mfg-wide">
+        <img [src]="assets.madeups.stitchingUnit2" alt="Stitching artisans creating luxury bed linen sets" loading="lazy" />
+        <div class="mfg-overlay">
+          <span class="mfg-caption-title">CUT &amp; SEW BED LINEN UNIT</span>
+          <span class="mfg-caption-sub">Daily Capacity of 6,000 Export Sheets with Tailored Details</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ==========================================================================
+     SECTION 4: FROM NATURE TO FABRIC (VISUAL STORYTELLING & THREAD-LINE)
+     ========================================================================== -->
+<section id="nature-to-fabric" class="editorial-section nature-journey-section bg-forest-green" aria-label="From Nature to Fabric">
+  <div class="ls-container">
+    <div class="nature-header" appScrollReveal>
+      <span class="editorial-kicker">SUSTAINABLE TEXTILE ARCHITECTURE &bull; 05 STAGES</span>
+      <h2 class="nature-main-title">FROM NATURE TO FABRIC</h2>
+      <p class="nature-lead">
+        A continuous animated thread line tracing natural cotton staples from the foothills of the Western Ghats into precision-spun yarn, woven cloth, and finished luxury linens.
+      </p>
+    </div>
+
+    <!-- Stepper Navigation -->
+    <div class="journey-stepper-tabs" role="tablist">
       <button
         *ngFor="let stage of journeyStages; let idx = index"
-        class="stage-tab-btn"
+        class="journey-tab"
         [ngClass]="{ 'active': activeStageIndex === idx }"
         (click)="setStage(idx)"
         role="tab"
         [attr.aria-selected]="activeStageIndex === idx"
-        [attr.aria-controls]="'stage-panel-' + stage.step"
       >
-        <span class="tab-num">{{ stage.step }}</span>
-        <span class="tab-title">{{ stage.title }}</span>
-        <span class="tab-dot"></span>
+        <span class="j-step">{{ stage.step }}</span>
+        <span class="j-title">{{ stage.title }}</span>
       </button>
     </div>
 
-    <!-- Active Stage Exhibition Panel -->
-    <div
-      class="journey-stage-display"
-      *ngIf="journeyStages[activeStageIndex] as currentStage"
-      [attr.id]="'stage-panel-' + currentStage.step"
-      role="tabpanel"
-    >
-      <div class="ls-grid-12 stage-grid">
-        <!-- Visual Exhibition Frame (7 Cols) -->
-        <div class="stage-media-col">
-          <div class="stage-image-frame">
-            <img [src]="currentStage.image" [alt]="currentStage.title + ' process at LS Mills'" loading="lazy" />
-            <div class="stage-image-overlay">
-              <span class="stage-large-watermark">{{ currentStage.step }}</span>
-            </div>
-            <div class="stage-tag-row">
-              <span class="editorial-tag" *ngFor="let tag of currentStage.tags">{{ tag }}</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Narrative & Technical Spec Column (5 Cols) -->
-        <div class="stage-narrative-col">
-          <div class="stage-meta-head">
-            <span class="stage-indicator">STAGE {{ currentStage.step }} OF 05</span>
-            <div class="stage-navigation-arrows">
-              <button class="arrow-btn" (click)="prevStage()" aria-label="Previous process stage">
-                <app-icon name="arrow-right" [size]="16" class="rotate-180"></app-icon>
-              </button>
-              <button class="arrow-btn" (click)="nextStage()" aria-label="Next process stage">
-                <app-icon name="arrow-right" [size]="16"></app-icon>
-              </button>
-            </div>
-          </div>
-
-          <h3 class="stage-display-title">{{ currentStage.title }}</h3>
-          <h4 class="stage-subtitle">{{ currentStage.subtitle }}</h4>
-
-          <p class="stage-desc">{{ currentStage.description }}</p>
-
-          <!-- Stage Parameter Highlights -->
-          <div class="stage-stats-table" *ngIf="currentStage.stats">
-            <div class="stat-cell" *ngFor="let stat of currentStage.stats">
-              <span class="stat-label">{{ stat.label }}</span>
-              <span class="stat-value">{{ stat.value }}</span>
-            </div>
-          </div>
-
-          <div class="stage-action-row">
-            <a routerLink="/manufacturing" class="btn-editorial-link">
-              <span>EXPLORE MANUFACTURING PIPELINE</span>
-              <app-icon name="arrow-right" [size]="14"></app-icon>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ==========================================================================
-     SECTION D: ABOUT LS MILLS (ASYMMETRICAL MAGAZINE SPREAD)
-     ========================================================================== -->
-<section class="editorial-section about-spread-section" aria-label="About LS Mills">
-  <div class="ls-container">
-    <div class="ls-grid-12 spread-grid">
-      <!-- Left Editorial Column: Oversized Typographic Statement -->
-      <div class="spread-left-col" appScrollReveal>
-        <span class="editorial-kicker">OUR STORY / 01</span>
-        <h2 class="spread-headline">
-          BUILT ON<br />
-          <span class="serif-italic">TEXTILE</span><br />
-          EXCELLENCE.
-        </h2>
-
-        <div class="spread-quote-block">
-          <p class="quote-text">
-            &ldquo;In an industry driven by speed, enduring value is created through consistency, process fidelity, and respect for every strand of cotton.&rdquo;
-          </p>
-          <span class="quote-author">&mdash; LS Mills Manufacturing Philosophy</span>
-        </div>
-      </div>
-
-      <!-- Right Editorial Column: Narrative, Factory Imagery, Links -->
-      <div class="spread-right-col" appScrollReveal [revealDelay]="150">
-        <div class="spread-image-wrapper">
+    <!-- Visual Storytelling Interactive Display -->
+    <div class="nature-display-grid">
+      <!-- Active Stage Photographic Frame -->
+      <div class="stage-media-card">
+        <div class="stage-img-wrap">
           <img
-            src="https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&w=1000&q=80"
-            alt="Textile bobbin cones produced with precision"
-            class="spread-featured-image"
+            [src]="journeyStages[activeStageIndex].image"
+            [alt]="journeyStages[activeStageIndex].title + ' at LS Mills'"
             loading="lazy"
           />
-          <div class="spread-image-caption">
-            <span>FIGURE 01 &mdash; RING SPUN YARN CONES / INSPECTION LOT</span>
+          <div class="stage-gradient-scrim"></div>
+          <div class="stage-watermark">{{ journeyStages[activeStageIndex].step }}</div>
+          <div class="stage-media-badge">
+            <span class="badge-stage-num">STAGE {{ journeyStages[activeStageIndex].step }} OF 05</span>
+            <span class="badge-stage-name">{{ journeyStages[activeStageIndex].title }}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stage Concise Narrative & Technical Parameters -->
+      <div class="stage-narrative-card">
+        <div class="narrative-meta">
+          <span class="narrative-sub">{{ journeyStages[activeStageIndex].subtitle }}</span>
+          <h3 class="narrative-title">{{ journeyStages[activeStageIndex].title }}</h3>
+        </div>
+
+        <p class="narrative-desc">{{ journeyStages[activeStageIndex].description }}</p>
+
+        <!-- Technical Checkpoints -->
+        <div class="narrative-stats-list" *ngIf="journeyStages[activeStageIndex].stats">
+          <div class="stat-row" *ngFor="let st of journeyStages[activeStageIndex].stats">
+            <span class="st-lbl">{{ st.label }}</span>
+            <span class="st-val">{{ st.value }}</span>
           </div>
         </div>
 
-        <div class="spread-text-content">
-          <p class="text-lead">
-            Headquartered in <strong>Theni, Tamil Nadu</strong>, LS Mills Limited represents South India’s rich textile manufacturing lineage augmented by modern industrial machinery.
-          </p>
-          <p class="text-body">
-            Our facilities prioritize disciplined yarn production, precision fabric weaving, and meticulous cut-and-sew operations. Rather than chasing fleeting trends, we anchor our production philosophy on rigorous dimensional stability, tensile tenacity, and responsive partnership with global textile houses.
-          </p>
+        <div class="stage-tag-row">
+          <span class="editorial-tag" *ngFor="let tag of journeyStages[activeStageIndex].tags">{{ tag }}</span>
+        </div>
 
-          <div class="spread-action">
-            <a routerLink="/about" class="btn-editorial-copper">
-              <span>LEARN MORE ABOUT OUR HERITAGE</span>
-              <app-icon name="arrow-right" [size]="16"></app-icon>
-            </a>
-          </div>
+        <!-- Controls -->
+        <div class="stage-stepper-ctrls">
+          <button class="stage-btn-arrow" (click)="prevStage()" aria-label="Previous manufacturing stage">
+            <app-icon name="arrow-right" [size]="16" class="rotate-180"></app-icon>
+            <span>PREVIOUS</span>
+          </button>
+          <button class="stage-btn-arrow" (click)="nextStage()" aria-label="Next manufacturing stage">
+            <span>NEXT STAGE</span>
+            <app-icon name="arrow-right" [size]="16"></app-icon>
+          </button>
         </div>
       </div>
     </div>
@@ -222,184 +470,74 @@
 
 
 <!-- ==========================================================================
-     SECTION E: MANUFACTURING CAPABILITIES (INTERACTIVE EXPANDABLE PANELS)
+     SECTION 5: QUALITY & TECHNOLOGY (METROLOGY & ACCREDITATIONS)
      ========================================================================== -->
-<section id="capabilities" class="editorial-section capabilities-section bg-soft-stone" aria-label="Manufacturing Capabilities">
-  <div class="ls-container">
-    <!-- Capabilities Title Header -->
-    <div class="capabilities-head" appScrollReveal>
-      <div>
-        <span class="editorial-kicker">INDUSTRIAL INFRASTRUCTURE</span>
-        <h2 class="section-title">MANUFACTURING CAPABILITIES</h2>
-      </div>
-      <p class="section-desc">
-        Explore our four operational divisions. Select or hover each panel to reveal technical capabilities, machinery specifications, and production ranges.
-      </p>
-    </div>
-
-    <!-- Expandable Horizontal Panels Container -->
-    <div class="capability-accordion" role="tablist" appScrollReveal [revealDelay]="150">
-      <div
-        *ngFor="let cap of capabilities"
-        class="capability-panel"
-        [ngClass]="{ 'expanded': activeCapabilityId === cap.id }"
-        (mouseenter)="setCapability(cap.id)"
-        (click)="setCapability(cap.id)"
-        tabindex="0"
-        (keydown.enter)="setCapability(cap.id)"
-        role="tab"
-        [attr.aria-selected]="activeCapabilityId === cap.id"
-      >
-        <!-- Background Imagery with Parallax Feel -->
-        <div class="panel-bg-media">
-          <img [src]="cap.image" [alt]="cap.title" loading="lazy" />
-          <div class="panel-overlay"></div>
-        </div>
-
-        <!-- Panel Header / Collapsed Title -->
-        <div class="panel-collapsed-view">
-          <span class="panel-num">{{ cap.num }}</span>
-          <div class="panel-rotated-title">
-            <span class="category-micro">{{ cap.category }}</span>
-            <span class="title-bold">{{ cap.title }}</span>
-          </div>
-        </div>
-
-        <!-- Expanded Content Reveal -->
-        <div class="panel-expanded-view">
-          <div class="expanded-top">
-            <span class="editorial-tag">{{ cap.category }}</span>
-            <span class="expanded-num">{{ cap.num }} / 04</span>
-          </div>
-
-          <h3 class="expanded-title">{{ cap.title }}</h3>
-          <p class="expanded-summary">{{ cap.summary }}</p>
-
-          <ul class="expanded-spec-list">
-            <li *ngFor="let spec of cap.detailedSpecs">
-              <app-icon name="check" [size]="14" class="check-icon"></app-icon>
-              <span>{{ spec }}</span>
-            </li>
-          </ul>
-
-          <div class="expanded-action">
-            <a [routerLink]="cap.link" class="btn-editorial-copper">
-              <span>VIEW DIVISION SPECIFICATIONS</span>
-              <app-icon name="arrow-right" [size]="16"></app-icon>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ==========================================================================
-     SECTION F: VISUAL STATEMENT (DARK CHARCOAL DRAMATIC SECTION)
-     ========================================================================== -->
-<section class="visual-statement-section bg-charcoal-deep" aria-label="Visual Brand Statement">
-  <div class="statement-media-bg">
-    <img
-      src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1920&q=85"
-      alt="Close-up macro of finely woven threads"
-      class="statement-bg-image"
-      loading="lazy"
-    />
-    <div class="statement-scrim"></div>
-  </div>
-
-  <div class="ls-container statement-content-container">
-    <div class="statement-inner" appScrollReveal>
-      <span class="editorial-kicker">THE PHILOSOPHY OF DETAIL</span>
-
-      <h2 class="statement-huge-title">
-        &ldquo;EVERY THREAD<br />
-        HAS A PURPOSE.&rdquo;
-      </h2>
-
-      <p class="statement-body">
-        We believe quality is built through attention to detail, consistent processes, and a commitment to continuous improvement. In every bobbin, warp beam, and finished selvedge, our standard is precision.
-      </p>
-
-      <div class="statement-stats-grid">
-        <div class="statement-stat-item">
-          <span class="stat-number">100%</span>
-          <span class="stat-desc">FIBER-TO-FABRIC TRACEABILITY DISCIPLINE</span>
-        </div>
-        <div class="statement-stat-item">
-          <span class="stat-number">4-PT</span>
-          <span class="stat-desc">INTERNATIONAL DEFECT GRADING RIGOR</span>
-        </div>
-        <div class="statement-stat-item">
-          <span class="stat-number">340 CM</span>
-          <span class="stat-desc">MAXIMUM GREIGE WEAVING WIDTH</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ==========================================================================
-     SECTION G: QUALITY AND RESPONSIBILITY (EDITORIAL SPLIT COMPOSITION)
-     ========================================================================== -->
-<section class="editorial-section quality-section" aria-label="Quality and Responsibility">
+<section class="editorial-section quality-section bg-cotton-ivory" aria-label="Quality and Technology">
   <div class="ls-container">
     <div class="ls-grid-12 quality-grid" appScrollReveal>
-      <!-- Media Frame (5 Cols) -->
-      <div class="quality-media-col">
-        <div class="quality-image-card">
+      <!-- Left Column: Testing Lab Image Card (5 Cols) -->
+      <div class="quality-left-col">
+        <div class="quality-photo-frame">
           <img
-            src="https://images.unsplash.com/photo-1579208575657-c595a05383b7?auto=format&fit=crop&w=1000&q=80"
-            alt="Quality testing laboratory equipment"
+            [src]="assets.quality.testingLab"
+            (error)="qualityImgFailed = true"
+            *ngIf="!qualityImgFailed; else fallbackQuality"
+            alt="Physical testing laboratory at LS Mills"
             loading="lazy"
           />
-          <div class="quality-badge-wrap">
-            <span class="badge-title">IN-HOUSE PHYSICAL TESTING</span>
-            <span class="badge-sub">THENI LABORATORY DIVISION</span>
+          <ng-template #fallbackQuality>
+            <img [src]="assets.quality.heroBg" alt="Quality laboratory instrumentation" loading="lazy" />
+          </ng-template>
+          <div class="quality-cert-pills">
+            <div class="cert-pill">
+              <span class="cert-check">&bull;</span>
+              <span>ISO 9001 (BUREAU VERITAS)</span>
+            </div>
+            <div class="cert-pill">
+              <span class="cert-check">&bull;</span>
+              <span>100% GOTS ORGANIC COTTON</span>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Narrative Text (7 Cols) -->
-      <div class="quality-narrative-col">
-        <span class="editorial-kicker">MANUFACTURING INTEGRITY</span>
-        <h2 class="quality-title">DISCIPLINED PROCESSES. HONEST STANDARDS.</h2>
-
-        <p class="quality-lead">
-          Textile quality is not an accident of good luck; it is the verifiable output of disciplined machinery maintenance, uniform raw materials, and strict tolerance standards.
+      <!-- Right Column: Narrative & Checkpoints (7 Cols) -->
+      <div class="quality-right-col">
+        <span class="editorial-kicker">METROLOGY &amp; INTEGRITY</span>
+        <h2 class="section-title">QUALITY &amp; TECHNOLOGY</h2>
+        <p class="quality-lead-text">
+          Precision textile performance is validated through disciplined metrology. Our in-house physical testing lab monitors fiber micronaire, USTER imperfection indices, and 4-point ASTM defect grading across all batches.
         </p>
 
-        <div class="pillars-list">
-          <div class="pillar-row">
-            <span class="pillar-num">01</span>
-            <div class="pillar-text">
-              <h4>Product Consistency</h4>
-              <p>Continuous monitoring of yarn hairiness, count variation, and fabric tensile strength ensures reproducibility across bulk production runs.</p>
+        <div class="quality-pillars-list">
+          <div class="q-pillar-item">
+            <span class="pillar-idx">01</span>
+            <div>
+              <h4>High Volume Instrument (HVI) Testing</h4>
+              <p>Scientific analysis of fiber length, strength, elongation, and trash content before bale processing.</p>
             </div>
           </div>
 
-          <div class="pillar-row">
-            <span class="pillar-num">02</span>
-            <div class="pillar-text">
-              <h4>Manufacturing Discipline</h4>
-              <p>Systematic scheduled maintenance on ring frames, blowroom lines, and airjet looms prevents mechanical wear from influencing weave metrics.</p>
+          <div class="q-pillar-item">
+            <span class="pillar-idx">02</span>
+            <div>
+              <h4>Online USTER Imperfection Monitoring</h4>
+              <p>Continuous yarn clearing eliminating foreign matter, thin/thick places, and neps for smooth weaving.</p>
             </div>
           </div>
 
-          <div class="pillar-row">
-            <span class="pillar-num">03</span>
-            <div class="pillar-text">
-              <h4>Responsible Resource Utilization</h4>
-              <p>Air filtration systems in spinning corridors, closed-loop waste fiber reclamation, and conscientious energy utilization across our Theni footprint.</p>
+          <div class="q-pillar-item">
+            <span class="pillar-idx">03</span>
+            <div>
+              <h4>ASTM D5430 4-Point Greige Grading</h4>
+              <p>Full fabric width inspection on backlit inspection frames for export-grade selvage and pick uniformity.</p>
             </div>
           </div>
         </div>
 
-        <div class="quality-cta-wrap">
-          <a routerLink="/sustainability" class="btn-editorial-outline">
-            <span>EXPLORE OUR SUSTAINABILITY PRINCIPLES</span>
+        <div class="quality-action-row">
+          <a routerLink="/manufacturing" class="btn-nature-primary">
+            <span>EXPLORE QUALITY CAPABILITIES</span>
             <app-icon name="arrow-right" [size]="16"></app-icon>
           </a>
         </div>
@@ -410,41 +548,63 @@
 
 
 <!-- ==========================================================================
-     SECTION H: CAREERS SPOTLIGHT
+     SECTION 6: SUSTAINABILITY & RESPONSIBILITY (VERIFIED CSR & TERROIR)
      ========================================================================== -->
-<section class="editorial-section careers-spotlight bg-soft-stone" aria-label="Careers at LS Mills">
+<section class="editorial-section sustainability-feature-section bg-leaf-sage" aria-label="Sustainability and Responsibility">
   <div class="ls-container">
-    <div class="careers-editorial-box" appScrollReveal>
-      <div class="careers-content-wrap">
-        <span class="editorial-kicker">TALENT & CULTURE</span>
-        <h2 class="careers-headline">
-          MAKE SOMETHING<br />
-          <span class="serif-italic">THAT LASTS.</span>
-        </h2>
-        <p class="careers-desc">
-          We invite passionate individuals interested in textile engineering, plant operations, quality assurance, and international sales to grow their careers with an established industrial leader in South India.
+    <div class="section-header-row" appScrollReveal>
+      <div class="header-left">
+        <span class="editorial-kicker">WESTERN GHATS TERROIR &bull; RESPONSIBLE MANUFACTURING</span>
+        <h2 class="section-main-title">SUSTAINABILITY &amp; RESPONSIBILITY</h2>
+      </div>
+      <div class="header-right">
+        <p class="section-lead-text">
+          Nestled at the foothills of the Western Ghats in Theni, our operations are sustained by clean renewable energy and groundwater replenishment.
         </p>
+        <a routerLink="/sustainability" class="btn-editorial-link">
+          <span>VIEW SUSTAINABILITY INITIATIVES &rarr;</span>
+        </a>
+      </div>
+    </div>
 
-        <div class="careers-actions">
-          <a routerLink="/careers" class="btn-editorial-copper">
-            <span>EXPLORE CAREERS AT LS MILLS</span>
-            <app-icon name="arrow-right" [size]="16"></app-icon>
-          </a>
-          <a routerLink="/careers" class="btn-editorial-link">
-            <span>SUBMIT GENERAL ENQUIRY &rarr;</span>
-          </a>
+    <!-- Verified Green Infrastructure Cards -->
+    <div class="ls-grid-12 sus-cards-grid" appScrollReveal [revealDelay]="150">
+      <div class="sus-card">
+        <div class="sus-media">
+          <img [src]="assets.sustainability.solarPower" alt="Captive solar power array at LS Mills in Theni" loading="lazy" />
+          <span class="sus-badge">CLEAN ENERGY</span>
+        </div>
+        <div class="sus-body">
+          <h3 class="sus-title">Captive Solar Generation</h3>
+          <p class="sus-desc">
+            Large-scale captive solar installation generating renewable power for spinning and weaving operations in Tamil Nadu.
+          </p>
         </div>
       </div>
 
-      <div class="careers-visual-wrap">
-        <img
-          src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80"
-          alt="Textile engineering and operational review"
-          loading="lazy"
-        />
-        <div class="careers-floater">
-          <span class="floater-title">THENI FACILITY</span>
-          <span class="floater-sub">Engineering & Operations Teams</span>
+      <div class="sus-card">
+        <div class="sus-media">
+          <img [src]="assets.sustainability.rainWater" alt="Rainwater harvesting storage reservoirs in Theni" loading="lazy" />
+          <span class="sus-badge">WATER CARE</span>
+        </div>
+        <div class="sus-body">
+          <h3 class="sus-title">100% Rainwater Harvesting</h3>
+          <p class="sus-desc">
+            Extensive reservoir infrastructure capturing mountain watershed runoff to recharge local Theni aquifers.
+          </p>
+        </div>
+      </div>
+
+      <div class="sus-card">
+        <div class="sus-media">
+          <img [src]="assets.sustainability.healthCare" alt="Healthcare medical camps supported by LS Mills" loading="lazy" />
+          <span class="sus-badge">COMMUNITY HEALTH</span>
+        </div>
+        <div class="sus-body">
+          <h3 class="sus-title">Healthcare &amp; Social Care</h3>
+          <p class="sus-desc">
+            Direct community health initiatives, medical checkup camps, and educational support across rural Theni.
+          </p>
         </div>
       </div>
     </div>
@@ -453,82 +613,180 @@
 
 
 <!-- ==========================================================================
-     SECTION I: CONTACT & BUSINESS ENQUIRY (DISTINCTIVE FINAL CTA)
+     SECTION 7: PHOTOGRAPHIC GALLERY (IMMERSIVE GRID & LIGHTBOX)
      ========================================================================== -->
-<section id="contact-cta" class="editorial-section contact-cta-section bg-charcoal" aria-label="Business Enquiry and Contact">
+<section class="editorial-section gallery-section bg-cotton-ivory" aria-label="Photographic Gallery">
   <div class="ls-container">
-    <div class="ls-grid-12 contact-cta-grid">
-      <!-- Left Column: Oversized Typographic Statement & Company Location (5 Cols) -->
-      <div class="contact-cta-left" appScrollReveal>
-        <span class="editorial-kicker">COLLABORATE WITH US</span>
+    <div class="gallery-head-row" appScrollReveal>
+      <div>
+        <span class="editorial-kicker">VISUAL ARCHIVE &bull; PRODUCTION &amp; TERROIR</span>
+        <h2 class="section-main-title">PHOTOGRAPHIC GALLERY</h2>
+      </div>
 
-        <h2 class="contact-huge-headline">
-          LET'S BUILD<br />
-          <span class="copper-accent">WHAT COMES</span><br />
-          <span class="serif-italic">NEXT.</span>
+      <!-- Filter Tabs -->
+      <div class="gallery-filter-tabs" role="tablist">
+        <button
+          class="g-filter-btn"
+          [ngClass]="{ 'active': activeGalleryCategory === 'all' }"
+          (click)="setGalleryCategory('all')"
+          role="tab"
+          [attr.aria-selected]="activeGalleryCategory === 'all'"
+        >
+          ALL ({{ galleryItems.length }})
+        </button>
+        <button
+          class="g-filter-btn"
+          [ngClass]="{ 'active': activeGalleryCategory === 'spinning' }"
+          (click)="setGalleryCategory('spinning')"
+          role="tab"
+          [attr.aria-selected]="activeGalleryCategory === 'spinning'"
+        >
+          YARN &amp; SPINNING
+        </button>
+        <button
+          class="g-filter-btn"
+          [ngClass]="{ 'active': activeGalleryCategory === 'weaving' }"
+          (click)="setGalleryCategory('weaving')"
+          role="tab"
+          [attr.aria-selected]="activeGalleryCategory === 'weaving'"
+        >
+          WOVEN FABRICS
+        </button>
+        <button
+          class="g-filter-btn"
+          [ngClass]="{ 'active': activeGalleryCategory === 'home-textile' }"
+          (click)="setGalleryCategory('home-textile')"
+          role="tab"
+          [attr.aria-selected]="activeGalleryCategory === 'home-textile'"
+        >
+          HOME TEXTILES
+        </button>
+        <button
+          class="g-filter-btn"
+          [ngClass]="{ 'active': activeGalleryCategory === 'facilities' }"
+          (click)="setGalleryCategory('facilities')"
+          role="tab"
+          [attr.aria-selected]="activeGalleryCategory === 'facilities'"
+        >
+          FACILITIES &amp; TERROIR
+        </button>
+      </div>
+    </div>
+
+    <!-- Gallery Grid -->
+    <div class="gallery-masonry-grid" appScrollReveal [revealDelay]="150">
+      <article
+        class="gallery-tile"
+        *ngFor="let item of filteredGallery"
+        [ngClass]="'tile-' + (item.aspect || 'landscape')"
+        (click)="openLightbox(item)"
+        tabindex="0"
+        (keydown.enter)="openLightbox(item)"
+        [attr.aria-label]="item.title"
+      >
+        <div class="tile-media-frame">
+          <img [src]="item.image" [alt]="item.title" loading="lazy" />
+          <div class="tile-hover-overlay">
+            <span class="tile-cat">{{ item.categoryLabel }}</span>
+            <h4 class="tile-title">{{ item.title }}</h4>
+            <div class="tile-zoom-btn">
+              <app-icon name="arrow-up-right" [size]="18"></app-icon>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+<!-- ==========================================================================
+     SECTION 8: CONTACT / ENQUIRY (FULL-WIDTH FOREST-GREEN CTA)
+     ========================================================================== -->
+<section id="contact-cta" class="editorial-section contact-section bg-forest-green" aria-label="Contact and Enquiry">
+  <div class="ls-container">
+    <div class="ls-grid-12 contact-grid">
+      <!-- Left Column: Location, Direct Details & CTA Title (5 Cols) -->
+      <div class="contact-left-col" appScrollReveal>
+        <span class="editorial-kicker">GET IN TOUCH &bull; THENI &amp; NEW YORK</span>
+
+        <!-- Requested CTA Headline -->
+        <h2 class="contact-main-headline">
+          LET'S CREATE<br />
+          <span class="gold-accent">SOMETHING</span><br />
+          <span class="serif-italic">TOGETHER.</span>
         </h2>
 
-        <p class="contact-intro">
+        <p class="contact-lead-text">
           Whether you require customized yarn counts, wide-width woven greige fabrics, or export-grade home textile collections, our technical and sales directors are ready to review your specifications.
         </p>
 
-        <div class="company-address-block">
-          <div class="address-item">
-            <app-icon name="map-pin" [size]="18" class="addr-icon"></app-icon>
+        <!-- Official Verified Contact Blocks -->
+        <div class="contact-details-list">
+          <div class="contact-info-item">
+            <app-icon name="map-pin" [size]="18" class="info-icon"></app-icon>
             <div>
-              <span class="addr-label">MANUFACTURING HEADQUARTERS</span>
-              <p class="addr-text">
-                LS Mills Limited<br />
-                Theni District, Tamil Nadu &mdash; 625 531<br />
-                India
+              <span class="info-label">MANUFACTURING HEADQUARTERS</span>
+              <p class="info-val">
+                <strong>LS Mills Limited</strong><br />
+                #351, Madurai Road,<br />
+                Theni - 625531. India.
               </p>
             </div>
           </div>
 
-          <div class="address-item">
-            <app-icon name="mail" [size]="18" class="addr-icon"></app-icon>
+          <div class="contact-info-item">
+            <app-icon name="phone" [size]="18" class="info-icon"></app-icon>
             <div>
-              <span class="addr-label">BUSINESS DESK</span>
-              <p class="addr-text">Inquiries directly handled through our corporate desk.</p>
+              <span class="info-label">DIRECT TELEPHONE &amp; FAX</span>
+              <p class="info-val">
+                +91 80125 32502 -05<br />
+                Fax: +91 4546 252742
+              </p>
             </div>
           </div>
 
-          <div class="address-item">
-            <app-icon name="clock" [size]="18" class="addr-icon"></app-icon>
+          <div class="contact-info-item">
+            <app-icon name="mail" [size]="18" class="info-icon"></app-icon>
             <div>
-              <span class="addr-label">OPERATING HOURS</span>
-              <p class="addr-text">Monday &ndash; Saturday: 09:00 &ndash; 18:00 IST</p>
+              <span class="info-label">EMAIL COMMERCIAL DESK</span>
+              <p class="info-val">info&#64;lsmills.in</p>
             </div>
           </div>
-        </div>
 
-        <div class="demonstration-notice">
-          <span class="notice-badge">FRONTEND DEMONSTRATION</span>
-          <p class="notice-text">
-            This contact portal is configured as a fully functional client-side interactive demonstration. Form validation, state handling, and responses are simulated for review.
-          </p>
+          <div class="contact-info-item">
+            <app-icon name="globe" [size]="18" class="info-icon"></app-icon>
+            <div>
+              <span class="info-label">SHOW ROOM ADDRESS</span>
+              <p class="info-val">
+                Suite # 510, 5th Floor,<br />
+                230 Fifth Avenue,<br />
+                NY – 10001 (Tel: 646 492 1835)
+              </p>
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- Right Column: Interactive Business Enquiry Form (7 Cols) -->
-      <div class="contact-cta-right" appScrollReveal [revealDelay]="150">
+      <!-- Right Column: Interactive Commercial Enquiry Form (7 Cols) -->
+      <div class="contact-right-col" appScrollReveal [revealDelay]="150">
         <div class="enquiry-card-dark">
           <h3 class="form-title">INITIATE A COMMERCIAL ENQUIRY</h3>
           <p class="form-subtitle">Complete the fields below to request sample yardage or count specifications.</p>
 
-          <!-- Success Notification Banner -->
+          <!-- Success Alert -->
           <div *ngIf="submitSuccess" class="form-alert-success" role="alert">
             <div class="alert-icon">
               <app-icon name="check" [size]="20"></app-icon>
             </div>
             <div class="alert-body">
-              <h4>ENQUIRY SIMULATION RECORDED</h4>
-              <p>Your commercial enquiry has been successfully simulated and validated. All required parameters were checked.</p>
+              <h4>ENQUIRY RECEIVED &bull; FRONTEND DEMONSTRATION</h4>
+              <p>Your commercial enquiry has been successfully validated and recorded in this client-side demonstration.</p>
               <button class="btn-editorial-link" (click)="resetSuccessState()">Submit Another Inquiry</button>
             </div>
           </div>
 
-          <!-- The Form -->
+          <!-- Commercial Form -->
           <form *ngIf="!submitSuccess" [formGroup]="enquiryForm" (ngSubmit)="onSubmitEnquiry()" novalidate>
             <div class="form-row-2">
               <div class="editorial-input-group">
@@ -591,10 +849,10 @@
               <div class="editorial-input-group">
                 <label for="enquiryType">COMMERCIAL CATEGORY *</label>
                 <select id="enquiryType" formControlName="enquiryType">
-                  <option value="yarn">Yarn & Spinning Division</option>
+                  <option value="yarn">Yarn &amp; Spinning Division</option>
                   <option value="fabric">Woven Fabrics Division</option>
                   <option value="home-textile">Finished Home Textiles</option>
-                  <option value="career">Careers & Employment</option>
+                  <option value="career">Careers &amp; Employment</option>
                   <option value="general">General Corporate Communication</option>
                 </select>
               </div>
@@ -611,12 +869,12 @@
             </div>
 
             <div class="editorial-input-group">
-              <label for="message">PROJECT DETAILS / SPECIFICATION REQUIREMENTS *</label>
+              <label for="message">SPECIFICATION REQUIREMENTS *</label>
               <textarea
                 id="message"
                 formControlName="message"
                 rows="4"
-                placeholder="Please describe yarn counts, target GSM, monthly volume estimates, or test parameters..."
+                placeholder="Describe required yarn counts, target GSM, weave construction, or test parameters..."
               ></textarea>
               <span class="field-error" *ngIf="enquiryForm.get('message')?.invalid && enquiryForm.get('message')?.touched">
                 Please provide enquiry details (minimum 10 characters).
@@ -639,10 +897,10 @@
             <div class="form-submit-row">
               <button
                 type="submit"
-                class="btn-editorial-copper submit-btn"
+                class="btn-nature-primary submit-btn"
                 [disabled]="isSubmitting"
               >
-                <span *ngIf="!isSubmitting">TRANSMIT COMMERCIAL ENQUIRY</span>
+                <span *ngIf="!isSubmitting">SUBMIT COMMERCIAL ENQUIRY</span>
                 <span *ngIf="isSubmitting">PROCESSING ENQUIRY...</span>
                 <app-icon *ngIf="!isSubmitting" name="arrow-right" [size]="16"></app-icon>
               </button>
@@ -653,3 +911,43 @@
     </div>
   </div>
 </section>
+
+
+<!-- ==========================================================================
+     LIGHTBOX MODAL FOR GALLERY
+     ========================================================================== -->
+<div
+  class="gallery-lightbox-overlay"
+  *ngIf="activeLightboxItem"
+  (click)="closeLightbox()"
+  role="dialog"
+  aria-modal="true"
+  [attr.aria-label]="activeLightboxItem.title"
+>
+  <div class="lightbox-modal" (click)="$event.stopPropagation()">
+    <!-- Lightbox Close Button -->
+    <button class="lightbox-close-btn" (click)="closeLightbox()" aria-label="Close image lightbox">
+      <app-icon name="x" [size]="24"></app-icon>
+    </button>
+
+    <!-- Nav Arrows -->
+    <button class="lightbox-arrow arrow-prev" (click)="prevLightbox()" aria-label="Previous image">
+      <app-icon name="arrow-right" [size]="20" class="rotate-180"></app-icon>
+    </button>
+    <button class="lightbox-arrow arrow-next" (click)="nextLightbox()" aria-label="Next image">
+      <app-icon name="arrow-right" [size]="20"></app-icon>
+    </button>
+
+    <!-- Lightbox Media Image -->
+    <div class="lightbox-image-wrap">
+      <img [src]="activeLightboxItem.image" [alt]="activeLightboxItem.title" />
+    </div>
+
+    <!-- Lightbox Caption Bar -->
+    <div class="lightbox-caption-bar">
+      <span class="lightbox-cat">{{ activeLightboxItem.categoryLabel }}</span>
+      <h3 class="lightbox-title">{{ activeLightboxItem.title }}</h3>
+      <p class="lightbox-desc">{{ activeLightboxItem.caption }}</p>
+    </div>
+  </div>
+</div>

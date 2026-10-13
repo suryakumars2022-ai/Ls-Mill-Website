@@ -52,3 +52,13 @@ export interface EnquiryPayload {
   message: string;
   acceptedTerms: boolean;
 }
+
+export interface GalleryItem {
+  id: string;
+  title: string;
+  category: 'spinning' | 'weaving' | 'home-textile' | 'facilities';
+  categoryLabel: string;
+  image: string;
+  caption: string;
+  aspect?: 'landscape' | 'portrait' | 'square';
+}

@@ -1,169 +1,722 @@
 <!-- ==========================================================================
-     ABOUT US — "INDUSTRIAL EDITORIAL" PAGE
+     LS MILLS LIMITED — ABOUT US PAGE ("INDUSTRIAL EDITORIAL")
+     "ROOTED IN NATURE. REFINED THROUGH TEXTILE CRAFT."
      ========================================================================== -->
 
-<!-- Editorial Page Header -->
-<header class="page-editorial-header bg-charcoal" aria-label="About Page Introduction">
-  <div class="header-texture-overlay"></div>
-  <div class="ls-container header-inner">
-    <div class="header-kicker-row">
-      <span class="editorial-kicker">COMPANY HERITAGE & VISION</span>
-      <span class="editorial-label-vertical">THENI, TAMIL NADU / INDIA</span>
-    </div>
+<!-- ==========================================================================
+     SECTION 1: ABOUT HERO — IMAGE-LED ASYMMETRIC COMPOSITION
+     ========================================================================== -->
+<section class="about-hero-section" aria-label="About LS Mills Hero">
+  <div class="hero-texture-overlay" aria-hidden="true"></div>
 
-    <h1 class="page-main-title">
-      A LEGACY OF THREAD<br />
-      <span class="serif-italic">AND MANUFACTURING</span><br />
-      DISCIPLINE.
-    </h1>
-
-    <p class="header-lead">
-      LS Mills Limited is built upon the enduring traditions of South Indian textile manufacturing, driven by continuous engineering modernization and uncompromising material integrity.
-    </p>
-  </div>
-</header>
-
-
-<!-- Section: Corporate Narrative & Editorial Split -->
-<section class="editorial-section narrative-section" aria-label="Corporate Narrative">
-  <div class="ls-container">
-    <div class="ls-grid-12 narrative-grid">
-      <!-- Left Column: The Theni Context (5 Cols) -->
-      <div class="narrative-left-col">
-        <span class="editorial-kicker">GEOGRAPHY & TERROIR</span>
-        <h2 class="section-title">ROOTED IN THENI, TAMIL NADU</h2>
-
-        <div class="geo-card">
-          <div class="geo-stat">
-            <span class="geo-num">10.01° N</span>
-            <span class="geo-lbl">LATITUDE COORDINATES</span>
-          </div>
-          <p class="geo-text">
-            Nestled in the agricultural valley of Theni at the foothills of the Western Ghats, our location offers favorable atmospheric conditions, access to primary South Indian cotton corridors, and a generational textile workforce.
-          </p>
+  <div class="ls-container hero-container">
+    <div class="hero-asymmetric-grid">
+      <!-- Left Column: Editorial Headline & Purpose (5 cols) -->
+      <div class="hero-narrative-col" appScrollReveal>
+        <div class="hero-eyebrow-wrap">
+          <span class="hero-kicker">OUR STORY &bull; THENI, TAMIL NADU</span>
+          <span class="hero-coords">10.01&deg; N &bull; 77.47&deg; E</span>
         </div>
 
-        <div class="narrative-quote">
-          <p>&ldquo;True industrial quality cannot be fabricated by marketing. It is built one spindle rotation and one warp tension at a time.&rdquo;</p>
+        <h1 class="hero-headline">
+          Rooted in Craft.<br />
+          <span class="headline-serif-italic">Driven by</span><br />
+          Innovation.
+        </h1>
+
+        <div class="hero-thread-indicator" aria-hidden="true">
+          <div class="thread-line-gold"></div>
+          <div class="thread-spindle-node"></div>
+        </div>
+
+        <p class="hero-description">
+          Discover the people, processes, and purpose behind LS Mills Limited. Built upon four decades of textile engineering discipline in the foothills of the Western Ghats.
+        </p>
+
+        <div class="hero-meta-strip">
+          <div class="meta-item">
+            <span class="meta-value">1979</span>
+            <span class="meta-label">FOUNDED IN THENI</span>
+          </div>
+          <div class="meta-divider"></div>
+          <div class="meta-item">
+            <span class="meta-value">150,000</span>
+            <span class="meta-label">RING SPINDLES</span>
+          </div>
+          <div class="meta-divider"></div>
+          <div class="meta-item">
+            <span class="meta-value">25 TPD</span>
+            <span class="meta-label">DAILY YARN OUTPUT</span>
+          </div>
+        </div>
+
+        <!-- Scroll Indicator with Animated Thread Motif -->
+        <a href="#our-story" class="hero-scroll-indicator" aria-label="Scroll to company story">
+          <div class="thread-bobbin-motif">
+            <span class="thread-strand"></span>
+          </div>
+          <span class="scroll-text">EXPLORE THE STORY</span>
+        </a>
+      </div>
+
+      <!-- Right Column: Dominant Editorial Photography (7 cols) -->
+      <div class="hero-visual-col" appScrollReveal [revealDelay]="150">
+        <div class="hero-image-stage">
+          <div class="hero-image-frame">
+            <img
+              [src]="assets.about.factoryInterior"
+              (error)="heroImgFailed = true"
+              *ngIf="!heroImgFailed; else heroFallbackImg"
+              alt="LS Mills spinning floor and advanced textile machinery in Theni"
+              class="hero-primary-photo"
+              loading="eager"
+            />
+            <ng-template #heroFallbackImg>
+              <img
+                src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=1600&q=85"
+                alt="Textile manufacturing operations"
+                class="hero-primary-photo"
+                loading="eager"
+              />
+            </ng-template>
+            <div class="image-corner-bracket top-left"></div>
+            <div class="image-corner-bracket bottom-right"></div>
+          </div>
+
+          <!-- Editorial Caption Card Overlaid -->
+          <div class="hero-image-caption-card">
+            <div class="caption-tag">PRIMARY FACILITY &bull; THENI</div>
+            <p class="caption-text">
+              Climate-controlled compact spinning hall operating Rieter, LMW, and Muratec frames under automated tension supervision.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="thread-divider" aria-hidden="true"></div>
+
+<!-- ==========================================================================
+     SECTION 2: OUR STORY — ASYMMETRIC EDITORIAL COLLAGE & HERITAGE
+     ========================================================================== -->
+<section id="our-story" class="editorial-section story-section bg-cotton-ivory" aria-label="Our Story">
+  <div class="ls-container">
+    <!-- Story Section Header -->
+    <div class="section-editorial-header" appScrollReveal>
+      <div class="kicker-row">
+        <span class="editorial-kicker">FOUR DECADES OF DISCIPLINE</span>
+        <span class="heritage-year">EST. 1979</span>
+      </div>
+      <h2 class="section-editorial-title">
+        A Story Woven Into<br />
+        <span class="serif-italic-accent">Every Thread.</span>
+      </h2>
+    </div>
+
+    <!-- Story Asymmetric Grid -->
+    <div class="story-layout-grid">
+      <!-- Left: Editorial Photo Collage (7 cols) -->
+      <div class="story-collage-col" appScrollReveal>
+        <div class="collage-assembly">
+          <!-- Main Staggered Image (Machinery & Factory) -->
+          <div class="collage-card collage-primary">
+            <div class="collage-img-wrap">
+              <img
+                [src]="assets.spinning.ringFrames1"
+                alt="Spinning floor at LS Mills"
+                loading="lazy"
+              />
+            </div>
+            <div class="collage-badge">150,000 SPINDLES &bull; THENI</div>
+          </div>
+
+          <!-- Secondary Overlapping Image (Yarn Cones) -->
+          <div class="collage-card collage-secondary">
+            <div class="collage-img-wrap">
+              <img
+                [src]="assets.spinning.yarnCones"
+                alt="Precision wound yarn cones"
+                loading="lazy"
+              />
+            </div>
+            <div class="collage-badge">COMPACT YARN &bull; Ne 40s–200s</div>
+          </div>
+
+          <!-- Tertiary Overlapping Image (Airjet Weaving Greige) -->
+          <div class="collage-card collage-tertiary">
+            <div class="collage-img-wrap">
+              <img
+                [src]="assets.weaving.greyFabrics"
+                alt="Greige fabric quality inspection"
+                loading="lazy"
+              />
+            </div>
+            <div class="collage-badge">TSUDAKOMA WEAVING &bull; 200–1,500 TC</div>
+          </div>
         </div>
       </div>
 
-      <!-- Right Column: Visual Narrative & Deep Overview (7 Cols) -->
-      <div class="narrative-right-col">
-        <div class="narrative-media-frame">
+      <!-- Right: Narrative Chronicle (5 cols) -->
+      <div class="story-narrative-col" appScrollReveal [revealDelay]="150">
+        <div class="narrative-content-card">
+          <span class="sub-kicker">FOUNDATION &amp; EVOLUTION</span>
+          <h3 class="narrative-subheading">
+            From Regional Spinning Pioneer to Integrated Global Manufacturer
+          </h3>
+
+          <p class="narrative-para">
+            Established in <strong>1979</strong> in Theni, Tamil Nadu under the stewardship of Managing Director <strong>Mr. S. Manivannan</strong>, LS Mills Limited began with a focused commitment: to harness South India’s rich cotton belt through uncompromising machine discipline.
+          </p>
+
+          <p class="narrative-para">
+            Over forty-five years of deliberate engineering investment, LS Mills Limited expanded to <strong>150,000 spindles</strong> spinning <strong>25 tonnes daily</strong> of premium compact, combed, and SIRO slub yarns. Our spinning halls operate premier international machinery from <strong>LMW, Rieter, Muratec, and SSM</strong>, producing counts from Ne 40s to ultra-fine Ne 200s.
+          </p>
+
+          <p class="narrative-para">
+            Responding to international luxury retail demand, we integrated wide-width <strong>Tsudakoma airjet looms</strong> and Benninger sizing systems weaving grey fabrics up to 1,500 thread counts. Today, our dedicated cut-and-sew units yield <strong>6,000 luxury sheets per shift</strong>, represented worldwide through our permanent commercial showroom at <strong>230 Fifth Avenue, New York</strong>.
+          </p>
+
+          <!-- Verified Accreditations Pill Row -->
+          <div class="accreditation-pill-row">
+            <div class="acc-pill">
+              <app-icon name="award" [size]="16"></app-icon>
+              <span>ISO 9001 (Bureau Veritas)</span>
+            </div>
+            <div class="acc-pill">
+              <app-icon name="shield" [size]="16"></app-icon>
+              <span>100% Organic Cotton (GOTS)</span>
+            </div>
+            <div class="acc-pill">
+              <app-icon name="map-pin" [size]="16"></app-icon>
+              <span>Showroom: 230 Fifth Ave, NY</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     SECTION 3: WHAT WE DO — DISTINCT PHOTOGRAPHIC LAYOUTS PER DIVISION
+     ========================================================================== -->
+<section class="editorial-section what-we-do-section bg-soft-stone" aria-label="What We Do - Core Divisions">
+  <div class="ls-container">
+    <div class="section-editorial-header" appScrollReveal>
+      <div class="kicker-row">
+        <span class="editorial-kicker">THREE INTEGRATED DIVISIONS</span>
+        <span class="header-index">VERTICAL CAPABILITY</span>
+      </div>
+      <h2 class="section-editorial-title">
+        Engineered for Consistency.<br />
+        <span class="serif-italic-accent">Built for Scale.</span>
+      </h2>
+      <p class="section-lead-text">
+        From raw long-staple cotton to packaged luxury bed linens, our three operational divisions embody end-to-end manufacturing integrity.
+      </p>
+    </div>
+
+    <!-- Division 1: Yarn & Spinning (Asymmetric Composition A) -->
+    <article class="division-editorial-block division-spinning" appScrollReveal>
+      <div class="division-grid">
+        <!-- Visual Column: Dual Staggered Photographic Frame -->
+        <div class="division-visual-col">
+          <div class="division-dual-stage">
+            <div class="primary-photo-wrap">
+              <img
+                [src]="coreDivisions[0].primaryImage"
+                alt="Ring spinning frames at LS Mills"
+                loading="lazy"
+              />
+              <div class="photo-overlay-tag">RING SPINNING FLOOR</div>
+            </div>
+            <div class="secondary-photo-thumb">
+              <img
+                [src]="coreDivisions[0].secondaryImage"
+                alt="Precision-wound yarn bobbins"
+                loading="lazy"
+              />
+              <div class="thumb-tag">PAPER &amp; DYE CONES</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Information Column -->
+        <div class="division-info-col">
+          <div class="division-header-group">
+            <span class="division-num">{{ coreDivisions[0].number }}</span>
+            <span class="division-kicker">SPINNING &amp; RING FRAMES</span>
+            <h3 class="division-title">{{ coreDivisions[0].title }}</h3>
+            <p class="division-subtitle">{{ coreDivisions[0].subtitle }}</p>
+          </div>
+
+          <p class="division-desc">{{ coreDivisions[0].description }}</p>
+
+          <ul class="division-bullets">
+            <li *ngFor="let highlight of coreDivisions[0].highlights">
+              <app-icon name="check" [size]="16" class="bullet-icon"></app-icon>
+              <span>{{ highlight }}</span>
+            </li>
+          </ul>
+
+          <div class="division-spec-grid">
+            <div class="spec-cell" *ngFor="let spec of coreDivisions[0].specs">
+              <span class="spec-lbl">{{ spec.label }}</span>
+              <span class="spec-val">{{ spec.value }}</span>
+            </div>
+          </div>
+
+          <div class="division-action-row">
+            <a [routerLink]="coreDivisions[0].link" class="btn-nature-primary">
+              <span>{{ coreDivisions[0].linkText }}</span>
+              <app-icon name="arrow-right" [size]="16"></app-icon>
+            </a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <div class="division-spacer-thread" aria-hidden="true"></div>
+
+    <!-- Division 2: Woven Fabrics (Asymmetric Composition B - Inverted Layout) -->
+    <article class="division-editorial-block division-weaving reversed-layout" appScrollReveal>
+      <div class="division-grid">
+        <!-- Information Column (Left on Desktop) -->
+        <div class="division-info-col">
+          <div class="division-header-group">
+            <span class="division-num">{{ coreDivisions[1].number }}</span>
+            <span class="division-kicker">AIRJET WEAVING SHED</span>
+            <h3 class="division-title">{{ coreDivisions[1].title }}</h3>
+            <p class="division-subtitle">{{ coreDivisions[1].subtitle }}</p>
+          </div>
+
+          <p class="division-desc">{{ coreDivisions[1].description }}</p>
+
+          <ul class="division-bullets">
+            <li *ngFor="let highlight of coreDivisions[1].highlights">
+              <app-icon name="check" [size]="16" class="bullet-icon"></app-icon>
+              <span>{{ highlight }}</span>
+            </li>
+          </ul>
+
+          <div class="division-spec-grid">
+            <div class="spec-cell" *ngFor="let spec of coreDivisions[1].specs">
+              <span class="spec-lbl">{{ spec.label }}</span>
+              <span class="spec-val">{{ spec.value }}</span>
+            </div>
+          </div>
+
+          <div class="division-action-row">
+            <a [routerLink]="coreDivisions[1].link" class="btn-nature-primary">
+              <span>{{ coreDivisions[1].linkText }}</span>
+              <app-icon name="arrow-right" [size]="16"></app-icon>
+            </a>
+          </div>
+        </div>
+
+        <!-- Visual Column: Dual Staggered Photographic Frame (Right on Desktop) -->
+        <div class="division-visual-col">
+          <div class="division-dual-stage">
+            <div class="primary-photo-wrap">
+              <img
+                [src]="coreDivisions[1].primaryImage"
+                alt="Tsudakoma airjet looms weaving fabric at LS Mills"
+                loading="lazy"
+              />
+              <div class="photo-overlay-tag">TSUDAKOMA AIRJET LOOMS</div>
+            </div>
+            <div class="secondary-photo-thumb">
+              <img
+                [src]="coreDivisions[1].secondaryImage"
+                alt="Woven grey fabric inspection"
+                loading="lazy"
+              />
+              <div class="thumb-tag">GREIGE METROLOGY</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <div class="division-spacer-thread" aria-hidden="true"></div>
+
+    <!-- Division 3: Home Textiles (Asymmetric Composition C) -->
+    <article class="division-editorial-block division-home-textiles" appScrollReveal>
+      <div class="division-grid">
+        <!-- Visual Column: Dual Staggered Photographic Frame -->
+        <div class="division-visual-col">
+          <div class="division-dual-stage">
+            <div class="primary-photo-wrap">
+              <img
+                [src]="coreDivisions[2].primaryImage"
+                alt="Artisan cut and sew stitching unit at LS Mills"
+                loading="lazy"
+              />
+              <div class="photo-overlay-tag">CUT &amp; SEW FACILITY</div>
+            </div>
+            <div class="secondary-photo-thumb">
+              <img
+                [src]="coreDivisions[2].secondaryImage"
+                alt="Finished luxury bed linen styling"
+                loading="lazy"
+              />
+              <div class="thumb-tag">FINISHED LUXURY BEDDING</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Information Column -->
+        <div class="division-info-col">
+          <div class="division-header-group">
+            <span class="division-num">{{ coreDivisions[2].number }}</span>
+            <span class="division-kicker">MADE UPS &amp; BED LINEN</span>
+            <h3 class="division-title">{{ coreDivisions[2].title }}</h3>
+            <p class="division-subtitle">{{ coreDivisions[2].subtitle }}</p>
+          </div>
+
+          <p class="division-desc">{{ coreDivisions[2].description }}</p>
+
+          <ul class="division-bullets">
+            <li *ngFor="let highlight of coreDivisions[2].highlights">
+              <app-icon name="check" [size]="16" class="bullet-icon"></app-icon>
+              <span>{{ highlight }}</span>
+            </li>
+          </ul>
+
+          <div class="division-spec-grid">
+            <div class="spec-cell" *ngFor="let spec of coreDivisions[2].specs">
+              <span class="spec-lbl">{{ spec.label }}</span>
+              <span class="spec-val">{{ spec.value }}</span>
+            </div>
+          </div>
+
+          <div class="division-action-row">
+            <a [routerLink]="coreDivisions[2].link" class="btn-nature-primary">
+              <span>{{ coreDivisions[2].linkText }}</span>
+              <app-icon name="arrow-right" [size]="16"></app-icon>
+            </a>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     SECTION 4: OUR APPROACH — FULL-WIDTH FOREST GREEN (#183D32)
+     ========================================================================== -->
+<section class="editorial-section approach-section bg-forest-green" aria-label="Our Approach - Operating Principles">
+  <div class="approach-texture-overlay" aria-hidden="true"></div>
+
+  <div class="ls-container approach-container">
+    <div class="approach-header text-center" appScrollReveal>
+      <span class="editorial-kicker">THREE GUIDING PRINCIPLES</span>
+      <h2 class="approach-title">
+        The Principles of Our Practice
+      </h2>
+      <p class="approach-lead">
+        Disciplined craftsmanship, benchmark technological investments, and responsibility to community and environment define every metre of textile we produce.
+      </p>
+    </div>
+
+    <!-- 3 Approach Pillars Grid -->
+    <div class="approach-cards-grid">
+      <div
+        class="approach-card"
+        *ngFor="let principle of approachPrinciples; let idx = index"
+        appScrollReveal
+        [revealDelay]="idx * 120"
+      >
+        <div class="card-top-bar">
+          <span class="principle-num">{{ principle.number }}</span>
+          <div class="principle-icon-wrapper">
+            <app-icon [name]="principle.icon" [size]="24"></app-icon>
+          </div>
+        </div>
+
+        <h3 class="principle-title">{{ principle.title }}</h3>
+        <p class="principle-summary">{{ principle.summary }}</p>
+
+        <div class="principle-fine-divider"></div>
+
+        <p class="principle-details">{{ principle.details }}</p>
+      </div>
+    </div>
+
+    <!-- Fine Bottom Note on Audit Verification -->
+    <div class="approach-audit-banner" appScrollReveal [revealDelay]="350">
+      <div class="banner-icon">
+        <app-icon name="shield" [size]="20"></app-icon>
+      </div>
+      <p class="banner-text">
+        Every spindle run and woven roll adheres strictly to international benchmarks certified under <strong>ISO 9001 (Bureau Veritas)</strong> and <strong>Global Organic Textile Standard (GOTS)</strong>.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     SECTION 5: THENI & NATURE — NATURE TO TEXTILE STORY
+     ========================================================================== -->
+<section class="editorial-section theni-nature-section bg-cotton-ivory" aria-label="Theni and Nature">
+  <div class="ls-container">
+    <div class="section-editorial-header" appScrollReveal>
+      <div class="kicker-row">
+        <span class="editorial-kicker">TERROIR &bull; WESTERN GHATS</span>
+        <span class="geo-coord">THENI VALLEY &bull; 10.01&deg; N</span>
+      </div>
+      <h2 class="section-editorial-title">
+        Inspired by Nature.<br />
+        <span class="serif-italic-accent">Crafted with Purpose.</span>
+      </h2>
+      <p class="section-lead-text">
+        At the foothills of the Western Ghats, nature provides the raw elements that fuel our craft—pure groundwater, optimal relative humidity, and a generational connection to the soil.
+      </p>
+    </div>
+
+    <!-- Nature-to-Textile Connected Journey Grid -->
+    <div class="nature-journey-wrapper" appScrollReveal>
+      <!-- Animated Thread Line Motif Behind Checkpoints -->
+      <div class="nature-thread-track" aria-hidden="true">
+        <div class="thread-line-pulse"></div>
+      </div>
+
+      <div class="nature-checkpoints-grid">
+        <div
+          class="nature-checkpoint-card"
+          *ngFor="let point of theniNatureSteps; let idx = index"
+          [attr.data-step]="point.step"
+        >
+          <div class="card-visual-frame">
+            <img [src]="point.image" [alt]="point.title" loading="lazy" />
+            <div class="visual-tag">{{ point.tag }}</div>
+            <div class="checkpoint-node-marker">
+              <span>{{ point.step }}</span>
+            </div>
+          </div>
+
+          <div class="card-text-body">
+            <span class="checkpoint-step-label">PHASE {{ point.step }}</span>
+            <h3 class="checkpoint-title">{{ point.title }}</h3>
+            <h4 class="checkpoint-sub">{{ point.subtitle }}</h4>
+            <p class="checkpoint-desc">{{ point.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     SECTION 6: MANUFACTURING & PEOPLE — REAL LS MILLS SHOWCASE
+     ========================================================================== -->
+<section class="editorial-section showcase-section bg-soft-stone" aria-label="Manufacturing and People Showcase">
+  <div class="ls-container">
+    <div class="section-editorial-header" appScrollReveal>
+      <div class="kicker-row">
+        <span class="editorial-kicker">AUTHENTIC INDUSTRIAL EXCELLENCE</span>
+        <span class="header-index">FACILITIES GALLERY</span>
+      </div>
+      <h2 class="section-editorial-title">
+        The Floor, The Machines,<br />
+        <span class="serif-italic-accent">The Artisans.</span>
+      </h2>
+      <p class="section-lead-text">
+        Witness actual production at LS Mills Limited: ring spinning frames, airjet looms, precision laboratory testing, and master cut-and-sew artisans at work in Theni.
+      </p>
+    </div>
+
+    <!-- Interactive Showcase Selector & Dominant Feature -->
+    <div class="showcase-interactive-grid" appScrollReveal>
+      <!-- Left: Dominant Active Feature Image (7 cols) -->
+      <div class="dominant-showcase-col">
+        <div class="dominant-media-frame">
           <img
-            src="https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&w=1200&q=80"
-            alt="Spindles and yarn cones at LS Mills"
+            [src]="activeShowcase.image"
+            [alt]="activeShowcase.title"
+            class="dominant-photo"
             loading="lazy"
           />
-          <div class="media-meta-tag">FIGURE 02 &mdash; RING SPINNING FACILITY / CORRIDOR VIEW</div>
+          <div class="dominant-badge">{{ activeShowcase.badge }}</div>
+          <div class="dominant-caption-plate">
+            <span class="plate-division">{{ activeShowcase.division }}</span>
+            <h3 class="plate-title">{{ activeShowcase.title }}</h3>
+            <p class="plate-text">{{ activeShowcase.caption }}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Showcase Detail Selector Grid (5 cols) -->
+      <div class="detail-selector-col">
+        <div class="selector-instructions">
+          <span class="instruction-label">SELECT A PRODUCTION DIVISION</span>
+          <span class="instruction-count">{{ showcaseImages.length }} VERIFIED SECTORS</span>
         </div>
 
-        <div class="narrative-paragraphs">
-          <h3 class="narrative-h3">Our Foundation & Ethos</h3>
-          <p>
-            LS Mills Limited was founded to bridge the gap between agrarian raw cotton cultivation and high-precision engineered yarns and fabrics for discerning global converters.
-          </p>
-          <p>
-            Over the decades, we have evolved from regional yarn manufacturing into an integrated textile organization spanning high-speed carding, precision combing, compact ring spinning, wide-width air-jet weaving, and specialized finished home textiles.
-          </p>
-          <p>
-            Rather than emphasizing short-term production volume at the expense of yarn hairiness or dimensional stability, we implement continuous physical testing protocols across each operational shift.
-          </p>
+        <div class="showcase-tiles-list">
+          <button
+            type="button"
+            class="showcase-tile-item"
+            *ngFor="let item of showcaseImages"
+            [class.active]="item.id === activeShowcaseId"
+            (click)="selectShowcase(item.id)"
+            [attr.aria-selected]="item.id === activeShowcaseId"
+          >
+            <div class="tile-thumbnail-wrap">
+              <img [src]="item.image" [alt]="item.title" loading="lazy" />
+            </div>
+            <div class="tile-info">
+              <span class="tile-badge">{{ item.badge }}</span>
+              <h4 class="tile-title">{{ item.title }}</h4>
+              <p class="tile-division">{{ item.division }}</p>
+            </div>
+            <div class="tile-active-arrow">
+              <app-icon name="arrow-right" [size]="16"></app-icon>
+            </div>
+          </button>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-
-<!-- Section: Verified Evolution Timeline -->
-<section class="editorial-section timeline-section bg-soft-stone" aria-label="Company Evolution">
+<!-- ==========================================================================
+     SECTION 7: EXECUTIVE LEADERSHIP & GLOBAL ACCREDITATIONS
+     ========================================================================== -->
+<section class="editorial-section leadership-section bg-forest-green" aria-label="Executive Leadership">
   <div class="ls-container">
-    <div class="timeline-head">
-      <span class="editorial-kicker">HISTORICAL PROGRESSION</span>
-      <h2 class="section-title">THE PATH OF GROWTH</h2>
-      <p class="section-lead">A verified timeline reflecting calculated investments in modern machinery and product diversification.</p>
-    </div>
+    <div class="leadership-editorial-grid">
+      <!-- Left: Managing Director's Statement (7 cols) -->
+      <div class="leader-statement-col" appScrollReveal>
+        <span class="editorial-kicker">EXECUTIVE LEADERSHIP &bull; MANAGING DIRECTOR</span>
+        <h2 class="leader-headline">
+          Guiding Four Decades of Textile Heritage
+        </h2>
 
-    <div class="timeline-sequence">
-      <div class="timeline-step" *ngFor="let item of timeline; let idx = index">
-        <div class="step-marker">
-          <span class="step-idx">0{{ idx + 1 }}</span>
-          <div class="step-line"></div>
+        <div class="leader-quote-block">
+          <div class="quote-mark-line"></div>
+          <blockquote class="leader-quote">
+            &ldquo;{{ executiveProfile.quote }}&rdquo;
+          </blockquote>
+          <div class="leader-identity">
+            <span class="identity-name">{{ executiveProfile.name }}</span>
+            <span class="identity-role">{{ executiveProfile.title }} &bull; LS Mills Limited</span>
+          </div>
         </div>
-        <div class="step-content">
-          <span class="step-period">{{ item.period }}</span>
-          <h3 class="step-title">{{ item.title }}</h3>
-          <p class="step-desc">{{ item.description }}</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-
-<!-- Section: Mission & Vision Editorial Split -->
-<section class="editorial-section mission-vision-section" aria-label="Mission and Vision">
-  <div class="ls-container">
-    <div class="ls-grid-12">
-      <!-- Mission Card -->
-      <div class="mission-card col-span-6">
-        <span class="editorial-kicker">PURPOSE</span>
-        <h3 class="card-headline">OUR MISSION</h3>
-        <p class="card-text">
-          To engineer textile yarns, fabrics, and home linens of uncompromising physical consistency, empowering our global partners with reliable delivery and transparent manufacturing standards.
+        <p class="leader-context-para">
+          {{ executiveProfile.context }}
         </p>
-        <ul class="card-bullets">
-          <li>Continuous technological upgradation of spinning & weaving floors.</li>
-          <li>Systematic reduction of raw material waste via closed-loop recycling.</li>
-          <li>Equitable working conditions and safety across our Theni plants.</li>
-        </ul>
       </div>
 
-      <!-- Vision Card -->
-      <div class="vision-card col-span-6">
-        <span class="editorial-kicker">HORIZON</span>
-        <h3 class="card-headline">OUR VISION</h3>
-        <p class="card-text">
-          To stand as South India’s benchmark textile enterprise for manufacturing discipline, where precision engineering and responsible stewardship converge into enduring customer trust.
-        </p>
-        <ul class="card-bullets">
-          <li>Deepening global customer relationships across North America, Europe, and Asia.</li>
-          <li>Expanding wide-width weaving capabilities up to 1000 Thread Count luxury constructions.</li>
-          <li>Fostering generational textile engineering talent in Tamil Nadu.</li>
-        </ul>
+      <!-- Right: Commercial Footprint & Accreditations (5 cols) -->
+      <div class="credentials-card-col" appScrollReveal [revealDelay]="150">
+        <div class="credentials-box">
+          <div class="credentials-box-header">
+            <span class="cred-kicker">GLOBAL ACCREDITATIONS</span>
+            <h3 class="cred-title">Verified International Quality</h3>
+          </div>
+
+          <div class="cred-items-stack">
+            <!-- ISO 9001 -->
+            <div class="cred-card">
+              <div class="cred-icon-box">
+                <app-icon name="award" [size]="22"></app-icon>
+              </div>
+              <div class="cred-content">
+                <h4>ISO 9001 Certified</h4>
+                <p>Audited and verified by Bureau Veritas Certification (BVC) across all spinning and weaving processes.</p>
+              </div>
+            </div>
+
+            <!-- GOTS Organic -->
+            <div class="cred-card">
+              <div class="cred-icon-box">
+                <app-icon name="shield" [size]="22"></app-icon>
+              </div>
+              <div class="cred-content">
+                <h4>100% Organic Cotton</h4>
+                <p>Certified under Global Organic Textile Standard for organic staple processing and chemical-free spinning.</p>
+              </div>
+            </div>
+
+            <!-- New York Showroom -->
+            <div class="cred-card">
+              <div class="cred-icon-box">
+                <app-icon name="map-pin" [size]="22"></app-icon>
+              </div>
+              <div class="cred-content">
+                <h4>New York Showroom</h4>
+                <p>Suite #510, 5th Floor, 230 Fifth Avenue, NY – 10001, serving retail partners across North America.</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-
-<!-- Section: Core Operating Values -->
-<section class="editorial-section values-section bg-charcoal" aria-label="Core Values">
+<!-- ==========================================================================
+     SECTION 8: EDITORIAL CTA — CONNECT WITH THE COMMERCIAL DESK
+     ========================================================================== -->
+<section class="editorial-section about-cta-section bg-cotton-ivory" aria-label="Commercial Inquiries">
   <div class="ls-container">
-    <div class="values-header">
-      <span class="editorial-kicker">ETHICAL CODE</span>
-      <h2 class="section-title">FOUR OPERATING PILLARS</h2>
-    </div>
+    <div class="about-cta-panel" appScrollReveal>
+      <div class="cta-inner-grid">
+        <div class="cta-content-col">
+          <span class="editorial-kicker">PARTNER WITH LS MILLS LIMITED</span>
+          <h2 class="cta-heading">
+            Experience Textile Engineering<br />
+            <span class="serif-italic-accent">Built to Last.</span>
+          </h2>
+          <p class="cta-description">
+            Whether your requirements call for Ne 200s compact yarns, 1,000 thread count sateen fabrics, or bespoke finished bed linen programs, our commercial technical desk is ready to collaborate.
+          </p>
 
-    <div class="ls-grid-12 values-grid">
-      <div class="value-box" *ngFor="let val of coreValues">
-        <span class="value-num">{{ val.num }}</span>
-        <h3 class="value-title">{{ val.title }}</h3>
-        <p class="value-summary">{{ val.summary }}</p>
+          <div class="cta-button-group">
+            <a routerLink="/manufacturing" class="btn-nature-primary">
+              <span>EXPLORE MANUFACTURING CAPABILITIES</span>
+              <app-icon name="arrow-right" [size]="16"></app-icon>
+            </a>
+            <a routerLink="/contact" class="btn-nature-secondary">
+              <span>CONTACT COMMERCIAL DESK</span>
+              <app-icon name="arrow-up-right" [size]="16"></app-icon>
+            </a>
+          </div>
+        </div>
+
+        <div class="cta-meta-col">
+          <div class="direct-contact-card">
+            <span class="card-kicker">HEADQUARTERS &bull; THENI</span>
+            <h4 class="card-facility">LS Mills Limited</h4>
+            <p class="card-address">
+              #351, Madurai Road,<br />
+              Theni - 625531. India.
+            </p>
+            <div class="card-details">
+              <div class="detail-row">
+                <span class="lbl">Phone:</span>
+                <span class="val">+91 80125 32502 -05</span>
+              </div>
+              <div class="detail-row">
+                <span class="lbl">Fax:</span>
+                <span class="val">+91 4546 252742</span>
+              </div>
+              <div class="detail-row">
+                <span class="lbl">Email:</span>
+                <span class="val">info&#64;lsmills.in</span>
+              </div>
+              <div class="detail-row">
+                <span class="lbl">Showroom:</span>
+                <span class="val">Suite # 510, 5th Floor, 230 Fifth Avenue, NY – 10001 (646 492 1835)</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-
-    <div class="values-cta">
-      <a routerLink="/manufacturing" class="btn-editorial-copper">
-        <span>INSPECT OUR MANUFACTURING CAPABILITIES</span>
-        <app-icon name="arrow-right" [size]="16"></app-icon>
-      </a>
-      <a routerLink="/contact" class="btn-editorial-outline">
-        <span>CONNECT WITH MANAGEMENT</span>
-        <app-icon name="arrow-up-right" [size]="16"></app-icon>
-      </a>
     </div>
   </div>
 </section>

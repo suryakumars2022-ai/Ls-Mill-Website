@@ -3,12 +3,13 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Router, NavigationEnd } from '@angular/router';
 import { TextileDataService } from '../../services/textile-data.service';
 import { IconComponent } from '../icon/icon.component';
+import { LogoComponent } from '../logo/logo.component';
 import { filter, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule, RouterModule, IconComponent],
+  imports: [CommonModule, RouterModule, IconComponent, LogoComponent],
   template: `
     <!-- Top Scroll Progress Line -->
     <div
@@ -31,10 +32,9 @@ import { filter, Subscription } from 'rxjs';
       }"
     >
       <div class="ls-container navbar-inner">
-        <!-- Brand Wordmark -->
+        <!-- Brand Wordmark & Vector Monogram Logo -->
         <a routerLink="/" class="brand-wordmark" (click)="closeMobileMenu()" aria-label="LS Mills Limited Home">
-          <span class="brand-title">LS MILLS</span>
-          <span class="brand-subtitle">THENI / INDIA</span>
+          <app-logo [variant]="'horizontal'" [theme]="'light'"></app-logo>
         </a>
 
         <!-- Desktop Navigation Links -->
@@ -56,7 +56,7 @@ import { filter, Subscription } from 'rxjs';
         <!-- Right Action Button & Mobile Toggle -->
         <div class="header-actions">
           <a routerLink="/contact" class="nav-cta-btn">
-            <span>GET IN TOUCH</span>
+            <span>ENQUIRE NOW</span>
             <app-icon name="arrow-up-right" [size]="14"></app-icon>
           </a>
 
@@ -94,8 +94,7 @@ import { filter, Subscription } from 'rxjs';
     >
       <div class="drawer-header">
         <div class="drawer-brand">
-          <span class="brand-title">LS MILLS</span>
-          <span class="drawer-geo">THENI, TAMIL NADU / INDIA</span>
+          <app-logo [variant]="'horizontal'" [theme]="'light'"></app-logo>
         </div>
         <button class="drawer-close" (click)="closeMobileMenu()" aria-label="Close navigation menu">
           <app-icon name="x" [size]="22"></app-icon>
@@ -121,7 +120,7 @@ import { filter, Subscription } from 'rxjs';
       </nav>
 
       <div class="drawer-footer">
-        <div class="drawer-motto">TEXTILE EXPERTISE ROOTED IN MANUFACTURING DISCIPLINE</div>
+        <div class="drawer-motto">ROOTED IN NATURE. REFINED THROUGH TEXTILE CRAFT.</div>
         <a routerLink="/contact" (click)="closeMobileMenu()" class="btn-editorial-copper w-full">
           <span>BUSINESS ENQUIRY</span>
           <app-icon name="arrow-right" [size]="16"></app-icon>
@@ -147,12 +146,12 @@ import { filter, Subscription } from 'rxjs';
     }
 
     .ls-header.scrolled {
-      background-color: rgba(32, 33, 30, 0.94);
+      background-color: rgba(24, 61, 50, 0.94);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
-      color: var(--color-warm-ivory);
+      border-bottom: 1px solid rgba(214, 168, 95, 0.3);
+      box-shadow: 0 10px 30px rgba(16, 41, 34, 0.35);
+      color: var(--color-cotton-ivory);
     }
 
     .navbar-inner {
@@ -165,14 +164,36 @@ import { filter, Subscription } from 'rxjs';
     /* Wordmark */
     .brand-wordmark {
       display: flex;
+      align-items: center;
+      gap: 12px;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .brand-logo-img {
+      height: 38px;
+      width: auto;
+      max-width: 130px;
+      object-fit: contain;
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 3px 7px;
+      border-radius: 2px;
+      transition: background-color 0.3s ease;
+    }
+
+    .ls-header.scrolled .brand-logo-img {
+      background-color: #FFFFFF;
+    }
+
+    .brand-text-block {
+      display: flex;
       flex-direction: column;
       gap: 2px;
-      color: inherit;
     }
 
     .brand-title {
       font-family: var(--font-serif);
-      font-size: 1.55rem;
+      font-size: 1.45rem;
       font-weight: 600;
       letter-spacing: 0.14em;
       line-height: 1;
@@ -432,6 +453,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
   private router = inject(Router);
 
   navItems = this.dataService.navItems;
+  logoUrl = this.dataService.assets.brand.logo;
+  logoFailed = false;
   isScrolled = false;
   isMobileMenuOpen = false;
   isDarkPage = false;

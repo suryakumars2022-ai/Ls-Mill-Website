@@ -1,14 +1,15 @@
 /* ==========================================================================
-   PRODUCTS CATALOGUE — SCSS STYLING
+   PRODUCTS CATALOGUE — "THENI NATURE & TEXTILE" SCSS STYLING
    ========================================================================== */
 
 .page-editorial-header {
   position: relative;
   padding-top: 150px;
   padding-bottom: 90px;
-  color: var(--color-warm-ivory);
+  color: var(--color-cotton-ivory);
+  background-color: var(--color-forest-green);
   overflow: hidden;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(214, 168, 95, 0.3);
 }
 
 .header-texture-overlay {
@@ -16,8 +17,8 @@
   inset: 0;
   background-image: repeating-linear-gradient(
     45deg,
-    rgba(255, 255, 255, 0.02) 0px,
-    rgba(255, 255, 255, 0.02) 1px,
+    rgba(214, 168, 95, 0.03) 0px,
+    rgba(214, 168, 95, 0.03) 1px,
     transparent 1px,
     transparent 12px
   );
@@ -42,18 +43,19 @@
   line-height: 1.05;
   text-transform: uppercase;
   margin-bottom: 2rem;
+  color: var(--color-cotton-ivory);
 }
 
 .serif-italic {
   font-style: italic;
   font-family: var(--font-serif);
-  color: var(--color-copper-light);
+  color: var(--color-harvest-gold);
 }
 
 .header-lead {
   font-size: clamp(1.1rem, 1.5vw, 1.35rem);
   line-height: 1.65;
-  color: rgba(244, 241, 232, 0.85);
+  color: rgba(243, 240, 229, 0.88);
   max-width: 780px;
   font-weight: 300;
 }
@@ -61,6 +63,7 @@
 /* Filter Bar */
 .catalogue-filter-bar {
   border-bottom: 1px solid var(--color-border-stone);
+  background-color: var(--color-leaf-sage-soft);
 }
 
 .filter-controls-wrapper {
@@ -95,13 +98,14 @@
   transition: all var(--transition-fast);
 
   &:hover {
-    border-color: var(--color-charcoal);
+    border-color: var(--color-forest-green);
+    color: var(--color-forest-green);
   }
 
   &.active {
-    background-color: var(--color-charcoal);
-    color: var(--color-warm-ivory);
-    border-color: var(--color-charcoal);
+    background-color: var(--color-forest-green);
+    color: var(--color-cotton-ivory);
+    border-color: var(--color-harvest-gold);
   }
 }
 
@@ -117,7 +121,7 @@
   max-width: 380px;
 
   .search-icon {
-    color: rgba(32, 33, 30, 0.4);
+    color: var(--color-forest-green);
     flex-shrink: 0;
   }
 
@@ -131,12 +135,12 @@
     background: transparent;
 
     &::placeholder {
-      color: rgba(32, 33, 30, 0.45);
+      color: rgba(36, 41, 35, 0.45);
     }
   }
 
   .clear-search {
-    color: rgba(32, 33, 30, 0.5);
+    color: rgba(36, 41, 35, 0.5);
     padding: 2px;
   }
 }
@@ -160,13 +164,13 @@
     font-family: var(--font-marker);
     font-size: 0.725rem;
     letter-spacing: 0.18em;
-    color: var(--color-muted-copper);
+    color: var(--color-forest-green);
     font-weight: 600;
   }
 
   .meta-note {
     font-size: 0.825rem;
-    color: rgba(32, 33, 30, 0.6);
+    color: rgba(36, 41, 35, 0.65);
   }
 }
 
@@ -197,8 +201,8 @@
 
   &:hover {
     transform: translateY(-4px);
-    border-color: var(--color-muted-copper);
-    box-shadow: 0 16px 36px rgba(32, 33, 30, 0.08);
+    border-color: var(--color-harvest-gold);
+    box-shadow: 0 16px 36px rgba(24, 61, 50, 0.08);
 
     .product-media-frame img {
       transform: scale(1.04);
@@ -209,7 +213,7 @@
     }
 
     .spec-link {
-      color: var(--color-muted-copper);
+      color: var(--color-forest-green);
     }
   }
 }
@@ -232,17 +236,23 @@
     top: 12px;
     left: 12px;
     z-index: 2;
+
+    .editorial-tag {
+      background-color: rgba(24, 61, 50, 0.85);
+      color: var(--color-cotton-ivory);
+      border-color: rgba(214, 168, 95, 0.4);
+    }
   }
 
   .quickview-overlay {
     position: absolute;
     inset: 0;
-    background-color: rgba(32, 33, 30, 0.65);
+    background-color: rgba(24, 61, 50, 0.75);
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
-    color: var(--color-warm-ivory);
+    color: var(--color-cotton-ivory);
     opacity: 0;
     transition: opacity var(--transition-fast);
     backdrop-filter: blur(2px);
@@ -253,6 +263,7 @@
       font-size: 0.7rem;
       letter-spacing: 0.18em;
       font-weight: 600;
+      color: var(--color-harvest-gold);
     }
   }
 }
@@ -274,13 +285,13 @@
     font-family: var(--font-marker);
     font-size: 0.725rem;
     letter-spacing: 0.15em;
-    color: var(--color-muted-copper);
+    color: var(--color-harvest-gold);
     font-weight: 600;
   }
 
   .product-comp {
     font-size: 0.75rem;
-    color: rgba(32, 33, 30, 0.6);
+    color: rgba(36, 41, 35, 0.65);
   }
 }
 
@@ -288,26 +299,26 @@
   font-size: 1.4rem;
   line-height: 1.2;
   margin-bottom: 12px;
-  color: var(--color-charcoal);
+  color: var(--color-forest-green);
 }
 
 .product-app-brief {
   font-size: 0.85rem;
   line-height: 1.5;
-  color: rgba(32, 33, 30, 0.75);
+  color: rgba(36, 41, 35, 0.8);
   margin-bottom: 10px;
 
   .app-lbl {
     font-weight: 600;
     font-size: 0.75rem;
-    color: var(--color-charcoal);
+    color: var(--color-forest-green);
   }
 }
 
 .product-desc-snippet {
   font-size: 0.9rem;
   line-height: 1.6;
-  color: rgba(32, 33, 30, 0.7);
+  color: rgba(36, 41, 35, 0.75);
   margin-bottom: 18px;
   flex-grow: 1;
 }
@@ -325,7 +336,7 @@
     font-size: 0.7rem;
     letter-spacing: 0.15em;
     font-weight: 600;
-    color: var(--color-charcoal);
+    color: var(--color-forest-green);
     transition: color var(--transition-fast);
   }
 }
@@ -340,25 +351,27 @@
   margin: 0 auto 5rem auto;
 
   .no-icon {
-    color: var(--color-muted-copper);
+    color: var(--color-harvest-gold);
     margin-bottom: 16px;
   }
 
   h3 {
     font-size: 1.8rem;
+    color: var(--color-forest-green);
     margin-bottom: 8px;
   }
 
   p {
     font-size: 0.95rem;
-    color: rgba(32, 33, 30, 0.75);
+    color: rgba(36, 41, 35, 0.75);
     margin-bottom: 24px;
   }
 }
 
 /* Sourcing Banner */
 .custom-sourcing-banner {
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background-color: var(--color-forest-green);
+  border: 1px solid rgba(214, 168, 95, 0.35);
   padding: clamp(2rem, 4vw, 3.5rem);
   display: flex;
   flex-direction: column;
@@ -376,14 +389,14 @@
 
     h2 {
       font-size: clamp(1.8rem, 3vw, 2.8rem);
-      color: var(--color-warm-ivory);
+      color: var(--color-cotton-ivory);
       margin-top: 8px;
       margin-bottom: 10px;
       line-height: 1.15;
     }
 
     p {
-      color: rgba(244, 241, 232, 0.75);
+      color: rgba(243, 240, 229, 0.85);
       font-size: 1rem;
       line-height: 1.6;
     }

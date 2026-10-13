@@ -58,7 +58,7 @@ import { CommonModule } from '@angular/common';
       left: -20px;
       width: 40px;
       height: 40px;
-      border: 1px solid rgba(166, 108, 75, 0.5);
+      border: 1px solid rgba(214, 168, 95, 0.5);
       border-radius: 50%;
       pointer-events: none;
       transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1),
@@ -74,8 +74,8 @@ import { CommonModule } from '@angular/common';
         height: 60px;
         top: -30px;
         left: -30px;
-        border-color: rgba(192, 133, 99, 0.8);
-        background-color: rgba(166, 108, 75, 0.08);
+        border-color: rgba(214, 168, 95, 0.85);
+        background-color: rgba(214, 168, 95, 0.08);
       }
     }
 

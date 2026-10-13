@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EnquiryService } from '../../services/enquiry.service';
+import { TextileDataService } from '../../services/textile-data.service';
 import { IconComponent } from '../../components/icon/icon.component';
 
 @Component({
@@ -15,6 +16,10 @@ import { IconComponent } from '../../components/icon/icon.component';
 export class ContactComponent implements OnInit {
   private fb = inject(FormBuilder);
   private enquiryService = inject(EnquiryService);
+  private dataService = inject(TextileDataService);
+
+  companyProfile = this.dataService.companyProfile;
+  assets = this.dataService.assets;
 
   contactForm!: FormGroup;
   isSubmitting = false;

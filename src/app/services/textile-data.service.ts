@@ -1,17 +1,51 @@
 import { Injectable } from '@angular/core';
-import { NavItem, TextileJourneyStage, ManufacturingCapability, ProductItem } from '../models/textile.model';
+import { NavItem, TextileJourneyStage, ManufacturingCapability, ProductItem, GalleryItem } from '../models/textile.model';
+import { LS_MILLS_ASSETS } from '../config/assets.config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TextileDataService {
+  readonly assets = LS_MILLS_ASSETS;
+
+  readonly companyProfile = {
+    name: 'LS Mills Limited',
+    foundingYear: 1979,
+    managingDirector: 'Mr. S. Manivannan',
+    location: 'Theni, Tamil Nadu, South India',
+    registeredOffice: '#351, Madurai Road, Theni - 625531. India.',
+    phones: ['+91 80125 32502 -05'],
+    fax: '+91 4546 252742',
+    email: 'info@lsmills.in',
+    usShowroom: {
+      address: 'Suite # 510, 5th Floor, 230 Fifth Avenue, NY – 10001',
+      phone: '646 492 1835'
+    },
+    socialLinks: {
+      facebook: 'https://www.facebook.com/lsmltd/',
+      twitter: 'https://twitter.com/lsmillsonline',
+      linkedin: 'https://www.linkedin.com/company/ls-mills-limited',
+      youtube: 'https://www.youtube.com/channel/UCpjOFuEnnjZvP-Fv7eUnXAQ',
+      instagram: 'https://www.instagram.com/lsmillslimited/'
+    },
+    capacities: {
+      spindles: '150,000 Spindles',
+      dailyYarn: '25 Tonnes Daily',
+      dailySheets: '6,000 Sheets per Day per Shift',
+      threadCounts: '200 to 1,500 Thread Count'
+    },
+    certifications: [
+      { name: 'ISO 9001', authority: 'Bureau Veritas Certification (BVC)', logo: LS_MILLS_ASSETS.quality.isoCert },
+      { name: '100% Organic Cotton', authority: 'Global Organic Textile Standard', logo: LS_MILLS_ASSETS.quality.organicCert }
+    ]
+  };
+
   readonly navItems: NavItem[] = [
     { label: 'Home', route: '/' },
     { label: 'About', route: '/about' },
-    { label: 'Manufacturing', route: '/manufacturing' },
-    { label: 'Products', route: '/products' },
+    { label: 'Capabilities', route: '/manufacturing' },
     { label: 'Sustainability', route: '/sustainability' },
-    { label: 'Careers', route: '/careers' },
+    { label: 'Insights', route: '/products' },
     { label: 'Contact', route: '/contact' }
   ];
 
@@ -20,60 +54,60 @@ export class TextileDataService {
       step: '01',
       title: 'RAW MATERIAL',
       subtitle: 'Fiber Selection & Staple Quality',
-      description: 'The journey commences with strict selection of premium cotton staples and certified fibers. Fibers are systematically tested for micronaire, staple length, fiber strength, and moisture content before entering processing.',
-      image: 'https://images.unsplash.com/photo-1594897030560-69c1cf6ddc4b?auto=format&fit=crop&w=1200&q=80',
+      description: 'The journey commences with strict selection of premium cotton staples and certified fibers: Egyptian Giza, Supima, Organic Cotton, and eco-fibers including Tencel and Refibra.',
+      image: LS_MILLS_ASSETS.about.overviewBg,
       tags: ['Staple Length Testing', 'Moisture Balancing', 'Bale Management'],
       stats: [
-        { label: 'Testing Method', value: 'High Volume Instrument (HVI)' },
-        { label: 'Origin Focus', value: 'Sustainably Farmed Staples' }
+        { label: 'Fiber Spectrum', value: 'Egyptian, Supima, BCI, Tencel' },
+        { label: 'Testing Method', value: 'High Volume Instrument (HVI)' }
       ]
     },
     {
       step: '02',
       title: 'SPINNING',
-      subtitle: 'Carding, Combing & Precision Ring Frames',
-      description: 'Advanced blowroom machinery and high-speed carding align fibers into uniform silver ribbons. Precision combing eliminates short fibers, followed by drawing and ring frame spinning to produce smooth, high-tenacity yarns.',
-      image: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=1200&q=80',
-      tags: ['Compact Spinning', 'Ring Spun Systems', 'Low Imperfection Index'],
+      subtitle: '150,000 Spindles Producing 25 Tonnes Daily',
+      description: 'LMW, Rieter, Muratec, and SSM machinery align fibers into uniform ribbons and spin ultra-fine compact yarns from Ne 40s to Ne 200s in single, plied, gassed, and grey varieties.',
+      image: LS_MILLS_ASSETS.spinning.ringFrames1,
+      tags: ['Compact Spinning', 'SIRO Slub', 'Low Imperfection Index'],
       stats: [
-        { label: 'Count Spectrum', value: 'Ne 20s to Ne 100s' },
-        { label: 'Quality Audit', value: 'Continuous USTER Monitoring' }
+        { label: 'Capacity', value: '150,000 Spindles / 25 TPD' },
+        { label: 'Count Spectrum', value: 'Ne 40s to Ne 200s' }
       ]
     },
     {
       step: '03',
       title: 'WEAVING',
-      subtitle: 'Warp Preparation & High-Speed Loom Craft',
-      description: 'Yarns are warped, sized, and threaded onto high-speed air-jet and rapier looms. Controlled humidity and electronic tension control ensure flawless warp and weft interlacings across intricate weave structures.',
-      image: 'https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=1200&q=80',
-      tags: ['Air-jet Weaving', 'Dobby & Plain Looms', 'Warp Tension Control'],
+      subtitle: 'Benninger Sizing & Tsudakoma Airjet Looms',
+      description: 'Yarns are warped, sized on Benninger systems, and woven on Tsudakoma airjet looms into flawless grey fabrics ranging from 200 to 1,500 thread counts across satin, percale, twill, and dobby.',
+      image: LS_MILLS_ASSETS.weaving.airjetLoom1,
+      tags: ['Airjet Weaving', 'Dobby & Plain Looms', 'Warp Tension Control'],
       stats: [
-        { label: 'Weave Types', value: 'Percale, Sateen, Twill, Dobby' },
-        { label: 'Width Range', value: 'Up to 340 cm Greige Fabric' }
+        { label: 'Thread Count', value: '200 to 1,500 TC' },
+        { label: 'Machinery', value: 'Benninger & Tsudakoma Airjet' }
       ]
     },
     {
       step: '04',
       title: 'FABRIC',
       subtitle: 'Greige Inspection & Structural Integrity',
-      description: 'Woven fabrics undergo 100% illuminated continuous inspection for yarn irregularities, broken picks, or weave tensions. Greige rolls are classified, graded, and prepared for specialized downstream finishing.',
-      image: 'https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?auto=format&fit=crop&w=1200&q=80',
-      tags: ['4-Point Inspection System', 'Uniform Selvages', 'Shrinkage Stability'],
+      description: 'Woven fabrics undergo continuous illuminated inspection for pick density, warp tensions, and surface uniformity, adhering strictly to global 4-point defect grading standards.',
+      image: LS_MILLS_ASSETS.weaving.greyFabrics,
+      tags: ['4-Point Inspection System', 'Uniform Selvages', 'Wide-Width Looms'],
       stats: [
-        { label: 'Fabric Density', value: '180 TC up to 1000 TC' },
-        { label: 'Weight Range', value: '90 GSM to 350 GSM' }
+        { label: 'Weave Varieties', value: 'Satin, Percale, Twill, Dobby, Oxford' },
+        { label: 'Markets', value: 'North America & Europe' }
       ]
     },
     {
       step: '05',
       title: 'FINISHED TEXTILES',
-      subtitle: 'Cut, Sew, Packing & Global Dispatch',
-      description: 'Precision automated cutting, high-thread hemming, and meticulous stitch inspection convert master fabric into luxury home linens, duvet sets, and hospitality collections ready for international distributors.',
-      image: 'https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=1200&q=80',
+      subtitle: '6,000 Luxury Sheets Daily per Shift',
+      description: 'Precision cut-and-sew operations convert master fabrics into world-class bed linens, duvet sets, and hospitality ensembles meeting the rigorous standards of global retail partners.',
+      image: LS_MILLS_ASSETS.madeups.stitchingUnit1,
       tags: ['Bar-tacked Corners', 'Automated Hemming', 'Export-Grade Packaging'],
       stats: [
-        { label: 'Categories', value: 'Bed Linens, Sheets, Pillow Covers' },
-        { label: 'Packaging', value: 'Eco-conscious Banderoles & Cartons' }
+        { label: 'Daily Output', value: '6,000 Sheets / Shift' },
+        { label: 'Thread Counts', value: '200 to 1,500 TC Luxury Bedding' }
       ]
     }
   ];
@@ -83,56 +117,57 @@ export class TextileDataService {
       id: 'spinning',
       num: '01',
       title: 'Spinning and Yarn',
-      category: 'Primary Processing',
-      summary: 'Precision-engineered ring spun and compact yarns produced in climate-controlled spinning floors with continuous quality monitoring.',
+      category: '150,000 Spindles &bull; 25 Tonnes/Day',
+      summary: 'Precision-engineered ring spun, compact, SIRO slub, and gassed yarns produced on world-class machinery from LMW, Rieter, Muratec, and SSM.',
       detailedSpecs: [
-        'Ne 20s to Ne 100s yarn counts in combed and compact configurations',
-        'Electronic yarn clearing and optical foreign fiber elimination',
-        'High tensile strength suitable for high-speed weaving and knitting'
+        'Ne 40s to Ne 200s Count SIRO Compact Slub Yarn',
+        'Ne 40/2 to Ne 200/2 Plied and Parallel Yarn',
+        'Ne 40/2 to Ne 200/2 Gassed Yarn in hard and soft dye cone packages',
+        'Ne 8 to Ne 30 Open End yarn varieties'
       ],
-      image: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=900&q=80',
+      image: LS_MILLS_ASSETS.spinning.heroBg,
       link: '/products?category=yarn'
     },
     {
       id: 'weaving',
       num: '02',
       title: 'Weaving and Fabrics',
-      category: 'Fabric Architecture',
-      summary: 'Advanced airjet and rapier weaving infrastructure configured to produce wide-width percales, sateens, twills, and specialty dobby structures.',
+      category: 'Airjet Looms &bull; 200–1,500 TC',
+      summary: 'Advanced Benninger warping/sizing lines and high-speed Tsudakoma airjet looms weaving luxury grey fabrics for European and American markets.',
       detailedSpecs: [
-        'Fabric widths up to 340 cm accommodating luxury king-size bedding',
-        'Thread count ranges from 180 TC up to 1000 TC',
-        'Strict 4-point defect grading system adhering to international criteria'
+        'Grey Fabrics in Satin, Percale, Twill, Dobby, Seersucker, Waffle, Stripes, and Oxford',
+        'Thread Count range spanning 200 TC to ultra-luxury 1,500 TC',
+        'Fibers: Supima, Egyptian, BCI, Organic Cotton, Tencel, Refibra, Linen, Modal, Hemp'
       ],
-      image: 'https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=900&q=80',
+      image: LS_MILLS_ASSETS.weaving.heroBg,
       link: '/products?category=fabric'
     },
     {
       id: 'home-textiles',
       num: '03',
-      title: 'Home Textiles',
-      category: 'End Products',
-      summary: 'Comprehensive cut-and-sew operations turning premium fabrics into institutional and retail-ready bed linens with bespoke craftsmanship.',
+      title: 'Made Ups / Home Textiles',
+      category: '6,000 Sheets / Shift',
+      summary: 'Comprehensive stitching facilities producing world-class bed linen from 200 to 1,500 thread counts catering to premier international retail demand.',
       detailedSpecs: [
-        'Flat sheets, fitted sheets, pillowcases, duvet covers, and bed skirts',
-        'Mitered hems, self-piping, bar-tacking, and custom embroidery',
-        'Custom packaging, barcode labeling, and palletized export packing'
+        'Forward integration capacity of 6,000 sheets per day per shift',
+        'Bed sheets, duvet covers, pillow shams, and hospitality ensembles',
+        'Showroom presence at 230 Fifth Avenue, New York for international accounts'
       ],
-      image: 'https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=900&q=80',
+      image: LS_MILLS_ASSETS.madeups.heroBg,
       link: '/products?category=home-textile'
     },
     {
       id: 'quality-lab',
       num: '04',
       title: 'Quality & Process Excellence',
-      category: 'Discipline',
-      summary: 'Rigorous in-house physical and mechanical textile testing laboratories ensuring batch-to-batch consistency and technical precision.',
+      category: 'ISO 9001 Certified &bull; BVC',
+      summary: 'Online and offline monitoring systems ensuring complete compliance, backed by ISO 9001 certification by Bureau Veritas and 100% Organic Cotton certification.',
       detailedSpecs: [
-        'Fiber testing: Micronaire, staple length, uniformity index, and strength',
-        'Yarn testing: Count variation, twist per inch (TPI), hairiness, and elongation',
-        'Fabric testing: Tensile strength, tear resistance, dimensional stability, and pilling'
+        'HVI fiber testing for micronaire, staple length, and tenacity',
+        'Online USTER sensors and optical foreign fiber elimination',
+        '4-point ASTM D5430 fabric defect grading standard'
       ],
-      image: 'https://images.unsplash.com/photo-1579208575657-c595a05383b7?auto=format&fit=crop&w=900&q=80',
+      image: LS_MILLS_ASSETS.quality.heroBg,
       link: '/manufacturing'
     }
   ];
@@ -140,129 +175,243 @@ export class TextileDataService {
   readonly products: ProductItem[] = [
     {
       id: 'p-01',
-      name: 'Combed Compact Cotton Yarn',
+      name: 'SIRO Compact Slub Yarn',
       category: 'yarn',
       categoryLabel: 'Yarn Division',
-      countOrWeave: 'Ne 40/1 to Ne 80/1 Compact',
-      composition: '100% Long Staple Cotton',
+      countOrWeave: 'Ne 40s to Ne 200s Compact Single',
+      composition: 'Egyptian, Supima, Organic & BCI Cotton',
       applications: 'High-density luxury shirting, premium bed sheeting, and fine knitting.',
-      description: 'Low-hairiness, compact ring-spun yarn engineered for ultra-smooth surface uniformity, high breaking strength, and minimal pilling in downstream processes.',
+      description: 'Ultra-low hairiness compact ring-spun yarn spun on Muratec & Rieter frames. Retains natural fiber purity with high tensile tenacity.',
       featured: true,
-      image: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=800&q=80',
+      image: LS_MILLS_ASSETS.spinning.yarnCones,
       specifications: [
-        { key: 'Count Range', value: 'Ne 40s to Ne 80s' },
-        { key: 'Twist Multiplier (TM)', value: '3.6 – 4.0' },
-        { key: 'Hairiness (H)', value: '< 3.8' },
-        { key: 'CSP (Count Strength Product)', value: '3100 – 3400' }
+        { key: 'Count Range', value: 'Ne 40s to Ne 200s' },
+        { key: 'Yarn Type', value: 'Single SIRO Compact Slub' },
+        { key: 'Machinery', value: 'Rieter, LMW, Muratec' },
+        { key: 'Package Type', value: 'Paper Cones / Dye Cones' }
       ]
     },
     {
       id: 'p-02',
-      name: 'Ring Spun Combed Yarn',
+      name: 'Plied & Gassed Cotton Yarn',
       category: 'yarn',
       categoryLabel: 'Yarn Division',
-      countOrWeave: 'Ne 20/1 to Ne 60/1',
-      composition: '100% Cotton',
-      applications: 'Standard woven sheetings, poplins, canvas, and industrial textiles.',
-      description: 'Consistent, clean ring-spun cotton yarn produced with high combing efficiency, removing short fibers to maximize tenacity and knot-free winding.',
-      featured: false,
-      image: 'https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&w=800&q=80',
+      countOrWeave: 'Ne 40/2 to Ne 200/2 Gassed',
+      composition: '100% Long Staple Cotton',
+      applications: 'Luxury poplins, high-tenacity weaving, and gassed sewing thread.',
+      description: 'Singe-gassed and plied yarn with protruding fibers eradicated, providing a silky smooth surface and enhanced dye uptake.',
+      featured: true,
+      image: LS_MILLS_ASSETS.spinning.gassedYarn,
       specifications: [
-        { key: 'Count Range', value: 'Ne 20s to Ne 60s' },
-        { key: 'Combing Waste', value: '16% – 20%' },
-        { key: 'Package Type', value: 'Paper Cones / Dye Cones' },
-        { key: 'Elongation', value: '5.8% – 6.5%' }
+        { key: 'Count Range', value: 'Ne 40/2 to Ne 200/2' },
+        { key: 'Process', value: 'TFO Twisting & Flame Gassing' },
+        { key: 'Package', value: 'Hard & Soft Dye Cheese Packages' },
+        { key: 'Tenacity', value: 'High breaking tenacity' }
       ]
     },
     {
       id: 'p-03',
-      name: 'Cotton Percale Woven Fabric',
+      name: 'Grey Sateen Woven Fabric',
       category: 'fabric',
       categoryLabel: 'Woven Fabrics',
-      countOrWeave: '200 TC – 400 TC (1x1 Plain Weave)',
-      composition: '100% Long Staple Cotton',
-      applications: 'Crisp hotel bed linen, breathable shirting, and luxury duvet covers.',
-      description: 'Classic tight plain-weave construction characterized by a matte finish, cool crisp hand-feel, and exceptional durability over commercial laundering cycles.',
+      countOrWeave: '300 TC to 1,500 TC Sateen',
+      composition: 'Supima, Egyptian & Organic Cotton Blends',
+      applications: 'Luxury residential sheeting, European boutique hotels.',
+      description: 'Supple, lustrous four-over-one satin float weave woven on Tsudakoma airjet looms with Benninger sized warp beams.',
       featured: true,
-      image: 'https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?auto=format&fit=crop&w=800&q=80',
+      image: LS_MILLS_ASSETS.weaving.greyFabrics,
       specifications: [
-        { key: 'Thread Count', value: '200 TC, 250 TC, 300 TC, 400 TC' },
-        { key: 'Weave Structure', value: 'Plain 1/1 Percale' },
-        { key: 'Width Availability', value: 'Up to 330 cm' },
-        { key: 'GSM Range', value: '115 – 140 GSM' }
+        { key: 'Thread Count', value: '300 TC up to 1,500 TC' },
+        { key: 'Weave Structure', value: '4/1 Warp Face Sateen' },
+        { key: 'Looms', value: 'Tsudakoma Air Jet Looms' },
+        { key: 'Width Range', value: 'Up to 340 cm Greige Fabric' }
       ]
     },
     {
       id: 'p-04',
-      name: 'Cotton Sateen Luxury Fabric',
+      name: 'Percale & Dobby Stripe Grey Fabric',
       category: 'fabric',
       categoryLabel: 'Woven Fabrics',
-      countOrWeave: '300 TC – 800 TC (4/1 Satin Weave)',
-      composition: '100% Combed Cotton',
-      applications: 'High-end residential sheeting, luxury boutique hotel collections.',
-      description: 'Lustrous four-over-one satin float weave creating a silky, supple drape and soft surface touch with natural sheen.',
+      countOrWeave: '200 TC to 800 TC Percale / Dobby',
+      composition: 'Cotton, Tencel, Linen & Modal Blends',
+      applications: 'Crisp hotel bed linens, hospitality duvets, shirting.',
+      description: 'Crisp, breathable plain weave and intricate geometric dobby stripes engineered for durable laundering and shrink stability.',
       featured: true,
-      image: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=800&q=80',
+      image: LS_MILLS_ASSETS.weaving.weavingSpinning,
       specifications: [
-        { key: 'Thread Count', value: '300 TC, 400 TC, 500 TC, 600 TC, 800 TC' },
-        { key: 'Weave Structure', value: '4/1 Warp Face Sateen' },
-        { key: 'Width Availability', value: 'Up to 340 cm' },
-        { key: 'Finish Type', value: 'Greige or Prepared for Dyeing' }
+        { key: 'Weave Options', value: 'Percale 1/1, Dobby, Seersucker, Waffle, Oxford' },
+        { key: 'Density', value: '200 TC to 800 TC' },
+        { key: 'Quality Standard', value: 'ASTM 4-Point Inspection System' },
+        { key: 'Export Markets', value: 'USA, Europe, Asia-Pacific' }
       ]
     },
     {
       id: 'p-05',
-      name: 'Dobby Stripe Woven Fabric',
-      category: 'fabric',
-      categoryLabel: 'Woven Fabrics',
-      countOrWeave: '250 TC – 400 TC Dobby',
-      composition: '100% Cotton / Blends',
-      applications: 'Hospitality duvets, decorative top-of-bed treatments, institutional linens.',
-      description: 'Subtle geometric stripe woven directly into the fabric using electronic dobby shedding mechanisms, combining visual depth with durability.',
-      featured: false,
-      image: 'https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=800&q=80',
+      name: 'Tailored Luxury Bed Linen Sets',
+      category: 'home-textile',
+      categoryLabel: 'Home Textiles / Made Ups',
+      countOrWeave: '200 TC to 1,500 TC Finished Sets',
+      composition: '100% Cotton, Tencel, Cotton-Linen',
+      applications: 'Global retail bed sets, luxury hospitality suites.',
+      description: 'Manufactured in our dedicated cut-and-sew unit with a capacity of 6,000 sheets daily per shift. Features tailored hems and mitered corners.',
+      featured: true,
+      image: LS_MILLS_ASSETS.madeups.stitchingUnit1,
       specifications: [
-        { key: 'Stripe Patterns', value: '0.5 cm, 1.0 cm, 2.0 cm Satin Stripe' },
-        { key: 'Yarn Configuration', value: 'Ne 40s x 40s, Ne 60s x 60s' },
-        { key: 'Width Availability', value: 'Up to 320 cm' },
-        { key: 'Tensile Strength', value: '> 35 kg warp & weft' }
+        { key: 'Daily Capacity', value: '6,000 Sheets per Shift' },
+        { key: 'Thread Counts', value: '200 TC to 1,500 TC' },
+        { key: 'Finishing Details', value: 'Satin stitch, merrow hem, mitered corners' },
+        { key: 'Packaging', value: 'Export cartons, retail banderoles' }
       ]
     },
     {
       id: 'p-06',
-      name: 'Tailored Bed Linen Sheet Sets',
+      name: 'Duvet Covers & Pillow Sham Ensembles',
       category: 'home-textile',
-      categoryLabel: 'Home Textiles',
-      countOrWeave: '300 TC – 600 TC Sateen / Percale',
-      composition: '100% Pure Combed Cotton',
-      applications: 'Luxury residential master bedrooms and high-tier hospitality suites.',
-      description: 'Precision cut-and-sewn bed sets comprising deep-pocket fitted sheet, flat sheet with 4-inch cuff, and envelope-closure pillowcases.',
-      featured: true,
-      image: 'https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=800&q=80',
+      categoryLabel: 'Home Textiles / Made Ups',
+      countOrWeave: '300 TC to 1,000 TC Sateen / Percale',
+      composition: 'Egyptian & Supima Cotton',
+      applications: 'Master bedroom retail collections, international exports.',
+      description: 'Elegantly proportioned duvet covers featuring hidden button closures, internal corner ties, and French-back flange pillow shams.',
+      featured: false,
+      image: LS_MILLS_ASSETS.madeups.stitchingUnit2,
       specifications: [
-        { key: 'Sizes', value: 'Twin, Full, Queen, King, Cal King' },
-        { key: 'Pocket Depth', value: '14" to 18" with 360° elastic' },
-        { key: 'Hemming', value: 'Double-needle stitch with mitered corners' },
-        { key: 'Packaging', value: 'Self-fabric pouch or presentation box' }
+        { key: 'Closure', value: 'Concealed button or zipper with flap' },
+        { key: 'Sizes', value: 'Twin, Full, Queen, King, Super King' },
+        { key: 'Design Training', value: 'In-house pattern masters' },
+        { key: 'Compliance', value: 'Global retailer code of conduct' }
       ]
+    }
+  ];
+
+  readonly coreDivisions = {
+    yarn: {
+      headline: 'Precision in Every Yarn.',
+      shortText: 'Quality-driven yarn manufacturing, built on consistency and care.',
+      link: '/products?category=yarn',
+      linkText: 'Explore Yarn & Spinning',
+      specs: [
+        { label: 'Spindle Capacity', value: '150,000 Ring Spindles' },
+        { label: 'Daily Output', value: '25 Tonnes Daily' },
+        { label: 'Count Spectrum', value: 'Ne 40s to Ne 200s Compact' },
+        { label: 'Technology', value: 'Rieter, LMW, Muratec, SSM' }
+      ],
+      heroImage: LS_MILLS_ASSETS.spinning.heroBg,
+      detailImage: LS_MILLS_ASSETS.spinning.ringFrames1,
+      macroImage: LS_MILLS_ASSETS.spinning.yarnCones
+    },
+    fabric: {
+      headline: 'Weaving Possibilities.',
+      shortText: 'Engineered fabrics shaped by craftsmanship and technology.',
+      link: '/products?category=fabric',
+      linkText: 'Explore Woven Fabrics',
+      specs: [
+        { label: 'Weaving Technology', value: 'Tsudakoma Airjet Looms' },
+        { label: 'Warp Preparation', value: 'Benninger Sizing & Warping' },
+        { label: 'Thread Count', value: '200 to 1,500 TC Greige' },
+        { label: 'Maximum Width', value: 'Up to 340 cm Greige Fabric' }
+      ],
+      heroImage: LS_MILLS_ASSETS.weaving.heroBg,
+      detailImage: LS_MILLS_ASSETS.weaving.airjetLoom1,
+      macroImage: LS_MILLS_ASSETS.weaving.greyFabrics
+    },
+    homeTextiles: {
+      headline: 'Comfort, Woven Into Life.',
+      shortText: 'Thoughtfully crafted textiles for modern living.',
+      link: '/products?category=home-textile',
+      linkText: 'Explore Home Textiles',
+      specs: [
+        { label: 'Daily Capacity', value: '6,000 Sheets per Shift' },
+        { label: 'Catering Markets', value: 'Luxury European & US Retail' },
+        { label: 'US Presence', value: '230 Fifth Ave, New York' },
+        { label: 'Finishing Precision', value: 'Mitered Corners & Bar-tacking' }
+      ],
+      heroImage: LS_MILLS_ASSETS.madeups.bedLinenInterior,
+      detailImage: LS_MILLS_ASSETS.madeups.stitchingUnit1,
+      macroImage: LS_MILLS_ASSETS.madeups.pillowShamDetail
+    }
+  };
+
+  readonly galleryItems: GalleryItem[] = [
+    {
+      id: 'g-01',
+      title: 'Ring Spinning Floor in Theni',
+      category: 'spinning',
+      categoryLabel: 'Yarn & Spinning',
+      image: LS_MILLS_ASSETS.spinning.ringFrames1,
+      caption: '150,000 Spindles spinning compact yarns from Ne 40s to Ne 200s on the main production floor.',
+      aspect: 'landscape'
     },
     {
-      id: 'p-07',
-      name: 'Duvet Cover & Pillow Sham Ensembles',
+      id: 'g-02',
+      title: 'High-Speed Tsudakoma Airjet Weaving',
+      category: 'weaving',
+      categoryLabel: 'Woven Fabrics',
+      image: LS_MILLS_ASSETS.weaving.airjetLoom1,
+      caption: 'Tsudakoma airjet looms weaving 200 to 1,500 thread-count sateen and percale greige fabrics.',
+      aspect: 'landscape'
+    },
+    {
+      id: 'g-03',
+      title: 'Forward-Integrated Cut & Sew Linens',
       category: 'home-textile',
       categoryLabel: 'Home Textiles',
-      countOrWeave: '400 TC Egyptian-Staple Style Cotton',
-      composition: '100% Long Staple Cotton',
-      applications: 'Master bed suites, interior retail programs.',
-      description: 'Elegantly proportioned duvet covers featuring hidden button closures and internal corner ties to secure comforters without shifting.',
-      featured: false,
-      image: 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=800&q=80',
-      specifications: [
-        { key: 'Closure Types', value: 'Concealed button or zipper with flap' },
-        { key: 'Corner Ties', value: '4 or 8 interior securing ties' },
-        { key: 'Sham Style', value: '2" or 3" flange with French back overlap' },
-        { key: 'Care', value: 'Machine washable, low tumble dry' }
-      ]
+      image: LS_MILLS_ASSETS.madeups.stitchingUnit1,
+      caption: 'Dedicated stitching unit producing 6,000 luxury bed sheets per day per shift for export.',
+      aspect: 'landscape'
+    },
+    {
+      id: 'g-04',
+      title: 'Yarn Bobbin Cones with Zero Defect Packing',
+      category: 'spinning',
+      categoryLabel: 'Yarn & Spinning',
+      image: LS_MILLS_ASSETS.spinning.yarnCones,
+      caption: 'Uniform paper cones and dye cheese packages tested for low imperfection index (IPI).',
+      aspect: 'portrait'
+    },
+    {
+      id: 'g-05',
+      title: 'Greige Fabric Quality Inspection Table',
+      category: 'weaving',
+      categoryLabel: 'Woven Fabrics',
+      image: LS_MILLS_ASSETS.weaving.greyFabrics,
+      caption: 'Illuminated 4-point ASTM D5430 fabric inspection verifying tension and pick uniformity.',
+      aspect: 'portrait'
+    },
+    {
+      id: 'g-06',
+      title: 'Architectural Luxury Bed Linen Suite',
+      category: 'home-textile',
+      categoryLabel: 'Home Textiles',
+      image: LS_MILLS_ASSETS.madeups.bedLinenInterior,
+      caption: '1,000 Thread Count luxury sateen bedding ensemble styled in warm natural daylight.',
+      aspect: 'landscape'
+    },
+    {
+      id: 'g-07',
+      title: 'In-House Physical Metrology Testing Lab',
+      category: 'facilities',
+      categoryLabel: 'Facilities & Labs',
+      image: LS_MILLS_ASSETS.quality.testingLab,
+      caption: 'Advanced HVI fiber testing and metrology instruments certified to ISO 9001 (Bureau Veritas).',
+      aspect: 'portrait'
+    },
+    {
+      id: 'g-08',
+      title: 'Captive Solar Power Array in Theni',
+      category: 'facilities',
+      categoryLabel: 'Facilities & Labs',
+      image: LS_MILLS_ASSETS.sustainability.solarPower,
+      caption: 'Captive solar power array supplying clean energy to mill operations at the Western Ghats foothills.',
+      aspect: 'landscape'
+    },
+    {
+      id: 'g-09',
+      title: 'Western Ghats Cotton Terroir & Raw Bolls',
+      category: 'facilities',
+      categoryLabel: 'Facilities & Labs',
+      image: LS_MILLS_ASSETS.theniNature.rawCottonBolls,
+      caption: 'Certified 100% GOTS organic cotton staples, Supima, and Egyptian Giza selected for high tenacity.',
+      aspect: 'square'
     }
   ];
 }

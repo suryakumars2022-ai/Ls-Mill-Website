@@ -39,30 +39,40 @@
         <div class="div-media-col">
           <div class="div-image-card">
             <img
-              src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=1200&q=80"
-              alt="Spinning ring frames at LS Mills"
+              [src]="assets.spinning.ringFrames1"
+              (error)="spinningImgFailed = true"
+              *ngIf="!spinningImgFailed; else fallbackSpinning"
+              alt="Spinning ring frames at LS Mills Theni plant"
               loading="lazy"
             />
+            <ng-template #fallbackSpinning>
+              <img
+                src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=1200&q=80"
+                alt="Spinning ring frames at LS Mills"
+                loading="lazy"
+              />
+            </ng-template>
             <div class="div-badge">
               <span class="div-num">01 / DIVISION</span>
-              <span class="div-tech">BLOWROOM &bull; COMBING &bull; RING SPINNING</span>
+              <span class="div-tech">150,000 SPINDLES &bull; 25 TONNES DAILY</span>
             </div>
           </div>
         </div>
 
         <div class="div-info-col">
-          <span class="editorial-kicker">FIBER TO YARN</span>
+          <span class="editorial-kicker">FIBER TO YARN &bull; HIGH TENACITY</span>
           <h3 class="div-title">Spinning & Compact Yarn Division</h3>
           <p class="div-text">
-            Our spinning floors convert tested cotton bales into high-tenacity, low-hairiness yarns. Automated blowrooms systematically open, blend, and clean cotton staples, followed by precision carding and multi-pass drawframes that align fibers into uniform slivers.
+            Our spinning floors convert tested cotton bales into high-tenacity, low-hairiness yarns. Equipped with machinery from world leaders <strong>LMW, Rieter, Muratec, and SSM</strong>, our facility commands 150,000 spindles producing 25 tonnes daily of ultra-uniform yarns.
           </p>
 
           <div class="div-specs-box">
             <h4>TECHNICAL CAPABILITY PARAMETERS:</h4>
             <ul>
-              <li><strong>Count Spectrum:</strong> Ne 20/1 through Ne 100/1 in combed ring spun and compact configurations.</li>
-              <li><strong>Combing Efficiency:</strong> Short fiber removal tuned between 14% and 22% for optimal yarn strength.</li>
-              <li><strong>Electronic Clearing:</strong> Automatic optical yarn clearing to eradicate foreign contamination and thick/thin defects.</li>
+              <li><strong>Count Spectrum:</strong> Ne 40s to Ne 200s Count SIRO Compact Slub Yarn & Plied varieties.</li>
+              <li><strong>Plied & Gassed Yarn:</strong> Ne 40/2 to Ne 200/2 Gassed Yarn supplied in hard and soft dye cone packages.</li>
+              <li><strong>Raw Fibers:</strong> Egyptian Giza, Supima, BCI, and 100% GOTS Certified Organic Cotton.</li>
+              <li><strong>Quality Clearing:</strong> Real-time Uster testing and optical clearers eliminating 100% of foreign fibers.</li>
             </ul>
           </div>
 
@@ -80,30 +90,40 @@
         <div class="div-media-col">
           <div class="div-image-card">
             <img
-              src="https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=1200&q=80"
-              alt="High speed weaving looms"
+              [src]="assets.weaving.airjetLoom1"
+              (error)="weavingImgFailed = true"
+              *ngIf="!weavingImgFailed; else fallbackWeaving"
+              alt="Tsudakoma airjet looms weaving grey fabric at LS Mills"
               loading="lazy"
             />
+            <ng-template #fallbackWeaving>
+              <img
+                src="https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=1200&q=80"
+                alt="High speed weaving looms"
+                loading="lazy"
+              />
+            </ng-template>
             <div class="div-badge">
               <span class="div-num">02 / DIVISION</span>
-              <span class="div-tech">WARP SIZING &bull; AIRJET LOOMS &bull; DOBBY</span>
+              <span class="div-tech">BENNINGER SIZING &bull; TSUDAKOMA AIRJET LOOMS</span>
             </div>
           </div>
         </div>
 
         <div class="div-info-col">
-          <span class="editorial-kicker">YARN TO FABRIC</span>
+          <span class="editorial-kicker">YARN TO FABRIC &bull; 200 TO 1,500 TC</span>
           <h3 class="div-title">Weaving & Fabric Architecture</h3>
           <p class="div-text">
-            Engineered warp beams enter climate-controlled weaving sheds equipped with high-speed airjet and rapier looms. Continuous electronic weft insertion ensures uniform pick density and flawless selvage formation.
+            Engineered warp beams enter climate-controlled weaving sheds equipped with Benninger warping/sizing lines and high-speed Tsudakoma airjet looms. We manufacture flawless grey fabrics exported widely to Europe and the United States.
           </p>
 
           <div class="div-specs-box">
             <h4>TECHNICAL CAPABILITY PARAMETERS:</h4>
             <ul>
+              <li><strong>Thread Count Spectrum:</strong> 200 Thread Count up to ultra-luxury 1,500 Thread Count.</li>
               <li><strong>Weaving Width:</strong> Up to 340 cm wide greige fabric for seamless king and super-king bedding.</li>
-              <li><strong>Density Range:</strong> 180 Thread Count up to 1000 Thread Count in percales, sateens, and stripes.</li>
-              <li><strong>Weave Geometry:</strong> Plain 1/1, Sateen 4/1, Twill 2/1, 3/1, and complex Dobby geometric designs.</li>
+              <li><strong>Weave Architectures:</strong> Satin, Percale, Twill, Dobby, Seersucker, Waffle, Oxford, and Stripes.</li>
+              <li><strong>Fibers Utilized:</strong> Supima, Egyptian, BCI, Organic Cotton, Tencel, Refibra, Linen, Modal, and Hemp.</li>
             </ul>
           </div>
 
@@ -121,30 +141,40 @@
         <div class="div-media-col">
           <div class="div-image-card">
             <img
-              src="https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=1200&q=80"
-              alt="Finished home textiles"
+              [src]="assets.madeups.stitchingUnit1"
+              (error)="madeupImgFailed = true"
+              *ngIf="!madeupImgFailed; else fallbackMadeup"
+              alt="Stitching and cut-and-sew unit at LS Mills"
               loading="lazy"
             />
+            <ng-template #fallbackMadeup>
+              <img
+                src="https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=1200&q=80"
+                alt="Finished home textiles"
+                loading="lazy"
+              />
+            </ng-template>
             <div class="div-badge">
               <span class="div-num">03 / DIVISION</span>
-              <span class="div-tech">PRECISION CUT &bull; TAILORED HEM &bull; PACKAGING</span>
+              <span class="div-tech">6,000 SHEETS / SHIFT &bull; EXPORT PACKAGING</span>
             </div>
           </div>
         </div>
 
         <div class="div-info-col">
-          <span class="editorial-kicker">FABRIC TO FINISHED PRODUCT</span>
-          <h3 class="div-title">Finished Home Textiles</h3>
+          <span class="editorial-kicker">FABRIC TO FINISHED PRODUCT &bull; BED LINEN</span>
+          <h3 class="div-title">Finished Home Textiles / Made Ups</h3>
           <p class="div-text">
-            Transforming master fabric into export-grade bed ensembles. Automated cutting tables ensure squared dimensions, while skilled tailoring lines execute mitered corners, double needle top-stitching, and customized retail banderoles.
+            Our forward integration unit delivers 6,000 sheets per day per shift. Master fabrics are precision cut and tailored into luxury bed sheet sets, duvet ensembles, and pillow shams adhering to global retailer codes of conduct.
           </p>
 
           <div class="div-specs-box">
             <h4>TECHNICAL CAPABILITY PARAMETERS:</h4>
             <ul>
+              <li><strong>Daily Forward Capacity:</strong> 6,000 Sheets per day per shift.</li>
               <li><strong>Product Assortment:</strong> Flat sheets, 360° elasticized fitted sheets, pillowcases, and duvet covers.</li>
-              <li><strong>Finishing Details:</strong> Merrow hems, satin stitching, flange cuffs, and hidden button closures.</li>
-              <li><strong>Compliance Packing:</strong> Export-grade carton packing with barcode verification and moisture-guard liners.</li>
+              <li><strong>Tailoring Accents:</strong> Merrow hems, satin stitching, flange cuffs, and concealed closures.</li>
+              <li><strong>Showroom Access:</strong> International accounts serviced via Suite #510, 230 Fifth Ave, NY.</li>
             </ul>
           </div>
 

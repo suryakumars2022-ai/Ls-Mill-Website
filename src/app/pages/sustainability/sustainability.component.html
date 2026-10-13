@@ -33,7 +33,7 @@
         <span>OUR COMMITMENT TO TRANSPARENCY</span>
       </div>
       <p class="transparency-text">
-        LS Mills distinguishes between <strong>achieved, concrete operational practices</strong> currently active on our shop floor and <strong>strategic future targets</strong> under active engineering review. We do not publish unverified metrics or fabricated certifications.
+        LS Mills Limited distinguishes between <strong>achieved, concrete operational practices</strong> currently active on our shop floor and <strong>strategic future targets</strong> under active engineering review. We do not publish unverified metrics or fabricated certifications.
       </p>
     </div>
   </div>
@@ -57,6 +57,35 @@
         </div>
         <h3 class="practice-title">{{ item.title }}</h3>
         <p class="practice-desc">{{ item.description }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Section: Verified Environmental Infrastructure & Community Projects -->
+<section class="editorial-section green-projects-section bg-charcoal" aria-label="Environmental Infrastructure">
+  <div class="ls-container">
+    <div class="section-title-wrap">
+      <span class="editorial-kicker">ON-GROUND REALIZATION</span>
+      <h2 class="section-title text-light">COMMITTED GREEN INFRASTRUCTURE</h2>
+      <p class="section-lead text-light">Captive renewable generation, active rainwater preservation, and community healthcare initiatives in Theni, Tamil Nadu.</p>
+    </div>
+
+    <div class="ls-grid-12 projects-grid">
+      <div class="project-card" *ngFor="let proj of greenProjects">
+        <div class="project-media-wrap">
+          <img [src]="proj.image" [alt]="proj.title" loading="lazy" />
+          <div class="project-badge">{{ proj.badge }}</div>
+        </div>
+        <div class="project-details">
+          <h3 class="project-title">{{ proj.title }}</h3>
+          <p class="project-desc">{{ proj.description }}</p>
+          <div class="project-stat-pill">
+            <app-icon name="check" [size]="14"></app-icon>
+            <span>{{ proj.stat }}</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>

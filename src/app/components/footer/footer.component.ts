@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { TextileDataService } from '../../services/textile-data.service';
 import { IconComponent } from '../icon/icon.component';
+import { LogoComponent } from '../logo/logo.component';
 
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [CommonModule, RouterModule, IconComponent],
+  imports: [CommonModule, RouterModule, IconComponent, LogoComponent],
   template: `
     <footer class="ls-footer bg-charcoal">
       <!-- Animated Textile Thread Divider -->
@@ -15,19 +16,42 @@ import { IconComponent } from '../icon/icon.component';
 
       <div class="ls-container footer-body">
         <div class="ls-grid-12 footer-grid">
-          <!-- Col 1: Brand & Philosophy (5 Cols) -->
+          <!-- Col 1: Brand & Contact Info (6 Cols) -->
           <div class="footer-col brand-col">
-            <div class="footer-wordmark">
-              <span class="wordmark-primary">LS MILLS</span>
-              <span class="wordmark-secondary">LIMITED</span>
+            <div class="footer-brand-wrap">
+              <app-logo [variant]="'horizontal'" [theme]="'light'"></app-logo>
             </div>
-            <p class="brand-tagline">
-              Textile expertise rooted in manufacturing discipline. High-performance spinning, precision weaving, and crafted home textiles engineered for global standards.
-            </p>
 
-            <div class="editorial-origin">
-              <app-icon name="map-pin" [size]="14"></app-icon>
-              <span>THENI, TAMIL NADU, INDIA</span>
+            <!-- CONTACT & OFFICES block -->
+            <div class="footer-contact-block">
+              <h4 class="col-title">CONTACT &amp; OFFICES</h4>
+              <div class="contact-brief-grid">
+                <div class="brief-item">
+                  <span class="label">HEADQUARTERS</span>
+                  <span class="value">
+                    <strong>LS Mills Limited</strong><br />
+                    #351, Madurai Road,<br />
+                    Theni - 625531. India.
+                  </span>
+                </div>
+                <div class="brief-item">
+                  <span class="label">COMMERCIAL DESK</span>
+                  <span class="value">
+                    +91 80125 32502 -05<br />
+                    Fax: +91 4546 252742<br />
+                    info&#64;lsmills.in
+                  </span>
+                </div>
+                <div class="brief-item">
+                  <span class="label">SHOW ROOM ADDRESS</span>
+                  <span class="value">
+                    Suite # 510, 5th Floor,<br />
+                    230 Fifth Avenue,<br />
+                    NY – 10001<br />
+                    Tel: 646 492 1835
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -41,35 +65,16 @@ import { IconComponent } from '../icon/icon.component';
             </ul>
           </div>
 
-          <!-- Col 3: Manufacturing Capabilities (2 Cols) -->
-          <div class="footer-col">
+          <!-- Col 3: Manufacturing Capabilities (3 Cols) -->
+          <div class="footer-col divisions-col">
             <h4 class="col-title">DIVISIONS</h4>
             <ul class="col-list">
-              <li><a routerLink="/products" [queryParams]="{category: 'yarn'}" class="col-link">Spinning & Yarn</a></li>
+              <li><a routerLink="/products" [queryParams]="{category: 'yarn'}" class="col-link">Spinning &amp; Yarn</a></li>
               <li><a routerLink="/products" [queryParams]="{category: 'fabric'}" class="col-link">Woven Fabrics</a></li>
               <li><a routerLink="/products" [queryParams]="{category: 'home-textile'}" class="col-link">Home Textiles</a></li>
               <li><a routerLink="/manufacturing" class="col-link">Quality Labs</a></li>
               <li><a routerLink="/sustainability" class="col-link">Resource Care</a></li>
             </ul>
-          </div>
-
-          <!-- Col 4: Dispatch & Enquiry (2 Cols) -->
-          <div class="footer-col">
-            <h4 class="col-title">OPERATIONS</h4>
-            <div class="contact-brief">
-              <p class="brief-item">
-                <span class="label">LOCATION</span>
-                <span class="value">Theni District, Tamil Nadu — 625 531</span>
-              </p>
-              <p class="brief-item">
-                <span class="label">ENQUIRY</span>
-                <a routerLink="/contact" class="link-enquiry">Official Desk &rarr;</a>
-              </p>
-              <p class="brief-item">
-                <span class="label">COMMUNICATIONS</span>
-                <span class="value">Direct business inquiries verified by management.</span>
-              </p>
-            </div>
           </div>
         </div>
 
@@ -98,7 +103,9 @@ import { IconComponent } from '../icon/icon.component';
   styles: [`
     .ls-footer {
       position: relative;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      background-color: var(--color-forest-green);
+      color: var(--color-cotton-ivory);
+      border-top: 1px solid rgba(214, 168, 95, 0.25);
       overflow: hidden;
     }
 
@@ -108,12 +115,12 @@ import { IconComponent } from '../icon/icon.component';
       background: linear-gradient(
         90deg,
         transparent 0%,
-        var(--color-muted-copper) 25%,
-        var(--color-copper-light) 50%,
-        var(--color-muted-copper) 75%,
+        var(--color-harvest-gold) 25%,
+        var(--color-harvest-gold-light) 50%,
+        var(--color-harvest-gold) 75%,
         transparent 100%
       );
-      opacity: 0.8;
+      opacity: 0.9;
     }
 
     .footer-body {
@@ -129,47 +136,53 @@ import { IconComponent } from '../icon/icon.component';
     .brand-col {
       grid-column: span 12;
       @media (min-width: 992px) {
-        grid-column: span 5;
-        padding-right: 3rem;
+        grid-column: span 6;
+        padding-right: 2.5rem;
       }
     }
 
     .nav-col {
       grid-column: span 6;
       @media (min-width: 768px) {
-        grid-column: span 3;
+        grid-column: span 6;
       }
       @media (min-width: 992px) {
-        grid-column: span 2;
+        grid-column: span 3;
       }
     }
 
-    .footer-col {
-      &:nth-child(3) {
+    .divisions-col {
+      grid-column: span 6;
+      @media (min-width: 768px) {
         grid-column: span 6;
-        @media (min-width: 768px) {
-          grid-column: span 3;
-        }
-        @media (min-width: 992px) {
-          grid-column: span 2;
-        }
       }
-      &:nth-child(4) {
-        grid-column: span 12;
-        @media (min-width: 768px) {
-          grid-column: span 6;
-        }
-        @media (min-width: 992px) {
-          grid-column: span 3;
-        }
+      @media (min-width: 992px) {
+        grid-column: span 3;
       }
+    }
+
+    .footer-brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-logo-img {
+      height: 36px;
+      width: auto;
+      max-width: 120px;
+      object-fit: contain;
+      background-color: #FFFFFF;
+      padding: 3px 6px;
+      border-radius: 2px;
     }
 
     .footer-wordmark {
       display: flex;
       align-items: baseline;
       gap: 8px;
-      margin-bottom: 1.25rem;
     }
 
     .wordmark-primary {
@@ -237,10 +250,34 @@ import { IconComponent } from '../icon/icon.component';
       }
     }
 
-    .contact-brief {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
+    .footer-contact-block {
+      margin-top: 1.75rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(243, 240, 229, 0.12);
+
+      .col-title {
+        font-family: var(--font-marker);
+        font-size: 0.72rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--color-warm-ivory);
+        margin-bottom: 1.25rem;
+        font-weight: 600;
+      }
+    }
+
+    .contact-brief-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+
+      @media (min-width: 600px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @media (min-width: 1200px) {
+        grid-template-columns: repeat(3, 1fr);
+      }
     }
 
     .brief-item {
@@ -326,6 +363,8 @@ import { IconComponent } from '../icon/icon.component';
 export class FooterComponent {
   private dataService = inject(TextileDataService);
   navItems = this.dataService.navItems;
+  logoUrl = this.dataService.assets.brand.logo;
+  logoFailed = false;
   currentYear = new Date().getFullYear();
 
   scrollToTop(): void {

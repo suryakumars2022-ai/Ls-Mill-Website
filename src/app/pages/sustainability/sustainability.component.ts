@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { TextileDataService } from '../../services/textile-data.service';
 import { IconComponent } from '../../components/icon/icon.component';
 
 @Component({
@@ -11,6 +12,38 @@ import { IconComponent } from '../../components/icon/icon.component';
   styleUrls: ['./sustainability.component.scss']
 })
 export class SustainabilityComponent {
+  private dataService = inject(TextileDataService);
+  assets = this.dataService.assets;
+  companyProfile = this.dataService.companyProfile;
+
+  solarImgFailed = false;
+  rainImgFailed = false;
+  healthImgFailed = false;
+
+  readonly greenProjects = [
+    {
+      title: 'Captive Solar Power Generation',
+      badge: 'CLEAN ENERGY INITIATIVE',
+      image: this.assets.sustainability.solarPower,
+      description: 'LS Mills Limited has deployed extensive solar photovoltaic arrays generating clean electricity, directly reducing our carbon footprint across spinning and weaving shifts.',
+      stat: 'Solar Photovoltaic Generation & Energy Self-Reliance'
+    },
+    {
+      title: 'Rainwater Harvesting & Aquifer Recharging',
+      badge: 'WATER CONSERVATION',
+      image: this.assets.sustainability.rainWater,
+      description: 'Extensive catchment surfaces across our Theni factory roofs harvest monsoon rainfall into structured holding and percolation basins to replenish local groundwater.',
+      stat: 'Monsoon Runoff Conservation & Zero Waste Discharge'
+    },
+    {
+      title: 'Community Healthcare & Employee Welfare',
+      badge: 'SOCIAL RESPONSIBILITY',
+      image: this.assets.sustainability.healthCare,
+      description: 'Comprehensive occupational health and community wellness camps providing preventative checkups, vision screenings, and subsidized medicine to our team and local families.',
+      stat: 'On-site First Aid, Health Checkups & Education'
+    }
+  ];
+
   readonly activePractices = [
     {
       num: '01',
